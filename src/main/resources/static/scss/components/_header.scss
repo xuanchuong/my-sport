@@ -1,0 +1,180 @@
+.layout-wrapper {
+    .layout-main {
+        .layout-topbar {
+            background-color: $primaryColor;
+            padding: 5px 42px 5px 24px;
+            position: relative;
+            width: 100%;
+            @include transition(width $transitionDuration);
+            @include box-sizing(border-box);
+            z-index: 999997;
+
+            .layout-topbar-menu-wrapper {
+                display: flex;
+                justify-content: space-between;
+                max-width: $layout-main-max-width;
+                margin-left: auto;
+                margin-right: auto;
+                > .profile-item {
+                    .profile-image-wrapper {
+                        border: 2px solid transparent;
+                        width: $profile-item-width;
+                        height: $profile-item-height;
+                        @include border-radius(50%);
+                        @include transition(border-color $transitionDuration);
+                        > a {
+                            position: relative;
+                            color: $topbarTextColor;
+                            img {
+                                @include border-radius(50%);
+                                width: $profile-item-width;
+                                height: $profile-item-height;
+                            }
+                        }
+                    }
+
+                    .profile-name {
+                        display: inline-block;
+                        margin-left: 6px;
+                        vertical-align: middle;
+                        margin-top: -4px;
+                    }
+                    
+                    &:hover {
+                        .profile-image-wrapper {
+                            border-color: $accentColor;
+                        }
+                    }
+                }
+
+                > .top-nav {
+                    width: 30%;
+                    justify-content: space-around;
+                    display: flex;
+                    .top-nav-item {
+                        align-self: center;
+                    }
+                }
+
+                &.search-item {
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+                    height: 40px;
+                    @include box-sizing(border-box);
+
+                    input {
+                        border: 0 none;
+                        width: 150px;
+                        padding: 6px 24px 6px 6px;
+                        border-bottom: 1px solid $topbarTextColor;
+                        @include transition(all $transitionDuration);
+                        outline: 0 none;
+                        color: $topbarTextColor;
+
+                        &:focus {
+                            border-bottom-color: $primaryTextColor;
+
+                            label {
+                                color: $topbarTextColor;
+                            }
+                        }
+                    }
+
+                    i {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        color: $topbarTextColor;
+                        font-size: 28px;
+                    }
+
+                    label {
+                        color: $topbarTextColor;
+                        margin-top: 6px;
+                    }
+
+                    input:focus ~ i {
+                        color: $primaryTextColor;
+                    }
+                }
+
+                > ul {
+                    position: absolute;
+                    top: 60px;
+                    right: 5px;
+                    display: none;
+                    width: 250px;
+                    background-color: #ffffff;
+                    -webkit-animation-duration: .5s;
+                    -moz-animation-duration: .5s;
+                    animation-duration: .5s;
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 8px 0;
+                    border-top: 4px solid $primaryColor;
+                    @include overlay-content-shadow();
+
+                    a {
+                        padding: 10px 10px 10px 10px;
+                        display: block;
+                        width: 100%;
+                        box-sizing: border-box;
+                        color: $textColor;
+
+                        i {
+                            color: $textSecondaryColor;
+                            margin-right: 8px;
+                        }
+
+                        img {
+                            margin-right: 8px;
+                        }
+
+                        i,img,span {
+                            vertical-align: middle;
+                            display: inline-block;
+                        }
+
+                        .topbar-submenuitem-badge {
+                            background-color: $accentColor;
+                            padding: 2px 4px;
+                            display: block;
+                            font-size: 12px;
+                            @include border-radius($borderRadius);
+                            color: $accentTextColor;
+                            float: right;
+                        }
+
+                        &:hover {
+                            background-color: $topbarSubmenuHoverBgColor;
+                            @include transition(background-color $transitionDuration);
+                            
+                            i {
+                                color: $textColor;
+                            }
+                        }
+                    }
+
+                    &:before {
+                        width: 0;
+                        height: 0;
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-bottom: 15px solid $primaryColor;
+                        content: " ";
+                        position: absolute;
+                        top: -15px;
+                        left: 232px;
+                    }
+                }
+
+                &.active-topmenuitem {
+                    > ul {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

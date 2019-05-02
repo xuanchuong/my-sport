@@ -16,6 +16,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<resources.directory.css>${project.basedir}/src/main/resources/static/css</resources.directory.css>
+		<resources.directory.scss>${project.basedir}/src/main/resources/static/scss</resources.directory.scss>
 	</properties>
 
 	<dependencies>
@@ -47,6 +49,41 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>nl.geodienstencentrum.maven</groupId>
+				<artifactId>sass-maven-plugin</artifactId>
+				<version>2.25</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>update-stylesheets</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sassOptions>
+						<cache>false</cache>
+						<always_update>true</always_update>
+						<style>:compressed</style>
+						<sourcemap>:none</sourcemap>
+						<debug_info>false</debug_info>
+					</sassOptions>
+					<useCompass>false</useCompass>
+					<resources>
+						<resource>
+							<source>
+								<directory>${resources.directory.scss}</directory>
+								<includes>
+									<include>*.scss</include>
+								</includes>
+								<excludes />
+							</source>
+							<destination>${resources.directory.css}</destination>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

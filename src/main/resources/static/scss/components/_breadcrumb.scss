@@ -1,0 +1,60 @@
+.layout-wrapper {
+	.layout-main {
+        .layout-breadcrumb {
+            background-color: #ffffff;
+            @include shadow(inset 0 -2px 4px 0 rgba(0, 0, 0, 0.14));
+            padding-top: 44px;
+            @include clearfix();
+            
+            ul {
+                margin: 8px 0 0 0;
+                padding: 0 0 0 20px;
+                list-style: none;
+                color: $textSecondaryColor;
+                display: inline-block;
+                
+                li {
+                    display: inline-block; 
+                    vertical-align: middle;
+                    color: $textSecondaryColor;
+                    
+                    &:nth-child(even) {
+                        font-size: 20px;
+                    }
+                    
+                    &:first-child(even) {
+                        color: $primaryColor;
+                    }
+                    
+                    a {
+                        color: $textSecondaryColor;
+                    }
+                }
+            }
+            
+            .layout-breadcrumb-options {
+                float: right;
+                padding: 0px 20px 0 0;
+                height: 100%;
+                
+                a {
+                    color: $textSecondaryColor;
+                    display: inline-block;
+                    width: 42px;
+                    height: 42px;
+                    line-height: 42px;
+                    text-align: center;
+                    @include transition(background-color $transitionDuration);
+                    
+                    &:hover {
+                        background-color: $hoverBgColor;
+                    }
+                    
+                    i {
+                        line-height: inherit;
+                    }
+                }
+            }
+        }
+	}	
+}

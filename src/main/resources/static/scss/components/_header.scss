@@ -2,7 +2,7 @@
     .layout-main {
         .layout-topbar {
             background-color: $primaryColor;
-            padding: 5px 42px 5px 24px;
+            padding: 0;
             position: relative;
             width: 100%;
             @include transition(width $transitionDuration);

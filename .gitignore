@@ -1,5 +1,6 @@
 HELP.md
 /target/
+/src/main/resources/static/css/*
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###

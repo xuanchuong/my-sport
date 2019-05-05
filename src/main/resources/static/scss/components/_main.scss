@@ -1,23 +1,13 @@
 .layout-wrapper {
-    .layout-main {
-        @include transition(margin-left $transitionDuration);
-        @include box-sizing(border-box);
-        .container {
-            max-width: $layout-main-max-width;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 17px 17px 24px 17px;
-        }
-        .layout-content {
-            .landing-page {
-                color: #FFF;
-                background-color: #505763;
-                background-image: linear-gradient(rgb(41, 48, 59), rgb(41, 48, 59), rgb(41, 48, 59));
-            }
-        }
-
-        .layout-main-mask {
-            display: none;
-        }
-    }
+	.layout-main {
+		@include transition(margin-left $transitionDuration);
+		@include box-sizing(border-box);
+		background-color: #FFF;
+		.container {
+			max-width: $layout-main-max-width;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 17px 17px 24px 17px;
+		}
+	}
 }

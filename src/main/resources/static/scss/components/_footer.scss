@@ -1,26 +1,24 @@
 .layout-wrapper {
-    .layout-main {
-        @include transition(margin-left $transitionDuration);
-        @include box-sizing(border-box);
-        .layout-footer {
-            padding: 16px 24px;
-            border: 0 none;
-            border: 1px solid $dividerColor;
-            background: #ffffff;
+	.layout-main {
+		@include transition(margin-left $transitionDuration);
+		@include box-sizing(border-box); 
+		.layout-footer {
+			padding:16px24px;
+			border: 0 none;
+			border: 1px solid$dividerColor;
+			background-color: $primaryColor; 
+			img {
+				margin-top : 5px;
+				width: 100px;
+			}
 
-            img {
-                margin-top: 5px;
-                width: 100px;
-            }
-
-            .footer-text-right {
-                float: right;
-                margin-top: 10px;
-
-                span {
-                    vertical-align: middle;
-                }
-            }
-        }
-    }
+			.footer-text-right {
+				float: right;
+				margin-top: 10px;
+				span {
+				vertical-align: middle;
+				}
+			}
+		}
+	}
 }

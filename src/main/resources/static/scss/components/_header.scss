@@ -8,6 +8,10 @@
 			@include transition(width $transitionDuration);
 			@include box-sizing(border-box);
 			z-index: 999997;
+			.masthead-wrap {
+				display: flex;
+				justify-content: center;
+			}
 		}
 	}
 }

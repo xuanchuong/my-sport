@@ -3,6 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 	<head>
 	<title>My Profile</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 	<link rel="stylesheet" th:href="@{/css/theme.css}" />
 	</head>
@@ -11,15 +12,20 @@
 			<div class="layout-main">
 				<div class="layout-topbar">
 					<div class="masthead-wrap">
-						<img th:src="@{/images/im_chuong.svg}"/>
+						<img class="my-name" th:src="@{/images/im_chuong.svg}"/>
 					</div>
 					<div class="masthead-wrap"> 
-						<img
-							src="http://seanhalpin.io/assets/img/content/home/masthead/land.svg" />
+						<img class="land" th:src="@{/images/land.svg}"/>
 					</div>
 				</div>
 	
 				<div class="container layout-content">
+					<section class="profile-contact">
+						<div class="profile-item">
+							<i class="fa fa-envelope-o"></i>
+							<h5>Email me</h5>
+						</div>
+					</section>
 					<section class="hello">
 						<article>
 							<h2>Hi.</h2>

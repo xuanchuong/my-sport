@@ -11,6 +11,12 @@
 			.masthead-wrap {
 				display: flex;
 				justify-content: center;
+				.my-name {
+					height: 15em;
+				}
+				.land {
+					height: 30em;
+				}
 			}
 		}
 	}

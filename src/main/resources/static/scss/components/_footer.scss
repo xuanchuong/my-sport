@@ -7,16 +7,19 @@
 			border: 0 none;
 			border: 1px solid$dividerColor;
 			background-color: $primaryColor; 
-			img {
-				margin-top : 5px;
-				width: 100px;
+			i {
+				&::before {
+					color: $footerIconColor;
+				}
 			}
-
-			.footer-text-right {
-				float: right;
-				margin-top: 10px;
-				span {
-				vertical-align: middle;
+			span {
+				color: $footerTextColor;
+			}
+			.container {
+				display: flex;
+				justify-content: space-between;
+				.footer-links {
+					display: flex;
 				}
 			}
 		}

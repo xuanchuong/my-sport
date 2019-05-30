@@ -2,7 +2,7 @@
 	.layout-main {
 		@include transition(margin-left $transitionDuration);
 		@include box-sizing(border-box);
-		background-color: #FFF;
+		background-color: $bodyBgColor;
 		.container {
 			max-width: $layout-main-max-width;
 			margin-left: auto;
@@ -10,21 +10,18 @@
 			padding: 17px 17px 24px 17px;
 			section {
 				h2, h3, h1 {
-					color: #1e836c;
+					color: $primaryColor;
 					text-align: center;
 				}
-				&.profile-contact {
+				&.navigator-bar {
 					ul {
 						list-style-type: none;
-						display: flex;
-						justify-content: space-around;
 						li {
 							display: flex;
 							align-items: center;
 							i {
 								margin-right: 15px;
 								&::before {
-									color: #1e836c;
 									font-size: 1.5em;
 								}
 							}

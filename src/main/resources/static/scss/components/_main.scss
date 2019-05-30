@@ -9,19 +9,26 @@
 			margin-right: auto;
 			padding: 17px 17px 24px 17px;
 			section {
-				h2 {
+				h2, h3, h1 {
 					color: #1e836c;
 					text-align: center;
-				}
-				h3 {
-					font-size: 2em;
-					font-weight: 500;
 				}
 				&.profile-contact {
 					ul {
 						list-style-type: none;
 						display: flex;
 						justify-content: space-around;
+						li {
+							display: flex;
+							align-items: center;
+							i {
+								margin-right: 15px;
+								&::before {
+									color: #1e836c;
+									font-size: 1.5em;
+								}
+							}
+						}
 					}
 				}
 			}

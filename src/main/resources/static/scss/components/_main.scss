@@ -8,15 +8,31 @@
 			margin-left: auto;
 			margin-right: auto;
 			padding: 17px 17px 24px 17px;
+			&.layout-content {
+				.contact {
+					.say-hi {
+						> span {
+							font-size: 144px;
+							font-weight: 400;
+							line-height: 144px;
+							opacity: 0.2;
+						}
+					}
+					i {
+						&::before {
+							color: $primaryColor;
+						}
+					}
+				}
+			}
 			section {
 				h2, h3, h1 {
 					color: $primaryColor;
-					text-align: center;
 				}
 				&.navigator-bar {
 					ul {
 						list-style-type: none;
-						li {
+						a {
 							display: flex;
 							align-items: center;
 							i {

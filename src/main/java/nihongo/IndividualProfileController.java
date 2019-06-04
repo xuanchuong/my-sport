@@ -9,4 +9,9 @@ public class IndividualProfileController {
 	public String myProfile() {
 		return "myProfile";
 	}
+	
+	@GetMapping("/contact")
+	public String myContact() {
+		return "contact";
+	}
 }

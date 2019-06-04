@@ -10,6 +10,27 @@
 	<body>
 		<div class="layout-wrapper">
 			<div class="layout-main">
+				<div class="container layout-topbar">
+					<section class="navigator-bar masthead-wrap">
+						<div class="my-avatar">
+							<img class="my-name" th:src="@{/images/me.svg}"/>
+						</div>
+						<div class="navigator-bar left-side-navigator-bar">
+							<ul>
+								<li>
+									<span>
+										<a href="/About">About</a>
+									</span>
+								</li>
+								<li>
+									<span>
+										<a href="/contact">Contact</a>
+									</span>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
 				<div class="container layout-content">
 					<div class="contact">
 						<div class="say-hi">
@@ -18,20 +39,22 @@
 							<h3>xuanchuongdp@gmail.com</h3>
 						</div>
 						<br>
-						<section class="navigator-bar find-me">
+						<section class="find-me">
 							<h2><b>Find me on</b></h2>
-							<ul>
-								<li>
-									<span>
-										<a href="https://facebook.com/" target="_blank">facebook</a>
-									</span>
-								</li>
-								<li>
-									<span>
-										<a href="https://vn.linkedin.com/">linkedin</a>
-									</span>
-								</li>
-							</ul>
+							<div class="navigator-bar">
+								<ul>
+									<li>
+										<span>
+											<a href="https://facebook.com/" target="_blank">facebook</a>
+										</span>
+									</li>
+									<li>
+										<span>
+											<a href="https://vn.linkedin.com/">linkedin</a>
+										</span>
+									</li>
+								</ul>
+							</div>
 						</section>
 					</div>
 				</div>

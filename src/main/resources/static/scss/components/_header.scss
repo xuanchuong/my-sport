@@ -10,12 +10,17 @@
 			z-index: 999997;
 			.masthead-wrap {
 				display: flex;
-				justify-content: center;
-				.my-name {
-					height: 15em;
+				justify-content: space-between;
+				align-items: center;
+				list-style-type: none;
+				.my-avatar {
+					img {
+						height: 72px;
+					}
 				}
-				.land {
-					height: 30em;
+				.left-side-navigator-bar {
+					justify-content: center;
+					
 				}
 			}
 		}

@@ -10,26 +10,28 @@
 	<body>
 		<div class="layout-wrapper">
 			<div class="layout-main">
-				<div class="container layout-topbar">
-					<section class="navigator-bar masthead-wrap">
-						<div class="my-avatar">
-							<img class="my-name" th:src="@{/images/me.svg}"/>
-						</div>
-						<div class="navigator-bar left-side-navigator-bar">
-							<ul>
-								<li>
-									<span>
-										<a href="/About">About</a>
-									</span>
-								</li>
-								<li>
-									<span>
-										<a href="/contact">Contact</a>
-									</span>
-								</li>
-							</ul>
-						</div>
-					</section>
+				<div class="layout-topbar">
+					<div class="container">
+						<section class="navigator-bar masthead-wrap">
+							<div class="my-avatar">
+								<img class="my-name" th:src="@{/images/me.svg}"/>
+							</div>
+							<div class="navigator-bar left-side-navigator-bar">
+								<ul>
+									<li>
+										<span>
+											<a href="/About">About</a>
+										</span>
+									</li>
+									<li>
+										<span>
+											<a href="/contact">Contact</a>
+										</span>
+									</li>
+								</ul>
+							</div>
+						</section>
+					</div>
 				</div>
 				<div class="container layout-content">
 					<div class="contact">
@@ -60,5 +62,8 @@
 				</div>
 			</div>
 		</div>
+	
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<script th:src="@{/js/nihongo.js}"></script>
 	</body>
 </html>

@@ -1,11 +1,17 @@
 .layout-wrapper {
 	.layout-main {
 		.layout-topbar {
-			background-color: $bodyBgColor;
+			position: fixed;
+			top: 0;
+			left:0;
+			transition: all 0.5s;
+			z-index: 9998;
+			&.scrollUp {
+				transform: translateY(-120px);
+			}
+			background-color: $topbarBgColor;
 			padding: 0;
-			position: relative;
 			width: 100%;
-			@include transition(width $transitionDuration);
 			@include box-sizing(border-box);
 			z-index: 999997;
 			.masthead-wrap {
@@ -20,6 +26,11 @@
 				}
 				.left-side-navigator-bar {
 					justify-content: center;
+					ul {
+						a {
+							text-transform: uppercase;
+						}
+					}
 					
 				}
 			}

@@ -7,11 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndividualProfileController {
 	@GetMapping("/")
 	public String myProfile() {
-		return "myProfile";
+		return "about";
 	}
 	
 	@GetMapping("/contact")
 	public String myContact() {
 		return "contact";
+	}
+	@GetMapping("/work")
+	public String myWork() {
+		return "work";
+	}
+	@GetMapping("/about")
+	public String aboutMe() {
+		return "about";
 	}
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head th:fragment="headerfiles">
+	<title>My Profile</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/theme.css}" />
+	</head>
+	<body>
+		<div class="layout-wrapper">
+			<div class="layout-main">
+				<div th:fragment="header" class="layout-topbar">
+					<div class="container">
+						<section class="navigator-bar masthead-wrap">
+							<div class="my-avatar">
+								<img class="my-name" th:src="@{/images/me.svg}"/>
+							</div>
+							<div class="navigator-bar left-side-navigator-bar">
+								<ul>
+									<li>
+										<span>
+											<a href="/work">Work</a>
+										</span>
+									</li>
+									<li>
+										<span>
+											<a href="/about">About</a>
+										</span>
+									</li>
+									<li>
+										<span>
+											<a href="/contact">Contact</a>
+										</span>
+									</li>
+								</ul>
+							</div>
+						</section>
+					</div>
+				</div>
+				<div th:fragment="content">
+					content here
+				</div>
+			</div>
+		</div>
+		<div th:fragment="footer-js">
+			<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+			<script th:src="@{/js/nihongo.js}"></script>
+		</div>
+	</body>
+</html>

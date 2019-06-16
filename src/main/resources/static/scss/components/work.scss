@@ -1,0 +1,26 @@
+.layout-wrapper {
+		.layout-main {
+			.container {
+				&.layout-content {
+					.work {
+						.work-item {
+							h3, h5 {
+								text-align: center;
+							}
+							.work-position {
+								
+							}
+							.working-time {
+								color: #a0a0a0;
+							}
+							.work-item-image {
+								img {
+									max-width: 100%;
+								}
+							}
+						}
+					}
+				}
+			}
+	}
+}

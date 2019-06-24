@@ -28,12 +28,15 @@
 					justify-content: center;
 					ul {
 						.selected {
+							border-bottom-style: solid;
+							border-bottom-color: #0052CC;
 							a {
-								color: red;
+								
 							}
 						}
 						a {
-							text-transform: uppercase;
+							color: #42526E;
+
 						}
 					}
 					

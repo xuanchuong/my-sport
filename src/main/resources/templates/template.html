@@ -18,19 +18,9 @@
 							</div>
 							<div class="navigator-bar left-side-navigator-bar">
 								<ul>
-									<li>
+									<li th:each="item: ${headerAttribute}">
 										<span>
-											<a href="/work">Work</a>
-										</span>
-									</li>
-									<li>
-										<span>
-											<a href="/about">About</a>
-										</span>
-									</li>
-									<li>
-										<span>
-											<a href="/contact">Contact</a>
+											<a th:href="${item.value}" th:text="${item.value}"></a>
 										</span>
 									</li>
 								</ul>

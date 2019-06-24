@@ -27,6 +27,11 @@
 				.left-side-navigator-bar {
 					justify-content: center;
 					ul {
+						.selected {
+							a {
+								color: red;
+							}
+						}
 						a {
 							text-transform: uppercase;
 						}

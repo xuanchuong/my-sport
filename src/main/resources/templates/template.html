@@ -19,7 +19,7 @@
 							<div class="navigator-bar left-side-navigator-bar">
 								<ul>
 									<li th:each="item: ${headerAttribute}">
-										<span>
+										<span th:class="${item == selectedItemAttr}? 'selected' : ''">
 											<a th:href="${item.value}" th:text="${item.value}"></a>
 										</span>
 									</li>

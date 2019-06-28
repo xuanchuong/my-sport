@@ -10,7 +10,9 @@ import profile.HeaderService;
 @Controller
 public class IndividualProfileController {
 	@GetMapping("/")
-	public String myProfile() {
+	public String myProfile(Model model) {
+		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
+		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.CONTACT);
 		return "about";
 	}
 	

@@ -51,9 +51,11 @@
 						display:flex;
 						list-style-type: none;
 						opacity: 0.7;
+						li {
+							margin-right: 15px;
+						}
 						a {
 							display: flex;
-							margin-right: 15px;
 							text-decoration: none;
 							
 							i {

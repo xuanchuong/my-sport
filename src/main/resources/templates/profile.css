@@ -1,0 +1,68 @@
+html {
+  font-size: 7.5px;
+  line-height: 1.25;
+  color: #212121;
+  width: 900px;
+  margin: auto;
+  background-color: #7a8599; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  background-color: #FFF;
+  font-family: 'Source Sans Pro', sans-serif;
+  height: 1267px; }
+
+.personal-container {
+  padding: 0rem 8.2rem;
+  padding-top: 44px;
+  margin-bottom: 4rem; }
+  .personal-container .personal {
+    display: flex; }
+    .personal-container .personal .personal-image {
+      background-image: url(https://resumeiostorage.s3.amazonaws.com/uploads/user/avatar/3450001/medium_squared_3918a7b983ead6a8c96a4ce35c700261.jpg?version=DLEEoC5);
+      width: 10rem;
+      height: 10rem;
+      border-radius: 6px;
+      background-size: cover;
+      margin-right: 3rem; }
+    .personal-container .personal .personal-info .personal-name {
+      font-size: 4.6rem;
+      font-weight: 600;
+      white-space: nowrap;
+      line-height: 1.2; }
+    .personal-container .personal .personal-info .personal-position {
+      white-space: nowrap;
+      font-size: 1.8rem; }
+
+.container {
+  position: relative;
+  display: block;
+  max-width: 120rem;
+  font-size: 1.8rem;
+  padding: 0rem 40rem 0rem 8.2rem;
+  line-height: 1.55;
+  font-weight: 400; }
+  .container .main {
+    width: 100%;
+    padding-right: 2rem; }
+    .container .main .section {
+      margin-bottom: 3.6rem; }
+      .container .main .section .section-title {
+        position: relative;
+        font-size: 2.8rem;
+        font-weight: 600;
+        padding-left: 3.4rem; }
+      .container .main .section .section-item {
+        padding-left: 3.4rem;
+        margin-bottom: 1.8rem; }
+  .container .aside {
+    position: absolute;
+    top: 0rem;
+    right: 8rem;
+    width: 30rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 1.4rem; }
+
+/*# sourceMappingURL=profile.css.map */

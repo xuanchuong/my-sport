@@ -3,8 +3,7 @@ html {
   line-height: 1.25;
   color: #212121;
   width: 900px;
-  margin: auto;
-  background-color: #7a8599; }
+  margin: auto; }
 
 * {
   box-sizing: border-box; }
@@ -21,7 +20,7 @@ body {
   .personal-container .personal {
     display: flex; }
     .personal-container .personal .personal-image {
-      background-image: url(https://resumeiostorage.s3.amazonaws.com/uploads/user/avatar/3450001/medium_squared_3918a7b983ead6a8c96a4ce35c700261.jpg?version=DLEEoC5);
+      background-image: url("../static/images/profile/avatar.jpg");
       width: 10rem;
       height: 10rem;
       border-radius: 6px;
@@ -54,9 +53,45 @@ body {
         font-size: 2.8rem;
         font-weight: 600;
         padding-left: 3.4rem; }
+        .container .main .section .section-title .section-icon {
+          position: absolute;
+          width: 2rem;
+          height: 2rem;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          background-size: contain; }
+          .container .main .section .section-title .section-icon.section-icon-profile {
+            background-image: url("../static/images/profile/user.svg"); }
+          .container .main .section .section-title .section-icon.section-icon-work {
+            background-image: url("../static/images/profile/history.svg"); }
+          .container .main .section .section-title .section-icon.section-icon-education {
+            background-image: url("../static//images/profile/mortarboard.svg"); }
+          .container .main .section .section-title .section-icon.section-icon-activities {
+            background-image: url("../static//images/profile/leaves.svg"); }
       .container .main .section .section-item {
         padding-left: 3.4rem;
         margin-bottom: 1.8rem; }
+        .container .main .section .section-item .section-item-title {
+          font-size: 2.2rem;
+          font-weight: 600; }
+        .container .main .section .section-item .section-item-subtitle {
+          font-size: 1.8rem;
+          color: #455a64;
+          margin-bottom: 0.5rem; }
+        .container .main .section .section-item .section-item-text {
+          font-size: 2rem;
+          color: #262b33; }
+          .container .main .section .section-item .section-item-text p {
+            margin: 0 0 1.2rem 0; }
+          .container .main .section .section-item .section-item-text ul {
+            margin: 0.6rem 0;
+            list-style-position: outside;
+            padding-left: 3.2rem; }
+  .container .setting-primary-text {
+    color: #2196F3; }
+  .container .setting-primary-background {
+    color: #2196F3; }
   .container .aside {
     position: absolute;
     top: 0rem;
@@ -64,5 +99,31 @@ body {
     width: 30rem;
     padding: 0.5rem 1.2rem;
     border-radius: 1.4rem; }
+    .container .aside .aside-section {
+      margin-bottom: 3rem; }
+      .container .aside .aside-section .aside-title {
+        font-size: 2.3rem;
+        font-weight: 600; }
+      .container .aside .aside-section .aside-content .aside-paragraph {
+        font-size: 2rem;
+        margin-bottom: 1.8rem; }
+        .container .aside .aside-section .aside-content .aside-paragraph .aside-text.aside-text-link {
+          max-width: 100%;
+          word-wrap: break-word; }
+        .container .aside .aside-section .aside-content .aside-paragraph .aside-label {
+          font-size: 2rem;
+          margin-bottom: 0.4rem;
+          color: #455a64; }
+        .container .aside .aside-section .aside-content .aside-paragraph.aside-paragraph-sm {
+          margin-bottom: 1.3rem; }
+          .container .aside .aside-section .aside-content .aside-paragraph.aside-paragraph-sm .progress {
+            width: 100%;
+            height: 3px;
+            background: rgba(82, 27, 11, 0.1);
+            border-radius: 3px;
+            margin-top: 0.4rem; }
+            .container .aside .aside-section .aside-content .aside-paragraph.aside-paragraph-sm .progress .progress-inner {
+              height: 100%;
+              border-radius: 3px; }
 
 /*# sourceMappingURL=profile.css.map */

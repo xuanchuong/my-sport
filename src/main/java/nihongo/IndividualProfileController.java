@@ -13,7 +13,7 @@ public class IndividualProfileController {
 	public String myProfile(Model model) {
 		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
 		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.CONTACT);
-		return "about";
+		return "sakuraGakko";
 	}
 	
 	@GetMapping("/contact")
@@ -21,17 +21,5 @@ public class IndividualProfileController {
 		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
 		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.CONTACT);
 		return "contact";
-	}
-	@GetMapping("/work")
-	public String myWork(Model model) {
-		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
-		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.WORK);
-		return "work";
-	}
-	@GetMapping("/about")
-	public String aboutMe(Model model) {
-		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
-		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.ABOUT);
-		return "about";
 	}
 }

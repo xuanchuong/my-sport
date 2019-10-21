@@ -11,9 +11,11 @@
 						<div class="working-line">
 							<i class="fa fa-circle"></i>
 						</div>
-						<div class="work-item">
-							<div class="work-item-wrapper">
-								<div class="work-item-content work-item-left">
+						<tr th:each="item: ${bunbo}">
+							<div class="work-item">
+								<div class="work-item-wrapper">
+									<div class="work-item-content work-item-left">
+										<a>
 										<div class="header">
 											<label>java developer</label>
 										</div>
@@ -22,24 +24,11 @@
 												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
 											</p>
 										</div>
+									</a>
+									</div>
 								</div>
 							</div>
-						</div>
-
-						<div class="work-item">
-							<div class="work-item-wrapper">
-								<div class="work-item-content work-item-left">
-										<div class="header">
-											<label>java developer</label>
-										</div>
-										<div class="decription">
-											<p>
-												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-											</p>
-										</div>
-								</div>
-							</div>
-						</div>
+						</tr>
 					</div>
 				</div>
 			</div>

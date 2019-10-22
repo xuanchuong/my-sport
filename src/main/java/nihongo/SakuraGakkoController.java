@@ -26,4 +26,11 @@ public class SakuraGakkoController {
 		model.addAttribute("bunbo", bunbo);
 		return "sakuraGakko";
 	}
+	
+	@GetMapping(path = "bunpou")
+	public String bunpou(Model model) {
+		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
+		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.SAKURA_GAKKO);
+		return "bunpou";
+	}
 }

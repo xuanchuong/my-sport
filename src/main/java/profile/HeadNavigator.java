@@ -1,7 +1,7 @@
 package profile;
 
 public enum HeadNavigator {
-	SAKURA_GAKKO("sakura-gakko"), CONTACT("contact");
+	SAKURA_GAKKO("sakura-gakko"), JLPT("jlpt"), CONTACT("contact");
 	private String value;
 	HeadNavigator(String value) {
 		this.value = value;

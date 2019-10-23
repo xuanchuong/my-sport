@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jlpt.model.JlptTestForm;
 import profile.HeadNavigator;
 import profile.HeaderService;
 
@@ -16,6 +17,7 @@ public class JlptController {
 	public String jlptTesting(Model model) {
 		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
 		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.JLPT);
+		model.addAttribute("jlptForm", new JlptTestForm());
 		return "jlpt";
 	}
 }

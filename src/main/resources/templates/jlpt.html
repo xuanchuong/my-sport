@@ -7,9 +7,19 @@
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 				<div class="container layout-content">
-					<div class="bunpou">
-						<h2>文法　１２８</h2>
-					</div>
+					<form method="post" th:action="@{/submit}" th:object="${jlptForm}">
+						<h1></h1>
+						<tr th:each="jlptQuestion: *{questions}">
+							<div>
+							<label th:text="${jlptQuestion.question}"></label>
+							<li th:each="option : ${jlptQuestion.options}">
+							    <input type="radio" th:value="${option}" />
+							    <label th:text="${option}"></label>
+							  </li>
+							</div>
+						</tr>
+						<input type="submit" value="Submit order" />
+					</form>
 				</div>
 			</div>
 		</div>

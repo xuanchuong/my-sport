@@ -20,7 +20,7 @@ public class SakuraGakkoController {
 		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
 		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.SAKURA_GAKKO);
 		List<String> bunbo = new ArrayList<>();
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 10; i++) {
 			bunbo.add("" + i);
 		}
 		model.addAttribute("bunbo", bunbo);

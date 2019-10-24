@@ -13,6 +13,7 @@ public class JlptTestForm {
 		questions = new ArrayList<>();
 		for (int i = 0; i < 4; i++) {
 			Question question = new Question();
+			question.setCorrectAnswer(Answer.ramdomAnswer());
 			question.setQuestion("question " + i);
 			questions.add(question);
 		}

@@ -26,11 +26,19 @@ public class JlptController {
 	}
 	
 	@PostMapping
-	public String processResult(@Valid JlptTestForm result, BindingResult bindingResult) {
+	public String processResult(@Valid JlptTestForm result, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			return "jlpt";
 		}
-		System.out.println("################ result: " + result);
-		return "redirect:/";
+		long vocabularyPoints = result.getVocabularyQuestions().stream().filter(question -> question.getAnswer() != null)
+				.filter(question -> question.getAnswer() == question.getCorrectAnswer()).count();
+		long grammaPoints = result.getGrammaQuestions().stream().filter(question -> question.getAnswer() != null)
+				.filter(question -> question.getAnswer() == question.getCorrectAnswer()).count();
+		long listeningPoints = result.getListeningQuestion().stream().filter(question -> question.getAnswer() != null)
+				.filter(question -> question.getAnswer() == question.getCorrectAnswer()).count();
+		model.addAttribute("vocabulary", vocabularyPoints);
+		model.addAttribute("gramma", grammaPoints);
+		model.addAttribute("listening", listeningPoints);
+		return "jlptResult";
 	}
 }

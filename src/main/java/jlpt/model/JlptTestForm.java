@@ -7,15 +7,24 @@ import lombok.Data;
 
 @Data
 public class JlptTestForm {
-	private List<Question> questions;
+	private List<Question> vocabularyQuestions;
+	private List<Question> grammaQuestions;
+	private List<Question> listeningQuestion;
 	
 	public JlptTestForm() {
-		questions = new ArrayList<>();
-		for (int i = 0; i < 4; i++) {
+		vocabularyQuestions = initRamdomQuestion();
+		grammaQuestions = initRamdomQuestion();
+		listeningQuestion = initRamdomQuestion();
+	}
+
+	private List<Question> initRamdomQuestion() {
+		List<Question> randomQuestions = new ArrayList<>();
+		for (int i = 0; i < 3; i++) {
 			Question question = new Question();
 			question.setCorrectAnswer(Answer.ramdomAnswer());
-			question.setQuestion("question " + i);
-			questions.add(question);
+			question.setQuestion("question ");
+			randomQuestions.add(question);
 		}
+		return randomQuestions;
 	}
 }

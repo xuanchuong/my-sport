@@ -11,7 +11,7 @@ public class JlptTestForm {
 	
 	public JlptTestForm() {
 		questions = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 4; i++) {
 			Question question = new Question();
 			question.setQuestion("question " + i);
 			questions.add(question);

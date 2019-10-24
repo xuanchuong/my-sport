@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-	<head th:insert="template.html :: headerfiles"></head>
-	<body>
-		<div class="layout-wrapper">
-			<div class="layout-main">
-				<div th:insert="template.html :: header"></div>
-				<div class="container layout-content">
-					<form method="post" th:action="@{/submit}" th:object="${jlptForm}">
-						<h1></h1>
-						<tr th:each="jlptQuestion: *{questions}">
-							<div>
-							<label th:text="${jlptQuestion.question}"></label>
-							<li th:each="option : ${jlptQuestion.options}">
-							    <input type="radio" th:value="${option}" />
-							    <label th:text="${option}"></label>
-							  </li>
-							</div>
-						</tr>
-						<input type="submit" value="Submit order" />
-					</form>
-				</div>
+<head th:insert="template.html :: headerfiles"></head>
+<body>
+	<div class="layout-wrapper">
+		<div class="layout-main">
+			<div th:insert="template.html :: header"></div>
+			<div class="container layout-content">
+				<form method="post" th:object="${jlptForm}"
+					class="jlpt-testing-form">
+					<tr th:each="jlptQuestion: *{questions}">
+						<div class="jlptQuestion">
+							<p class="question-title">
+								<span th:text="${jlptQuestionStat.index}"></span> <label
+									th:text="${jlptQuestion.question}"></label>
+							</p>
+							<ul>
+								<li th:each="option : ${jlptQuestion.options}"><input
+									type="radio"
+									th:field="*{questions[__${jlptQuestionStat.index}__].answer}"
+									th:value="${option}" /> <label th:text="${option}"></label></li>
+							</ul>
+						</div>
+					</tr>
+					<input type="submit" value="done" />
+				</form>
 			</div>
 		</div>
-		
-		<head th:insert="template.html :: footer-js"></head>
-	</body>
+	</div>
+<head th:insert="template.html :: footer-js"></head>
+</body>
 </html>
-	

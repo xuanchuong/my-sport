@@ -40,6 +40,8 @@ public class JlptController {
 		model.addAttribute("vocabulary", vocabularyPoints);
 		model.addAttribute("gramma", grammaPoints);
 		model.addAttribute("listening", listeningPoints);
+		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
+		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.JLPT);
 		model.addAttribute("jlptResult", result);
 		sessionStatus.setComplete();
 		return "jlptResult";

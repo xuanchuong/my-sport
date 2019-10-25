@@ -7,9 +7,9 @@ import lombok.Data;
 
 @Data
 public class JlptTestForm {
-	private List<Question> vocabularyQuestions;
-	private List<Question> grammaQuestions;
-	private List<Question> listeningQuestion;
+	private List<MultipleChoiceQuestion> vocabularyQuestions;
+	private List<MultipleChoiceQuestion> grammaQuestions;
+	private List<MultipleChoiceQuestion> listeningQuestion;
 	
 	public JlptTestForm() {
 		vocabularyQuestions = initRamdomQuestion();
@@ -17,10 +17,10 @@ public class JlptTestForm {
 		listeningQuestion = initRamdomQuestion();
 	}
 
-	private List<Question> initRamdomQuestion() {
-		List<Question> randomQuestions = new ArrayList<>();
+	private List<MultipleChoiceQuestion> initRamdomQuestion() {
+		List<MultipleChoiceQuestion> randomQuestions = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
-			Question question = new Question();
+			MultipleChoiceQuestion question = new MultipleChoiceQuestion();
 			question.setCorrectAnswer(Answer.ramdomAnswer());
 			question.setQuestion("question ");
 			randomQuestions.add(question);

@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class Question {
+public class MultipleChoiceQuestion {
 	private String question;
 	public static Answer[] options = Answer.values();
 	@NotNull

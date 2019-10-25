@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import jlpt.model.JlptTestForm;
 import profile.HeadNavigator;
@@ -26,7 +27,7 @@ public class JlptController {
 	}
 	
 	@PostMapping
-	public String processResult(@Valid JlptTestForm result, BindingResult bindingResult, Model model) {
+	public String processResult(@Valid JlptTestForm result, BindingResult bindingResult, Model model, SessionStatus sessionStatus) {
 		if (bindingResult.hasErrors()) {
 			return "jlpt";
 		}
@@ -39,6 +40,8 @@ public class JlptController {
 		model.addAttribute("vocabulary", vocabularyPoints);
 		model.addAttribute("gramma", grammaPoints);
 		model.addAttribute("listening", listeningPoints);
+		model.addAttribute("jlptResult", result);
+		sessionStatus.setComplete();
 		return "jlptResult";
 	}
 }

@@ -14,6 +14,34 @@
 				<p th:text="${gramma}"></p>
 				<h3>Listening</h3>
 				<p th:text="${listening}"></p>
+				<div class="jlpt-testing-form">
+					<h2>Vocabulary questions</h2>
+					<tr th:each="jlptQuestion: ${jlptResult.vocabularyQuestions}">
+						<div class="jlptQuestion">
+							<p class="question-title">
+								<span th:text="${jlptQuestionStat.index}"></span> <label
+									th:text="${jlptQuestion.question}"></label>
+							</p>
+							<ul>
+								<li th:each="option : ${jlptQuestion.options}">
+									<input
+									type="radio"
+									th:checked="${jlptQuestion.answer == option}"
+									th:disabled="${true}"
+									th:value="${option}" />
+									<label th:text="${option}"></label>
+									<label th:if="${jlptQuestion.answer == jlptQuestion.correctAnswer}" th:text="đúng"></label>
+									<label th:if="${option == jlptQuestion.correctAnswer}" th:text="kếtquả"></label>
+									
+								</li>
+							</ul>
+							<p>
+								<label th:if="${jlptQuestion.answer == jlptQuestion.correctAnswer}" th:text="đúng"></label>
+								<label th:if="${jlptQuestion.answer != jlptQuestion.correctAnswer}" th:text="sai"></label>
+							</p>
+						</div>
+					</tr>
+				</div>
 			</div>
 		</div>
 	</div>

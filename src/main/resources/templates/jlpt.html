@@ -22,36 +22,7 @@
 									th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].answer}"
 									th:value="${option}" /> <label th:text="${option}"></label></li>
 							</ul>
-						</div>
-					</tr>
-					<h2>Gramma questions</h2>
-					<tr th:each="jlptQuestion: *{grammaQuestions}">
-						<div class="jlptQuestion">
-							<p class="question-title">
-								<span th:text="${jlptQuestionStat.index}"></span> <label
-									th:text="${jlptQuestion.question}"></label>
-							</p>
-							<ul>
-								<li th:each="option : ${jlptQuestion.options}"><input
-									type="radio"
-									th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].answer}"
-									th:value="${option}" /> <label th:text="${option}"></label></li>
-							</ul>
-						</div>
-					</tr>
-					<h2>Listening questions</h2>
-					<tr th:each="jlptQuestion: *{listeningQuestion}">
-						<div class="jlptQuestion">
-							<p class="question-title">
-								<span th:text="${jlptQuestionStat.index}"></span> <label
-									th:text="${jlptQuestion.question}"></label>
-							</p>
-							<ul>
-								<li th:each="option : ${jlptQuestion.options}"><input
-									type="radio"
-									th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].answer}"
-									th:value="${option}" /> <label th:text="${option}"></label></li>
-							</ul>
+							<span class="error" th:if="${#fields.hasErrors('vocabularyQuestions[__${jlptQuestionStat.index}__].answer')}">error</span>
 						</div>
 					</tr>
 					<input type="submit" value="done" />

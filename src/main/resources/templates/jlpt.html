@@ -17,10 +17,13 @@
 									th:utext="${jlptQuestion.question}"></label>
 							</p>
 							<ul>
-								<li th:each="option : ${jlptQuestion.answers.options}"><input
-									type="radio"
-									th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer}"
-									th:value="${option.key}" /> <label th:text="${option.value}"></label></li>
+								<li th:each="option : ${jlptQuestion.answers.options}">
+									<input
+										type="radio"
+										th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer}"
+										th:value="${option.key}"/>
+										<label th:text="${option.value}"></label>
+								</li>
 							</ul>
 							<span class="error" th:if="${#fields.hasErrors('vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer')}">error</span>
 						</div>

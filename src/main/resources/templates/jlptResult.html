@@ -25,11 +25,11 @@
 							<ul>
 								<li th:each="option : ${jlptQuestion.answers.options}">
 									<input
-									type="radio"
-									th:checked="${jlptQuestion.selectedAnswer == option.key}"
-									th:disabled="${true}"/>
-									<label th:text="${option.value}"></label>
-									<label th:if="${option.key == jlptQuestion.correctAnswer}" th:text="kếtquả"></label>
+										type="radio"
+										th:checked="${jlptQuestion.selectedAnswer == option.key}"
+										th:disabled="${true}"/>
+										<label th:text="${option.value}"/>
+										<label th:if="${option.key == jlptQuestion.correctAnswer}" th:text="kếtquả"/>
 									
 								</li>
 							</ul>

@@ -1,22 +1,17 @@
 package jlpt.model;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.HashMap;
+import java.util.Map;
 
-public enum ChoiceAnswer {
-	A, B, D, E;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-	private static final List<ChoiceAnswer> VALUES = Collections
-			.unmodifiableList(Arrays.asList(values()));
-
-	private static final int SIZE = VALUES.size();
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class ChoiceAnswer extends Answer{
+	private Map<ChoiceAnswerKey, String> options;
 	
-	private static final Random RAMDOM = new Random();
-	
-	
-	public static ChoiceAnswer ramdomAnswer() {
-		return VALUES.get(RAMDOM.nextInt(SIZE));
+	public ChoiceAnswer() {
+		options = new HashMap<>();
 	}
 }

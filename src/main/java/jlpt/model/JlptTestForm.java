@@ -21,8 +21,15 @@ public class JlptTestForm {
 		List<Question> randomQuestions = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			MultipleChoiceQuestion question = new MultipleChoiceQuestion();
-			question.setCorrectAnswer(ChoiceAnswer.ramdomAnswer());
+			question.setCorrectAnswer(ChoiceAnswerKey.ramdomAnswer());
 			question.setQuestion("question ");
+			ChoiceAnswer answers = new ChoiceAnswer();
+			answers.getOptions().put(ChoiceAnswerKey.A, "dap an 1");
+			answers.getOptions().put(ChoiceAnswerKey.B, "dap an 2");
+			answers.getOptions().put(ChoiceAnswerKey.E, "dap an 3");
+			answers.getOptions().put(ChoiceAnswerKey.D, "dap an 4");
+			
+			question.setAnswers(answers);
 			randomQuestions.add(question);
 		}
 		return randomQuestions;

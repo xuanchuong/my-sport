@@ -9,8 +9,12 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class MultipleChoiceQuestion extends Question{
 	private String question;
-	public static ChoiceAnswer[] options = ChoiceAnswer.values();
+	private ChoiceAnswer answers;
 	@NotNull
-	private ChoiceAnswer answer;
-	private ChoiceAnswer correctAnswer;
+	private ChoiceAnswerKey selectedAnswer;
+	private ChoiceAnswerKey correctAnswer;
+	@Override
+	public boolean isCorrect() {
+		return selectedAnswer != null && selectedAnswer == correctAnswer;
+	}
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
 import jlpt.model.JlptTestForm;
-import jlpt.model.MultipleChoiceQuestion;
+import jlpt.model.Question;
 import profile.HeadNavigator;
 import profile.HeaderService;
 
@@ -32,12 +32,9 @@ public class JlptController {
 		if (bindingResult.hasErrors()) {
 			return "jlpt";
 		}
-		long vocabularyPoints = result.getVocabularyQuestions().stream().filter(question -> ((MultipleChoiceQuestion)question).getAnswer() != null)
-				.filter(question -> ((MultipleChoiceQuestion)question).getAnswer() == ((MultipleChoiceQuestion)question).getCorrectAnswer()).count();
-		long grammaPoints = result.getGrammaQuestions().stream().filter(question -> ((MultipleChoiceQuestion)question).getAnswer() != null)
-				.filter(question -> ((MultipleChoiceQuestion)question).getAnswer() == ((MultipleChoiceQuestion)question).getCorrectAnswer()).count();
-		long listeningPoints = result.getListeningQuestion().stream().filter(question -> ((MultipleChoiceQuestion)question).getAnswer() != null)
-				.filter(question -> ((MultipleChoiceQuestion)question).getAnswer() == ((MultipleChoiceQuestion)question).getCorrectAnswer()).count();
+		long vocabularyPoints = result.getVocabularyQuestions().stream().filter(Question::isCorrect).count();
+		long grammaPoints = result.getGrammaQuestions().stream().filter(Question::isCorrect).count();
+		long listeningPoints = result.getListeningQuestion().stream().filter(Question::isCorrect).count();
 		model.addAttribute("vocabulary", vocabularyPoints);
 		model.addAttribute("gramma", grammaPoints);
 		model.addAttribute("listening", listeningPoints);

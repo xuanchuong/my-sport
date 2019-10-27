@@ -17,12 +17,12 @@
 									th:text="${jlptQuestion.question}"></label>
 							</p>
 							<ul>
-								<li th:each="option : ${jlptQuestion.options}"><input
+								<li th:each="option : ${jlptQuestion.answers.options}"><input
 									type="radio"
-									th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].answer}"
-									th:value="${option}" /> <label th:text="${option}"></label></li>
+									th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer}"
+									th:value="${option.key}" /> <label th:text="${option.value}"></label></li>
 							</ul>
-							<span class="error" th:if="${#fields.hasErrors('vocabularyQuestions[__${jlptQuestionStat.index}__].answer')}">error</span>
+							<span class="error" th:if="${#fields.hasErrors('vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer')}">error</span>
 						</div>
 					</tr>
 					<input type="submit" value="done" />

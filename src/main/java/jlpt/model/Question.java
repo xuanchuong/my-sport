@@ -3,5 +3,6 @@ package jlpt.model;
 import lombok.Data;
 
 @Data
-public class Question {
+public abstract class Question {
+	public abstract boolean isCorrect();
 }

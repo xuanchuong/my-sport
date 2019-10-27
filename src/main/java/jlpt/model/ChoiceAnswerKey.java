@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public enum ChoiceAnswerKey {
-	A, B, D, E;
+	A, B, D, C;
 
 	private static final List<ChoiceAnswerKey> VALUES = Collections
 			.unmodifiableList(Arrays.asList(values()));

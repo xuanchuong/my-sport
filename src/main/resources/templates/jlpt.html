@@ -14,7 +14,7 @@
 						<div class="jlptQuestion">
 							<p class="question-title">
 								<span th:text="${jlptQuestionStat.index}"></span> <label
-									th:text="${jlptQuestion.question}"></label>
+									th:utext="${jlptQuestion.question}"></label>
 							</p>
 							<ul>
 								<li th:each="option : ${jlptQuestion.answers.options}"><input

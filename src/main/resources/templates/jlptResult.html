@@ -15,35 +15,34 @@
 				<h3>Listening</h3>
 				<p th:text="${listening}"></p>
 				<div class="jlpt">
-					<div class="jlpt-header">
-						<div>N4</div>
-						<div th:each="question: *{vocabularyQuestions}">
-							<label th:text="${questionStat.index}"/>
-						</div>
+					<div th:insert="jlptTemplate.html :: jlpt-header"></div>
+					<div class="jlpt-body">
+						<table>
+							<tr th:each="jlptQuestion: ${jlptResult.vocabularyQuestions}">
+								<td class="jlptQuestion">
+									<p class="question-title">
+										<span th:text="${jlptQuestionStat.index}"></span> <label
+											th:text="${jlptQuestion.question}"></label>
+									</p>
+									<ul>
+										<li th:each="option : ${jlptQuestion.answers.options}">
+											<input
+												type="radio"
+												th:checked="${jlptQuestion.selectedAnswer == option.key}"
+												th:disabled="${true}"/>
+												<label th:text="${option.value}"></label>
+												<label th:if="${option.key == jlptQuestion.correctAnswer}" th:text="kếtquả"></label>
+											
+										</li>
+									</ul>
+									<p>
+										<label th:if="${jlptQuestion.selectedAnswer == jlptQuestion.correctAnswer}" th:text="đúng"></label>
+										<label th:if="${jlptQuestion.selectedAnswer != jlptQuestion.correctAnswer}" th:text="sai"></label>
+									</p>
+								</td>
+							</tr>
+						</table>
 					</div>
-					<tr th:each="jlptQuestion: ${jlptResult.vocabularyQuestions}">
-						<div class="jlptQuestion">
-							<p class="question-title">
-								<span th:text="${jlptQuestionStat.index}"></span> <label
-									th:text="${jlptQuestion.question}"></label>
-							</p>
-							<ul>
-								<li th:each="option : ${jlptQuestion.answers.options}">
-									<input
-										type="radio"
-										th:checked="${jlptQuestion.selectedAnswer == option.key}"
-										th:disabled="${true}"/>
-										<label th:text="${option.value}"/>
-										<label th:if="${option.key == jlptQuestion.correctAnswer}" th:text="kếtquả"/>
-									
-								</li>
-							</ul>
-							<p>
-								<label th:if="${jlptQuestion.selectedAnswer == jlptQuestion.correctAnswer}" th:text="đúng"></label>
-								<label th:if="${jlptQuestion.selectedAnswer != jlptQuestion.correctAnswer}" th:text="sai"></label>
-							</p>
-						</div>
-					</tr>
 				</div>
 			</div>
 		</div>

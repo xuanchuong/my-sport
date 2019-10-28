@@ -5,30 +5,42 @@
 <body>
 	<div class="layout-wrapper">
 		<div class="layout-main">
-			<div th:insert="template.html :: header"></div>
 			<div class="container layout-content">
-				<form method="post" th:object="${jlptForm}"
-					class="jlpt-testing-form">
-					<h2>Vocabulary questions</h2>
-					<tr th:each="jlptQuestion: *{vocabularyQuestions}">
-						<div class="jlptQuestion">
-							<p class="question-title">
-								<span th:text="${jlptQuestionStat.index}"></span> <label
-									th:utext="${jlptQuestion.question}"></label>
-							</p>
-							<ul>
-								<li th:each="option : ${jlptQuestion.answers.options}">
-									<input
-										type="radio"
-										th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer}"
-										th:value="${option.key}"/>
-										<label th:text="${option.value}"></label>
-								</li>
-							</ul>
-							<span class="error" th:if="${#fields.hasErrors('vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer')}">error</span>
+				<form method="post" th:object="${jlptForm}" class="jlpt">
+					<div class="jlpt-header">
+						<div class="header-left jlpt-level"><span>N4</span></div>
+						<div class="header-center question-selection-box">
+							<div th:each="question: *{vocabularyQuestions}" class="question-selection">
+								<span th:text="${questionStat.index}"></span>
+							</div>
 						</div>
-					</tr>
-					<input type="submit" value="done" />
+						<div class="header-right">
+							<input type="submit" value="nộp bài" />
+						</div>
+					</div>
+					
+					<div class="jlpt-body">
+						<table>
+							<tr th:each="jlptQuestion: *{vocabularyQuestions}">
+								<td class="jlptQuestion">
+									<p class="question-title">
+										<span th:text="${jlptQuestionStat.index}"></span> <label
+											th:utext="${jlptQuestion.question}"></label>
+									</p>
+									<ul>
+										<li th:each="option : ${jlptQuestion.answers.options}">
+											<input
+												type="radio"
+												th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer}"
+												th:value="${option.key}"/>
+												<label th:text="${option.value}"></label>
+										</li>
+									</ul>
+									<span class="error" th:if="${#fields.hasErrors('vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer')}">error</span>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</form>
 			</div>
 		</div>

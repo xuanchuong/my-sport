@@ -28,6 +28,26 @@ public class JlptTestForm {
 		MultipleChoiceQuestion question2 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer2);
 		randomQuestions.add(question2);
 		
+		ChoiceAnswer answer3 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		MultipleChoiceQuestion question3 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer3);
+		randomQuestions.add(question3);
+		
+		ChoiceAnswer answer4 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		MultipleChoiceQuestion question4 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer4);
+		randomQuestions.add(question4);
+		
+		ChoiceAnswer answer5 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		MultipleChoiceQuestion question5 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer5);
+		randomQuestions.add(question5);
+		
+		ChoiceAnswer answer6 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		MultipleChoiceQuestion question6 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer6);
+		randomQuestions.add(question6);
+		
+		ChoiceAnswer answer7 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		MultipleChoiceQuestion question7 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer7);
+		randomQuestions.add(question7);
+		
 		return randomQuestions;
 	}
 	

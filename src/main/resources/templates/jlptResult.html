@@ -14,8 +14,13 @@
 				<p th:text="${gramma}"></p>
 				<h3>Listening</h3>
 				<p th:text="${listening}"></p>
-				<div class="jlpt-testing-form">
-					<h2>Vocabulary questions</h2>
+				<div class="jlpt">
+					<div class="jlpt-header">
+						<div>N4</div>
+						<div th:each="question: *{vocabularyQuestions}">
+							<label th:text="${questionStat.index}"/>
+						</div>
+					</div>
 					<tr th:each="jlptQuestion: ${jlptResult.vocabularyQuestions}">
 						<div class="jlptQuestion">
 							<p class="question-title">

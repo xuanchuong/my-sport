@@ -28,5 +28,24 @@
     }
     .jlpt-body {
         padding: 20px;
+        .jlptQuestion {
+        	.question-title {
+        		.question-index {
+	        		padding: 0 5px;
+	        		border-style: solid;
+        		}
+        	}
+        	.answer-checks {
+        		input {
+        			display: none;
+        		}
+        		.answer-content {
+        			cursor: pointer;
+        			&:hover {
+        				background-color: #e9be99;
+        			}
+        		}
+        	}
+        }
     }
 }

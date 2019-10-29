@@ -14,18 +14,20 @@
 							<tr th:each="jlptQuestion: *{vocabularyQuestions}">
 								<td class="jlptQuestion">
 									<p class="question-title">
-										<span th:text="${jlptQuestionStat.index}"></span> <label
-											th:utext="${jlptQuestion.question}"></label>
+										<span class="question-index" th:text="${jlptQuestionStat.index}"></span>
+										<label th:utext="${jlptQuestion.question}"></label>
 									</p>
-									<ul>
-										<li th:each="option : ${jlptQuestion.answers.options}">
-											<input
-												type="radio"
-												th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer}"
-												th:value="${option.key}"/>
-												<label th:text="${option.value}"></label>
-										</li>
-									</ul>
+									<div class="answer-checks">
+										<ul>
+											<li th:each="option : ${jlptQuestion.answers.options}">
+												<input
+													type="radio"
+													th:field="*{vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer}"
+													th:value="${option.key}"/>
+												<label class="answer-content" th:text="${option.value}"></label>
+											</li>
+										</ul>
+									</div>
 									<span class="error" th:if="${#fields.hasErrors('vocabularyQuestions[__${jlptQuestionStat.index}__].selectedAnswer')}">error</span>
 								</td>
 							</tr>

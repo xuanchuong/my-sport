@@ -1,4 +1,4 @@
-package nihongo;
+package jlpt.controller;
 
 import javax.validation.Valid;
 

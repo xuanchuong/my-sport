@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>sia</groupId>
-	<artifactId>nihongo-spring</artifactId>
+	<artifactId>nihongo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>nihongo</name>

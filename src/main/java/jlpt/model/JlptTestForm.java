@@ -20,45 +20,37 @@ public class JlptTestForm {
 	private List<Question> initRamdomQuestions() {
 		List<Question> randomQuestions = new ArrayList<>();
 		
-		ChoiceAnswer answer = initChoiceAnser("たいきょう", "だいひょ", "だいひょう", "たいひょ");
+		ChoiceAnswer answer = ChoiceAnswer.initChoiceAnser("たいきょう", "だいひょ", "だいひょう", "たいひょ");
 		MultipleChoiceQuestion question = initRamdomQuestion("山田さんはクラスの<u>代表</u>に選ばれた。", ChoiceAnswerKey.C, answer);
 		randomQuestions.add(question);
 		
-		ChoiceAnswer answer2 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		ChoiceAnswer answer2 = ChoiceAnswer.initChoiceAnser("助けて", "守けて", "支けて", "協けて");
 		MultipleChoiceQuestion question2 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer2);
 		randomQuestions.add(question2);
 		
-		ChoiceAnswer answer3 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		ChoiceAnswer answer3 = ChoiceAnswer.initChoiceAnser("助けて", "守けて", "支けて", "協けて");
 		MultipleChoiceQuestion question3 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer3);
 		randomQuestions.add(question3);
 		
-		ChoiceAnswer answer4 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		ChoiceAnswer answer4 = ChoiceAnswer.initChoiceAnser("助けて", "守けて", "支けて", "協けて");
 		MultipleChoiceQuestion question4 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer4);
 		randomQuestions.add(question4);
 		
-		ChoiceAnswer answer5 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		ChoiceAnswer answer5 = ChoiceAnswer.initChoiceAnser("助けて", "守けて", "支けて", "協けて");
 		MultipleChoiceQuestion question5 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer5);
 		randomQuestions.add(question5);
 		
-		ChoiceAnswer answer6 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		ChoiceAnswer answer6 = ChoiceAnswer.initChoiceAnser("助けて", "守けて", "支けて", "協けて");
 		MultipleChoiceQuestion question6 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer6);
 		randomQuestions.add(question6);
 		
-		ChoiceAnswer answer7 = initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		ChoiceAnswer answer7 = ChoiceAnswer.initChoiceAnser("助けて", "守けて", "支けて", "協けて");
 		MultipleChoiceQuestion question7 = initRamdomQuestion("困っているときに、先生にたすけていただきました。", ChoiceAnswerKey.A, answer7);
 		randomQuestions.add(question7);
 		
 		return randomQuestions;
 	}
 	
-	private ChoiceAnswer initChoiceAnser(String answer1, String answer2, String answer3, String answer4) {
-		ChoiceAnswer answers = new ChoiceAnswer();
-		answers.getOptions().put(ChoiceAnswerKey.A, answer1);
-		answers.getOptions().put(ChoiceAnswerKey.B, answer2);
-		answers.getOptions().put(ChoiceAnswerKey.C, answer3);
-		answers.getOptions().put(ChoiceAnswerKey.D, answer4);
-		return answers;
-	}
 
 	private MultipleChoiceQuestion initRamdomQuestion(String questionTitle, ChoiceAnswerKey correctAnswerKey, ChoiceAnswer answers) {
 		MultipleChoiceQuestion question = new MultipleChoiceQuestion();

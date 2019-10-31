@@ -1,7 +1,12 @@
 package jlpt.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,14 +15,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
+import jlpt.model.ChoiceAnswer;
 import jlpt.model.JlptTestForm;
 import jlpt.model.Question;
+import jlpt.service.ChoiceAnswerService;
 import profile.HeadNavigator;
 import profile.HeaderService;
 
 @Controller
 @RequestMapping("jlpt")
 public class JlptController {
+	
+	@Autowired
+	private ChoiceAnswerService choiceAnswerService;
+	
+	@GetMapping(value = "/choiceAnswers")
+	public List<ChoiceAnswer> getAll() {
+		return choiceAnswerService.getAllChoiceAnswers();
+	}
+	
+	@PostMapping("/addChoiceAnswer")
+	public HttpStatus insertChoiceAnswer() {
+		ChoiceAnswer newValue = ChoiceAnswer.initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		return choiceAnswerService.addNewChoiceAnswer(newValue) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
+	}
 
 	@GetMapping
 	public String jlptTesting(Model model) {

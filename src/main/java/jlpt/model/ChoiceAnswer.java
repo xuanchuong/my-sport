@@ -2,7 +2,6 @@ package jlpt.model;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -24,7 +23,7 @@ public class ChoiceAnswer extends Answer{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ElementCollection(targetClass=String.class)
+	@ElementCollection(targetClass=ChoiceAnswerKey.class)
 	@Column(name = "options")
 	private Map<ChoiceAnswerKey, String> options;
 	

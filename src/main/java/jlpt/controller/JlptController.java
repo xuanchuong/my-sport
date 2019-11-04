@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.support.SessionStatus;
 
 import jlpt.model.ChoiceAnswer;
+import jlpt.model.ChoiceAnswerKey;
 import jlpt.model.JlptTestForm;
 import jlpt.model.MultipleChoiceQuestion;
 import jlpt.service.ChoiceAnswerService;
@@ -37,7 +38,9 @@ public class JlptController {
 	
 	@PostMapping("/addChoiceAnswer")
 	public HttpStatus insertChoiceAnswer() {
-		ChoiceAnswer newValue = ChoiceAnswer.initChoiceAnser("助けて", "守けて", "支けて", "協けて");
+		ChoiceAnswer newValue = new ChoiceAnswer();
+		newValue.setAnswerKey(ChoiceAnswerKey.A);
+		newValue.setDescription("hello world");
 		return choiceAnswerService.addNewChoiceAnswer(newValue) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
 	}
 

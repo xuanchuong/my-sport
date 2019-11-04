@@ -7,9 +7,9 @@ import lombok.Data;
 
 @Data
 public class JlptTestForm {
-	private List<Question> vocabularyQuestions;
-	private List<Question> grammaQuestions;
-	private List<Question> listeningQuestion;
+	private List<MultipleChoiceQuestion> vocabularyQuestions;
+	private List<MultipleChoiceQuestion> grammaQuestions;
+	private List<MultipleChoiceQuestion> listeningQuestion;
 	
 	public JlptTestForm() {
 		vocabularyQuestions = initRamdomQuestions();
@@ -17,8 +17,8 @@ public class JlptTestForm {
 		listeningQuestion = initRamdomQuestions();
 	}
 
-	private List<Question> initRamdomQuestions() {
-		List<Question> randomQuestions = new ArrayList<>();
+	private List<MultipleChoiceQuestion> initRamdomQuestions() {
+		List<MultipleChoiceQuestion> randomQuestions = new ArrayList<>();
 		
 		ChoiceAnswer answer = ChoiceAnswer.initChoiceAnser("たいきょう", "だいひょ", "だいひょう", "たいひょ");
 		MultipleChoiceQuestion question = initRamdomQuestion("山田さんはクラスの<u>代表</u>に選ばれた。", ChoiceAnswerKey.C, answer);

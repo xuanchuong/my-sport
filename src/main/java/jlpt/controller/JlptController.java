@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import jlpt.model.ChoiceAnswer;
 import jlpt.model.JlptTestForm;
-import jlpt.model.Question;
+import jlpt.model.MultipleChoiceQuestion;
 import jlpt.service.ChoiceAnswerService;
 import profile.HeadNavigator;
 import profile.HeaderService;
@@ -54,9 +54,9 @@ public class JlptController {
 		if (bindingResult.hasErrors()) {
 			return "jlpt";
 		}
-		long vocabularyPoints = result.getVocabularyQuestions().stream().filter(Question::isCorrect).count();
-		long grammaPoints = result.getGrammaQuestions().stream().filter(Question::isCorrect).count();
-		long listeningPoints = result.getListeningQuestion().stream().filter(Question::isCorrect).count();
+		long vocabularyPoints = result.getVocabularyQuestions().stream().filter(MultipleChoiceQuestion::isCorrect).count();
+		long grammaPoints = result.getGrammaQuestions().stream().filter(MultipleChoiceQuestion::isCorrect).count();
+		long listeningPoints = result.getListeningQuestion().stream().filter(MultipleChoiceQuestion::isCorrect).count();
 		model.addAttribute("vocabulary", vocabularyPoints);
 		model.addAttribute("gramma", grammaPoints);
 		model.addAttribute("listening", listeningPoints);

@@ -10,13 +10,14 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "COMMENT")
 @Data
 public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column
+	private int id;
 
 	@Column
 	private String content;

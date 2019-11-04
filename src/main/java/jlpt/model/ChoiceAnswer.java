@@ -1,5 +1,6 @@
 package jlpt.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,15 +11,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "choiceanswer")
-public class ChoiceAnswer {
+@Table(name = "choiceanswer", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "id")
+})
+public class ChoiceAnswer implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4495813904117257923L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
 	@ElementCollection(targetClass=ChoiceAnswerKey.class)
@@ -26,6 +36,7 @@ public class ChoiceAnswer {
 	private Map<ChoiceAnswerKey, String> options;
 	
 	public ChoiceAnswer() {
+		id = Long.valueOf(123);
 		options = new HashMap<>();
 	}
 	

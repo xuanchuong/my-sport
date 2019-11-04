@@ -17,4 +17,8 @@ public class CommentService {
 	public List<Comment> loadAllMessages() {
 		return (List<Comment>) commentRepository.findAll();
 	}
+	
+	public boolean add(Comment comment) {
+		return commentRepository.save(comment) != null;
+	}
 }

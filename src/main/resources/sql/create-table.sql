@@ -1,0 +1,5 @@
+CREATE TABLE COMMENT (
+    id  SERIAL NOT NULL,
+    content VARCHAR(255),
+    PRIMARY KEY (id)
+)

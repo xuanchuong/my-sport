@@ -9,11 +9,11 @@
 		<relativePath/>
 	</parent>
 	<groupId>sia</groupId>
-	<artifactId>nihongo</artifactId>
+	<artifactId>my-sport</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>nihongo</name>
-	<description>nihongo in practive</description>
+	<name>my-sport</name>
+	<description>find a player</description>
 
 	<properties>
 		<java.version>1.8</java.version>

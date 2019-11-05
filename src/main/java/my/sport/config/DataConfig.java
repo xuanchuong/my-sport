@@ -1,4 +1,4 @@
-package jlpt.config;
+package my.sport.config;
 
 import java.util.Properties;
 

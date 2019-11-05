@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @PropertySource("classpath:database.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories("jlpt.repository")
+@EnableJpaRepositories("my.sport.repository")
 public class DataConfig {
 
 	private final String PROPERTY_DRIVER = "driver";
@@ -37,7 +37,7 @@ public class DataConfig {
 		LocalContainerEntityManagerFactoryBean lfb = new LocalContainerEntityManagerFactoryBean();
 		lfb.setDataSource(dataSource());
 		lfb.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-		lfb.setPackagesToScan("jlpt.model");
+		lfb.setPackagesToScan("my.sport.model");
 		lfb.setJpaProperties(hibernateProps());
 		return lfb;
 	}

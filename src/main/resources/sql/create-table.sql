@@ -1,1 +1,1 @@
-CREATE TABLE player (id SERIAL not null, first_name VARCHAR(255), last_name VARCHAR(255), PRIMARY KEY (ID));
+CREATE TABLE player (id SERIAL not null, firstname VARCHAR(255), lastname VARCHAR(255), PRIMARY KEY (ID));

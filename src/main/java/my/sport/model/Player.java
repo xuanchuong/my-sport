@@ -19,9 +19,9 @@ public class Player {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
-	@Column(name = "first_name", nullable = false)
+	@Column
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column
 	private String lastName;
 }

@@ -13,7 +13,7 @@ import my.sport.repository.PlayerRepository;
 public class PlayerService {
 
 	@Autowired
-	private PlayerRepository playerRepository;
+	private PlayerRepository<Player> playerRepository;
 	
 	@Transactional
 	public List<Player> findPlayerByFirstName(String firstName) {
@@ -28,5 +28,10 @@ public class PlayerService {
 	@Transactional
 	public boolean add(Player player) {
 		return playerRepository.save(player) != null;
+	}
+	
+	@Transactional
+	public void deletePlayer(Long id) {
+		playerRepository.deleteById(id);
 	}
 }

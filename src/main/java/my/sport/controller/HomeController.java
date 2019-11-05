@@ -9,13 +9,20 @@ import profile.HeadNavigator;
 import profile.HeaderService;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController {
 
-	@GetMapping("/contact")
+	@GetMapping(value = {"/contact"})
 	public String myContact(Model model) {
 		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
 		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.CONTACT);
 		return "contact";
+	}
+	
+	@GetMapping(value = {"/home", "/"})
+	public String homePage(Model model) {
+		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
+		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.HOME);
+		return "home";
 	}
 }

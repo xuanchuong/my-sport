@@ -24,4 +24,7 @@ public class Player {
 
 	@Column
 	private String lastName;
+	
+	@Column
+	private String description;
 }

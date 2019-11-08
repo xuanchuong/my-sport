@@ -7,7 +7,30 @@
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 				<div class="container layout-content">
-					
+					<form action="#" th:action="@{/search}" th:object="${searchResult}">
+						<label for="search_input">Search:</label>
+						<input name="search" id="search"></input>
+						
+						<div th:if="${not #lists.isEmpty(searchResult)}">
+							<h2>search results</h2>
+							<table>
+								<thead>
+									<tr>
+										<td>ID</td>
+										<td>name</td>
+										<td>description</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="playerSearchResult : ${searchResult}">
+										<td th:text="${playerSearchResult.id}"></td>
+										<td th:text="${playerSearchResult.fullName}"></td>
+										<td th:text="${playerSearchResult.description}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

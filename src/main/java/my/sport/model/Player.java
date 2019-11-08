@@ -27,4 +27,8 @@ public class Player {
 	
 	@Column
 	private String description;
+	
+	public String getFullName() {
+		return firstName + " " + lastName;
+	}
 }

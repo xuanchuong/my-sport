@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import my.sport.service.PlayerService;
+import my.sport.rest.controller.PlayerRestController;
 import profile.HeadNavigator;
 import profile.HeaderService;
 
@@ -15,7 +15,7 @@ import profile.HeaderService;
 @RequestMapping(value = {"/home", "/"})
 public class HomeController {
 	@Autowired
-	private PlayerService playerService;
+	private PlayerRestController playerRestController;
 
 	@GetMapping(value = {"/contact"})
 	public String myContact(Model model) {
@@ -33,7 +33,7 @@ public class HomeController {
 	
 	@GetMapping(value = "/search")
 	public String search(@RequestParam(value = "search", required = false) String q, Model model) {
-		model.addAttribute("searchResult", playerService.getAllPlayers());
+		model.addAttribute("searchResult", playerRestController.getAllPlayers());
 		return "home";
 	}
 }

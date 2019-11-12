@@ -23,7 +23,9 @@
 								</thead>
 								<tbody>
 									<tr th:each="playerSearchResult : ${searchResult}">
-										<td th:text="${playerSearchResult.id}"></td>
+										<td>
+											<a th:text="${playerSearchResult.id}" th:href="@{/player/detail(id=${playerSearchResult.id})}"></a>
+										</td>
 										<td th:text="${playerSearchResult.fullName}"></td>
 										<td th:text="${playerSearchResult.description}"></td>
 									</tr>

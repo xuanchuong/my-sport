@@ -11,7 +11,6 @@ public class PlayerController {
 
 	@GetMapping("/detail")
 	public String detailPlayer(@RequestParam(value = "id", required = true) String id) {
-		System.out.println(id);
 		return "playerInfo";
 	}
 }

@@ -26,6 +26,11 @@ public class PlayerService {
 	}
 	
 	@Transactional
+	public Player getPlayerById(Long id) {
+		return playerRepository.findById(id).orElse(null);
+	}
+	
+	@Transactional
 	public boolean add(Player player) {
 		return playerRepository.save(player) != null;
 	}

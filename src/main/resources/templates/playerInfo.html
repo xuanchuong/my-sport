@@ -7,30 +7,15 @@
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 				<div class="container layout-content">
-					<div class="contact">
-						<div class="say-hi">
-							<div class="c">C</div>
-							<h1><b>Say hi</b></h1>
-							<h3>xuanchuongdp@gmail.com</h3>
-						</div>
-						<br>
-						<section class="find-me">
-							<h2><b>Find me on</b></h2>
-							<div class="navigator-bar">
-								<ul>
-									<li>
-										<span>
-											<a href="https://facebook.com/" target="_blank">facebook</a>
-										</span>
-									</li>
-									<li>
-										<span>
-											<a href="https://vn.linkedin.com/">linkedin</a>
-										</span>
-									</li>
-								</ul>
-							</div>
-						</section>
+					
+					<div class="player-info" th:if="${player != null}">
+						<label th:text="${player.firstName}"></label>
+						<label th:text="${player.lastName}"></label>
+						<label th:text="${player.description}"></label>
+					</div>
+					
+					<div class="player-not-found" th:if="${player == null}">
+						<h3>Player not found</h3>
 					</div>
 				</div>
 			</div>

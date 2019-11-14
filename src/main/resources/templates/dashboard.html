@@ -7,9 +7,9 @@
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 				<div class="container layout-content">
-					<form action="#" th:action="@{/search}" th:object="${searchResult}">
+					<form action="#" th:action="@{/dashboard}" th:object="${searchResult}" method="post">
 						<label for="search_input">Search:</label>
-						<input name="search" id="search"></input>
+						<input name="id" id="search"></input>
 						
 						<div th:if="${not #lists.isEmpty(searchResult)}">
 							<h2>search results</h2>

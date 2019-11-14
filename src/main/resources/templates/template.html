@@ -15,14 +15,14 @@
 					<div class="container">
 						<section class="navigator-bar masthead-wrap">
 							<div class="my-avatar">
-								<a href="/">
+								<a href="/dashboard">
 									<img class="my-name" th:src="@{/images/me.svg}"/>
 								</a>
 							</div>
 							<div class="navigator-bar left-side-navigator-bar">
 								<ul>
 									<li th:each="item: ${headerAttribute}" th:class="${item == selectedItemAttr}? 'selected' : ''">
-											<a th:href="${item.value}" th:text="${item.value}"></a>
+											<a th:href="${item.url}" th:text="${item.value}"></a>
 									</li>
 								</ul>
 							</div>

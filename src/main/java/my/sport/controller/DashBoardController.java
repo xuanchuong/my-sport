@@ -16,7 +16,7 @@ import profile.HeadNavigator;
 import profile.HeaderService;
 
 @Controller
-@RequestMapping("/dashboard")
+@RequestMapping(value = {"/dashboard", "/"})
 public class DashBoardController {
 
 	@Autowired
@@ -33,7 +33,6 @@ public class DashBoardController {
 	@PostMapping
 	public String search(@RequestParam(value = "id", required = false) String id, Model model) {
 		List<Player> allPlayers = playerRestController.getAllPlayers();
-		System.out.println(allPlayers);
 		model.addAttribute("searchResult", allPlayers);
 		return "dashboard";
 	}

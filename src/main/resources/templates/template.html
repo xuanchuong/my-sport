@@ -24,8 +24,8 @@
 									<li th:each="item: ${headerAttribute}" th:class="${item == selectedItemAttr}? 'selected' : ''">
 											<a th:href="${item.url}" th:text="${item.value}"></a>
 									</li>
+									<li><a href="/logout">Logout</a></li>
 								</ul>
-								<a href="/logout">Logout</a>
 							</div>
 						</section>
 					</div>

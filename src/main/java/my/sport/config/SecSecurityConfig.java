@@ -12,6 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configurable
 @EnableWebSecurity
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
+	private static String USER_NAME = "user";
+	private static String USER_ROLE = "USER";
+	private static String PASS = "1234";
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -20,14 +23,12 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
-				.and().withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("USER").and()
-				.withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
+		auth.inMemoryAuthentication().withUser(USER_NAME).password(passwordEncoder().encode(PASS)).roles(USER_ROLE);
 	}
 
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/anonymous*")
+		http.csrf().disable().authorizeRequests().antMatchers("/anonymous*")
 				.anonymous().antMatchers("/login*").permitAll().anyRequest().authenticated().and().formLogin();
 		http.logout();
 	}

@@ -30,30 +30,6 @@ public class Player {
 	@Column
 	private String description;
 
-	public Player(Long id, String firstName, String lastName, String description) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.description = description;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
 	public String getFullName() {
 		return firstName + " " + lastName;
 	}

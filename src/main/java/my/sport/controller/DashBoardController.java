@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import my.sport.controller.rest.PlayerRestController;
 import my.sport.model.Player;
+import my.sport.service.FootballMatchService;
 import profile.HeadNavigator;
 import profile.HeaderService;
 
@@ -21,11 +22,14 @@ public class DashBoardController {
 
 	@Autowired
 	private PlayerRestController playerRestController;
+	@Autowired
+	private FootballMatchService footballMatchService;
 
 	@GetMapping
 	public String myContact(Model model) {
 		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
 		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.HOME);
+		model.addAttribute("availableMatches", footballMatchService.getAllAvailableFootballMatch());
 		return "dashboard";
 	}
 

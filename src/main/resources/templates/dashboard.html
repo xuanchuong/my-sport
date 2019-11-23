@@ -34,7 +34,21 @@
 							</table>
 						</div>
 					</form>
-					<a href="/match">create your match</a>
+					<div th:if="${not #lists.isEmpty(availableMatches)}">
+							<h2>Available matches for you</h2>
+							<table>
+								<thead>
+									<tr>
+										<td>title</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="match : ${availableMatches}">
+										<td th:text="${match.title}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 				</div>
 			</div>
 		</div>

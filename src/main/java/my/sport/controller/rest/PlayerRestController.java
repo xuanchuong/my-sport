@@ -1,4 +1,4 @@
-package my.sport.rest.controller;
+package my.sport.controller.rest;
 
 import java.util.List;
 
@@ -15,19 +15,19 @@ import my.sport.service.PlayerService;
 @RequestMapping("/playerRest")
 public class PlayerRestController {
 	private PlayerService playerService;
-	
+
 	@GetMapping
 	public List<Player> getAllPlayers() {
 		return playerService.getAllPlayers();
 	}
-	
+
 	@GetMapping("/detail")
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public HttpStatus insertPersone(@RequestBody Player player) {
 		return playerService.add(player) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public HttpStatus deletePlayer(@PathVariable Long id) {
 		playerService.deletePlayer(id);

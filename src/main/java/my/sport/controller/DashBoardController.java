@@ -24,7 +24,6 @@ public class DashBoardController {
 
 	@GetMapping
 	public String myContact(Model model) {
-		System.out.println("get page");
 		model.addAttribute(HeaderService.HEADER_ATTR, HeaderService.getNavigatoritems());
 		model.addAttribute(HeaderService.SELECTED_ITEM_ATTR, HeadNavigator.HOME);
 		return "dashboard";

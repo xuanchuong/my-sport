@@ -29,7 +29,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-			.anyRequest().authenticated().and().formLogin()
+			.antMatchers("/player/detail/**").authenticated().and().formLogin()
 			.loginPage("/login").permitAll()
 			.and()
 			.logout().permitAll();

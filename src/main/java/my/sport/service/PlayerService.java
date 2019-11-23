@@ -2,41 +2,15 @@ package my.sport.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import my.sport.model.Player;
-import my.sport.repository.PlayerRepository;
 
-@Service
-public class PlayerService {
+public interface PlayerService {
 
-	@Autowired
-	private PlayerRepository<Player> playerRepository;
-	
-	@Transactional
-	public List<Player> findPlayerByFirstName(String firstName) {
-		return playerRepository.findByFirstName(firstName);
-	}
-	
-	@Transactional
-	public List<Player> getAllPlayers() {
-		return (List<Player>) playerRepository.findAll();
-	}
-	
-	@Transactional
-	public Player getPlayerById(Long id) {
-		return playerRepository.findById(id).orElse(null);
-	}
-	
-	@Transactional
-	public boolean add(Player player) {
-		return playerRepository.save(player) != null;
-	}
-	
-	@Transactional
-	public void deletePlayer(Long id) {
-		playerRepository.deleteById(id);
-	}
+	public List<Player> getAllPlayers();
+
+	public Player getPlayerById(Long id);
+
+	public boolean add(Player player);
+
+	public void deletePlayer(Long id);
 }

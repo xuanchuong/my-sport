@@ -11,7 +11,7 @@
 		class="my.sport.service.PlayerServiceMock"></bean>
 
 	<bean id="playerRestController"
-		class="my.sport.rest.controller.PlayerRestController">
+		class="my.sport.controller.rest.PlayerRestController">
 		<property name="playerService" ref="playerServiceMock"></property>
 	</bean>
 </beans>

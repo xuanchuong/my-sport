@@ -7,7 +7,8 @@
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 				<div class="container layout-content">
-					<form action="#" th:action="@{/dashboard}" th:object="${searchResult}" method="post">
+					<form name="search-player-form" action="#" th:action="@{/dashboard}"
+						th:object="${searchResult}" method="post">
 						<label for="search_input">Search:</label>
 						<input name="id" id="search"></input>
 						
@@ -33,6 +34,7 @@
 							</table>
 						</div>
 					</form>
+					<a href="/match">create your match</a>
 				</div>
 			</div>
 		</div>

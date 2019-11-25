@@ -11,6 +11,10 @@
                     background-color: #fff;
                     border: solid 1px #dce0e6;
                     padding: 1.5em;
+                    &:hover {
+                        cursor: pointer;
+                        border-color: #1ba0e2;
+                    }
                     
                 }
             }

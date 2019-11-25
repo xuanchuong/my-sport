@@ -5,50 +5,18 @@
 	<body>
 		<div class="layout-wrapper">
 			<div class="layout-main">
-				<div th:insert="template.html :: header"></div>
+<!-- 				<div th:insert="template.html :: header"></div> -->
 				<div class="container layout-content">
-					<form name="search-player-form" action="#" th:action="@{/dashboard}"
-						th:object="${searchResult}" method="post">
-						<label for="search_input">Search:</label>
-						<input name="id" id="search"></input>
-						
-						<div th:if="${not #lists.isEmpty(searchResult)}">
-							<h2>search results</h2>
-							<table>
-								<thead>
-									<tr>
-										<td>ID</td>
-										<td>name</td>
-										<td>description</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="playerSearchResult : ${searchResult}">
-										<td>
-											<a th:text="${playerSearchResult.id}" th:href="@{/player/detail(id=${playerSearchResult.id})}"></a>
-										</td>
-										<td th:text="${playerSearchResult.fullName}"></td>
-										<td th:text="${playerSearchResult.description}"></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</form>
-					<div th:if="${not #lists.isEmpty(availableMatches)}">
-							<h2>Available matches for you</h2>
-							<table>
-								<thead>
-									<tr>
-										<td>title</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="match : ${availableMatches}">
-										<td th:text="${match.title}"></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					<div th:if="${not #lists.isEmpty(availableMatches)}" class="match-container">
+						<h2>Matches recommended for you</h2>
+						<table class="match-table">
+							<tbody class="match-table-body">
+								<tr th:each="match : ${availableMatches}" class="match-item">
+									<td th:text="${match.title}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

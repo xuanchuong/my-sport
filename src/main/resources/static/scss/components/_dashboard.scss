@@ -1,0 +1,11 @@
+.match-container {
+    .match-table {
+        .match-table-body {
+            display: flex;
+            flex-wrap: wrap;
+            .match-item {
+                width: 33%;
+            }
+        }
+    }
+}

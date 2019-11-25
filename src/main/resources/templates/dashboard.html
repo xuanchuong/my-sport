@@ -5,14 +5,18 @@
 	<body>
 		<div class="layout-wrapper">
 			<div class="layout-main">
-<!-- 				<div th:insert="template.html :: header"></div> -->
+				<div th:insert="template.html :: header"></div>
 				<div class="container layout-content">
 					<div th:if="${not #lists.isEmpty(availableMatches)}" class="match-container">
 						<h2>Matches recommended for you</h2>
 						<table class="match-table">
 							<tbody class="match-table-body">
-								<tr th:each="match : ${availableMatches}" class="match-item">
-									<td th:text="${match.title}"></td>
+								<tr th:each="match : ${availableMatches}" class="match-item-wrapper">
+									<td class="match-item">
+										<div th:text="${match.title}"></div>
+										<div>Chủ Nhật 31/12</div>
+										<div>Hiện tại mình đang cần 2 ngườiHiện tại mình đang cần 2 ngườiHiện tại mình đang cần 2 ngườiHiện tại mình đang cần 2 người</div>
+									</td>
 								</tr>
 							</tbody>
 						</table>

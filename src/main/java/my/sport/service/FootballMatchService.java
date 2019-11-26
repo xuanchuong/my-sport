@@ -7,4 +7,6 @@ import my.sport.model.FootballMatch;
 public interface FootballMatchService {
 
 	List<FootballMatch> getAllAvailableFootballMatch();
+	
+	FootballMatch getMatchById(Long id);
 }

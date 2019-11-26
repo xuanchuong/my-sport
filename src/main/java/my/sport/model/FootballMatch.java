@@ -16,4 +16,5 @@ public class FootballMatch {
 	private Date startDate;
 	private String location;
 	private String title;
+	private Long id;
 }

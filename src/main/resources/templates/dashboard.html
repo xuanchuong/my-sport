@@ -12,11 +12,11 @@
 						<table class="match-table">
 							<tbody class="match-table-body">
 								<tr th:each="match : ${availableMatches}" class="match-item-wrapper">
-									<td class="match-item">
-										<div th:text="${match.title}"></div>
-										<div>31/12</div>
-										<div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
-									</td>
+										<td class="match-item" >
+											<a th:text="${match.title}" th:href="@{/match/detail(id=${match.id})}"></a>
+											<div>31/12</div>
+											<div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+										</td>
 								</tr>
 							</tbody>
 						</table>

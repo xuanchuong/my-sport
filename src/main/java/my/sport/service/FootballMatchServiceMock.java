@@ -14,6 +14,7 @@ public class FootballMatchServiceMock implements FootballMatchService{
 		for (int i = 0; i < 10; i++) {
 			FootballMatch footballMatch = new FootballMatch();
 			footballMatch.setTitle("ramdom match " + i);
+			footballMatch.setId(Long.valueOf(i));
 			FOOTBALL_MATCHES.add(footballMatch);
 		}
 	}
@@ -21,5 +22,15 @@ public class FootballMatchServiceMock implements FootballMatchService{
 	@Override
 	public List<FootballMatch> getAllAvailableFootballMatch() {
 		return FOOTBALL_MATCHES;
+	}
+	
+	@Override
+	public FootballMatch getMatchById(Long id) {
+		for (FootballMatch footballMatch : FOOTBALL_MATCHES) {
+			if (footballMatch.getId().equals(id)) {
+				return footballMatch;
+			}
+		}
+		return null;
 	}
 }

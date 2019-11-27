@@ -13,7 +13,9 @@ public class FootballMatchServiceMock implements FootballMatchService{
 		FOOTBALL_MATCHES = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			FootballMatch footballMatch = new FootballMatch();
-			footballMatch.setTitle("ramdom match " + i);
+			footballMatch.setTitle("Lorem Ipsum is simply dummy text " + i);
+			footballMatch.setDescription(
+					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s");
 			footballMatch.setId(Long.valueOf(i));
 			FOOTBALL_MATCHES.add(footballMatch);
 		}

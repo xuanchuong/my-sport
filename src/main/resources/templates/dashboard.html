@@ -15,7 +15,7 @@
 										<td class="match-item" >
 											<a th:text="${match.title}" th:href="@{/match/detail(id=${match.id})}"></a>
 											<div>31/12</div>
-											<div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+											<div th:text="${match.description}"></div>
 										</td>
 								</tr>
 							</tbody>

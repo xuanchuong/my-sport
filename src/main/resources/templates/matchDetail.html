@@ -11,6 +11,9 @@
 						<label th:text="${match.title}"></label>
 						<label th:text="${match.startDate}"></label>
 						<label th:text="${match.location}"></label>
+						<form name="match-info-form" method="post" th:action="@{join(id=${match.id})}">
+							<button type="submit">join the match</button>
+						</form>
 					</div>
 				</div>
 			</div>

@@ -32,7 +32,6 @@ public class MatchController {
 	
 	@PostMapping("/join")
 	public String joinTheMatch( @RequestParam String id) {
-		System.out.println("join success full + " + id);
 		return "dashboard";
 	}
 	

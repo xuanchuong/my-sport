@@ -17,8 +17,6 @@ public class LoginController {
 	
 	@PostMapping
 	public ModelAndView login(String username, String passwork, ModelMap model) {
-		System.out.println("userName: " + username);
-		System.out.println("pass: " + passwork);
-	    return new ModelAndView("redirect:/dashboard", model);
+		return new ModelAndView("redirect:/dashboard", model);
 	}
 }

@@ -13,7 +13,7 @@
 							<tbody class="match-table-body">
 								<tr th:each="match : ${availableMatches}" class="match-item-wrapper">
 										<td class="match-item" >
-											<a th:text="${match.title}" th:href="@{/match/detail(id=${match.id})}"></a>
+											<div th:text="${match.title}"></div>
 											<div>31/12</div>
 											<div th:text="${match.description}"></div>
 										</td>

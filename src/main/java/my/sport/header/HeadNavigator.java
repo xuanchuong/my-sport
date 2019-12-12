@@ -1,7 +1,7 @@
 package my.sport.header;
 
 public enum HeadNavigator {
-	HOME("dash board", "/dashboard"), CONTACT("contact", "contact");
+	HOME("trang chủ", "/dashboard"), MATCH("tạo trận đấu", "match"), CONTACT("thông tin cá nhân", "contact");
 	private String value;
 	private String url;
 	HeadNavigator(String value, String url) {

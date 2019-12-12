@@ -1,4 +1,4 @@
-package profile;
+package my.sport.header;
 
 public enum HeadNavigator {
 	HOME("dash board", "/dashboard"), CONTACT("contact", "contact");

@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import my.sport.controller.rest.PlayerRestController;
+import my.sport.header.HeadNavigator;
 import my.sport.model.Player;
 import my.sport.service.FootballMatchService;
 import my.sport.service.HeaderService;
-import profile.HeadNavigator;
 
 @Controller
 @RequestMapping(value = {"/dashboard", "/"})

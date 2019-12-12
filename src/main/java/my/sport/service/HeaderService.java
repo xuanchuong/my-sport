@@ -1,7 +1,9 @@
-package profile;
+package my.sport.service;
 
 import java.util.Arrays;
 import java.util.List;
+
+import profile.HeadNavigator;
 
 public class HeaderService {
 	private final static List<HeadNavigator> navigatorItems;

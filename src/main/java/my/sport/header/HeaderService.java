@@ -1,9 +1,7 @@
-package my.sport.service;
+package my.sport.header;
 
 import java.util.Arrays;
 import java.util.List;
-
-import my.sport.header.HeadNavigator;
 
 public class HeaderService {
 	private final static List<HeadNavigator> navigatorItems;

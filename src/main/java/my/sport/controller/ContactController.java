@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import my.sport.header.HeadNavigator;
-import my.sport.service.HeaderService;
+import my.sport.header.HeaderService;
 
 @Controller
 @RequestMapping(value = {"/contact"})

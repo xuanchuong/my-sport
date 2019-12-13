@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 @Configurable
 @EnableWebSecurity
@@ -21,17 +22,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
+	@Bean
+	public SpringSecurityDialect springSecurityDialect() {
+		return new SpringSecurityDialect();
+	}
+
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser(USER_NAME).password(passwordEncoder().encode(PASS)).roles(USER_ROLE);
+	protected void configure(AuthenticationManagerBuilder auth)
+			throws Exception {
+		auth.inMemoryAuthentication().withUser(USER_NAME)
+				.password(passwordEncoder().encode(PASS)).roles(USER_ROLE);
 	}
 
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-			.antMatchers("/player/detail/**", "/match/**").authenticated().and().formLogin()
-			.loginPage("/login").permitAll()
-			.and()
-			.logout().permitAll();
+				.antMatchers("/player/detail/**", "/match/**").authenticated()
+				.and().formLogin().loginPage("/login").permitAll().and()
+				.logout().permitAll();
 	}
 }

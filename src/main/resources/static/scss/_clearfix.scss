@@ -48,6 +48,11 @@ h5 {
 
 a {
 	font-weight: 400;
+	cursor: pointer;
+	text-decoration: none;
+	&:hover {
+		color: #1ba0e2;
+	}
 }
 
 ul {

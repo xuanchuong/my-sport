@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import my.sport.dto.UserDto;
 import my.sport.model.Player;
 import my.sport.repository.PlayerRepository;
 
@@ -34,6 +35,16 @@ public class PlayerServiceImpl implements PlayerService{
 	@Transactional
 	public boolean add(Player player) {
 		return playerRepository.save(player) != null;
+	}
+	
+	@Override
+	@Transactional
+	public Player registerNewPlayerAccount(UserDto userDto) {
+		Player newPlayer = new Player();
+		newPlayer.setEmail(userDto.getEmail());
+		newPlayer.setFirstName(userDto.getFirstName());
+		newPlayer.setLastName(userDto.getLastName());
+		return playerRepository.save(newPlayer);
 	}
 
 	@Override

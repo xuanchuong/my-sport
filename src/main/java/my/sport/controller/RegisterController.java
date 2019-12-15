@@ -2,6 +2,7 @@ package my.sport.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,11 +15,15 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import my.sport.dto.UserDto;
+import my.sport.service.PlayerService;
 
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
 
+	@Autowired
+	private PlayerService playerService;
+	
 	@GetMapping()
 	public String showRegistrationForm(WebRequest request, Model model) {
 		UserDto userDto = new UserDto();
@@ -31,6 +36,7 @@ public class RegisterController {
 		if (resutl.hasErrors()) {
 			return new ModelAndView("register", "user", userDto);
 		}
-		return new ModelAndView("redirect:/dashboard");
+		playerService.registerNewPlayerAccount(userDto);
+		return new ModelAndView("successRegister", "user", userDto);
 	}
 }

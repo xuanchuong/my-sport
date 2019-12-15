@@ -9,11 +9,13 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "player")
 @AllArgsConstructor
+@NoArgsConstructor
 public class Player {
 
 	@Id
@@ -26,6 +28,9 @@ public class Player {
 
 	@Column
 	private String lastName;
+	
+	@Column
+	private String email;
 
 	@Column
 	private String description;

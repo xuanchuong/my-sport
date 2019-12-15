@@ -23,10 +23,10 @@ public class Player {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column
+	@Column(name = "first_name")
 	private String firstName;
 
-	@Column
+	@Column(name = "last_name")
 	private String lastName;
 	
 	@Column

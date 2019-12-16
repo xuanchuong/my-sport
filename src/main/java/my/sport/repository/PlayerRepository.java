@@ -10,4 +10,5 @@ import my.sport.model.Player;
 @Repository
 public interface PlayerRepository<P> extends JpaRepository<Player, Long>{
 	List<Player> findByFirstName(String firstName);
+	Player findUserByEmail(String email);
 }

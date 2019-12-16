@@ -34,6 +34,9 @@ public class Player {
 
 	@Column
 	private String description;
+	
+	@Column
+	private String password;
 
 	public String getFullName() {
 		return firstName + " " + lastName;

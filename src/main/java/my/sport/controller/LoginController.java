@@ -1,7 +1,5 @@
 package my.sport.controller;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +18,6 @@ public class LoginController {
 	@PostMapping
 	public ModelAndView login(String username, String passwork,
 			ModelMap model) {
-		// read principal out of security context and set it to session
-
-		UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder
-				.getContext().getAuthentication();
-
-
 		return new ModelAndView("redirect:/dashboard", model);
 	}
 }

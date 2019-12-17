@@ -1,0 +1,24 @@
+package my.sport.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import my.sport.model.FootballMatch;
+import my.sport.repository.FootballMatchRepository;
+
+public class FootballMatchServiceImpl implements FootballMatchService{
+	@Autowired
+	private FootballMatchRepository footballMatchRepository;
+
+	@Override
+	public List<FootballMatch> getAllAvailableFootballMatch() {
+		return footballMatchRepository.findAll();
+	}
+
+	@Override
+	public FootballMatch getMatchById(Long id) {
+		return footballMatchRepository.findById(id).orElse(null);
+	}
+
+}

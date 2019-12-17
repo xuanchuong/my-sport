@@ -13,7 +13,7 @@ import my.sport.service.FootballMatchService;
 
 @Controller
 @RequestMapping("/match")
-public class MatchController {
+public class FootballMatchController {
 
 	@Autowired
 	private FootballMatchService matchService;

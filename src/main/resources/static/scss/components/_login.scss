@@ -1,41 +1,9 @@
 .login-form {
-	.login-wrapper {
-		position: relative;
-		margin-left: auto;
-		margin-right: auto;
-		background: white;
-		max-width: 500px;
-		padding: 1.5rem 2rem;
-		border: 1px solid #dce0e6;
-		border-radius: 4px;
-		
-		.login-item {
-			margin-bottom: 2rem;
-			label {
-				display: block;
-				color: #434343;
-				font-weight: 700;
-				font-size: 14px;
-				line-height: 24px;
-				letter-spacing: .3px;
-			}
-		}
+	.form-wrapper {
 		.form-actions {
 			display: flex;
 			justify-content: space-between;
-			.login-bt {
-				width: 40%;
-				button {
-					background-color: #f96d01;
-					color:#fff;
-					width: 100%;
-					padding: 8px 10px;
-					line-height: 24px;
-					border: none;
-					border-radius: 3px;
-				}
-			}
-			.register-div {
+			.right-div {
 				.register-link {
 					color: #1ba0e2;
 				}

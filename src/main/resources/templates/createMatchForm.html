@@ -7,22 +7,26 @@
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 					<div class="container layout-content">
-						<h1>Create your match</h1>
-						<form name="create-match-form" method="post">
-							<fieldset>
-								<div th:if="${param.error}" class="alert alert-error">Invalid
-									username and password.</div>
-								<div th:if="${param.logout}" class="alert alert-success">You
-									have been logged out.</div>
-								<label for="number-players">số lượng cầu thủ</label> 
-								<input type="number" id="number-players" name="number-players" /> 
-								<label for="start-time">Thời gian</label>
-								<input type="date" id="start-time" name="start-time" />
-							</fieldset>
-							<button type="submit" class="btn">Tạo</button>
+						<form name="create-match-form" method="post" class="create-match-form submit-form">
+							<div class="form-wrapper">
+								<div class="player-number input-field">
+									<label for="number-players">số lượng cầu thủ</label> 
+									<input type="number" id="number-players" name="number-players" />
+								</div>
+								<div class="start-time input-field"> 
+									<label for="start-time">Thời gian</label>
+									<input type="date" id="start-time" name="start-time" />
+								</div>
+								<div class="form-actions">
+									<div class="left-div">
+										<button type="submit" class="btn">Tạo</button>
+									</div>
+								</div>
+							</div>
 						</form>
 					</div>
 			</div>
 		</div>
+		<head th:insert="template.html :: footer-js"></head>
 	</body>
 </html>

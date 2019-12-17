@@ -10,11 +10,14 @@
 	<!-- Football Match Beans -->
 	<bean id="footballMatchServiceMock" class="my.sport.service.FootballMatchServiceMock"></bean>
         
-	<bean id="playerServiceMock"
-		class="my.sport.service.PlayerServiceMock"></bean>
+<!-- 	<bean id="playerServiceMock" -->
+<!-- 		class="my.sport.service.PlayerServiceMock"></bean> -->
+	
+	<bean id="realPlayerService"
+		class="my.sport.service.PlayerServiceImpl"></bean>
 
 	<bean id="playerRestController"
 		class="my.sport.controller.rest.PlayerRestController">
-		<property name="playerService" ref="playerServiceMock"></property>
+		<property name="playerService" ref="realPlayerService"></property>
 	</bean>
 </beans>

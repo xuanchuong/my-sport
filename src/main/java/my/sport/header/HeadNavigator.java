@@ -1,7 +1,7 @@
-package profile;
+package my.sport.header;
 
 public enum HeadNavigator {
-	HOME("dash board", "/dashboard"), CONTACT("contact", "contact");
+	HOME("home", "/dashboard"), MATCH("create a match", "match"), CONTACT("contact", "contact");
 	private String value;
 	private String url;
 	HeadNavigator(String value, String url) {

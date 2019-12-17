@@ -1,0 +1,13 @@
+.login-form {
+	.form-wrapper {
+		.form-actions {
+			display: flex;
+			justify-content: space-between;
+			.right-div {
+				.register-link {
+					color: #1ba0e2;
+				}
+			}
+		}
+	}
+}

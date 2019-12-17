@@ -4,12 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import my.sport.dto.FootballMatchDto;
 import my.sport.model.FootballMatch;
+import my.sport.model.Player;
 import my.sport.repository.FootballMatchRepository;
 
 public class FootballMatchServiceImpl implements FootballMatchService{
 	@Autowired
 	private FootballMatchRepository footballMatchRepository;
+	
+	@Autowired
+	private PlayerService playerService;
 
 	@Override
 	public List<FootballMatch> getAllAvailableFootballMatch() {
@@ -21,4 +26,15 @@ public class FootballMatchServiceImpl implements FootballMatchService{
 		return footballMatchRepository.findById(id).orElse(null);
 	}
 
+	@Override
+	public FootballMatch createNewMatch(FootballMatchDto matchDto) {
+		FootballMatch footballMatch = new FootballMatch();
+		footballMatch.setTitle(matchDto.getTitle());
+		footballMatch.setLocation(matchDto.getLocation());
+		footballMatch.setStartDate(matchDto.getStartDate());
+		footballMatch.setDescription(matchDto.getDescription());
+		Player currentPlayer = playerService.getSessionPlayer();
+		footballMatch.setOwner(currentPlayer);
+		return footballMatchRepository.save(footballMatch);
+	}
 }

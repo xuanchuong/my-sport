@@ -1,26 +1,20 @@
 package my.sport.service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import my.sport.dto.UserDto;
 import my.sport.model.Player;
-import my.sport.model.Role;
 import my.sport.repository.PlayerRepository;
 import my.sport.repository.RoleRepository;
 
-public class PlayerServiceImpl implements PlayerService, UserDetailsService {
-
+public class PlayerServiceImpl implements PlayerService {
 	@Autowired
 	private PlayerRepository<Player> playerRepository;
 
@@ -65,37 +59,16 @@ public class PlayerServiceImpl implements PlayerService, UserDetailsService {
 		return playerRepository.save(player);
 	}
 
-	private static List<GrantedAuthority> getAuthorities(List<Role> roles) {
-		List<GrantedAuthority> authorities = new ArrayList<>();
-		for (Role role : roles) {
-			authorities.add(new SimpleGrantedAuthority(role.getName()));
-		}
-		return authorities;
-	}
-
 	@Override
 	@Transactional
 	public void deletePlayer(Long id) {
 		playerRepository.deleteById(id);
 	}
 
-
 	@Override
-	public UserDetails loadUserByUsername(String email)
-			throws UsernameNotFoundException {
-		Player player = playerRepository.findUserByEmail(email);
-		if (player == null) {
-			throw new UsernameNotFoundException(
-					"No user found with username: " + email);
-		}
-		boolean enabled = true;
-		boolean accountNonExpired = true;
-		boolean credentialsNonExpired = true;
-		boolean accountNonLocked = true;
-		return new org.springframework.security.core.userdetails.User(
-				player.getEmail(), player.getPassword(), enabled,
-				accountNonExpired, credentialsNonExpired, accountNonLocked,
-				getAuthorities(player.getRoles()));
+	public Player getSessionPlayer() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String email = auth.getName();
+		return playerRepository.findUserByEmail(email);
 	}
-
 }

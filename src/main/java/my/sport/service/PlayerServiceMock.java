@@ -46,4 +46,9 @@ public class PlayerServiceMock implements PlayerService {
 		return null;
 	}
 
+	@Override
+	public Player getSessionPlayer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

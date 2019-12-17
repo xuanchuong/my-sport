@@ -16,4 +16,6 @@ public interface PlayerService {
 	public void deletePlayer(Long id);
 	
 	public Player registerNewPlayerAccount(UserDto userDto) ;
+	
+	public Player getSessionPlayer();
 }

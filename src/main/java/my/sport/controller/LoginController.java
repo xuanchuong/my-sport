@@ -14,9 +14,10 @@ public class LoginController {
 	public String login() {
 		return "login";
 	}
-	
+
 	@PostMapping
-	public ModelAndView login(String username, String passwork, ModelMap model) {
+	public ModelAndView login(String username, String passwork,
+			ModelMap model) {
 		return new ModelAndView("redirect:/dashboard", model);
 	}
 }

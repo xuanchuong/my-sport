@@ -11,10 +11,12 @@
 						<h2>Matches recommended for you</h2>
 						<table class="match-table">
 							<tbody class="match-table-body">
-								<tr th:each="match : ${availableMatches}" class="match-item-wrapper">
-									<td class="match-item" 
-										th:onclick="|showMatchDetail('${match.id}')|">
-										<div th:text="${match.title}"></div>
+								<tr th:each="match : ${availableMatches}" class="match-item-wrapper"
+									th:onclick="|showMatchDetail('${match.id}')|">
+									<td class="match-item">
+										<div  class="title-box">
+											<span th:text="${match.title}" class="title"></span>
+										</div>
 										<div>31/12</div>
 										<div th:text="${match.description}"></div>
 										

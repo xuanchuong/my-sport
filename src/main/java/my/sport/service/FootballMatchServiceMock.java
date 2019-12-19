@@ -42,4 +42,9 @@ public class FootballMatchServiceMock implements FootballMatchService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public void deleteMatch(Long id) {
+		// TODO Auto-generated method stub
+	}
 }

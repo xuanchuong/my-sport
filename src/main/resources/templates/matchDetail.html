@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-	<head th:insert="template.html :: headerfiles"></head>
-	<body>
-		<div class="layout-wrapper">
-			<div class="layout-main">
-				<div th:insert="template.html :: header"></div>
-				<div class="container layout-content">
-					<div class="match-info" th:if="${match != null}">
-						<label th:text="${match.title}"></label>
-						<label th:text="${match.startDate}"></label>
-						<label th:text="${match.location}"></label>
-						<form name="match-info-form" method="post" th:action="@{join(id=${match.id})}">
-							<button type="submit">join the match</button>
-						</form>
-					</div>
+<head th:insert="template.html :: headerfiles"></head>
+<body>
+	<div class="layout-wrapper">
+		<div class="layout-main">
+			<div th:insert="template.html :: header"></div>
+			<div class="container layout-content">
+				<div class="match-info" th:if="${match != null}">
+					<label th:text="${match.title}"></label> <label
+						th:text="${match.startDate}"></label> <label
+						th:text="${match.location}"></label>
+					<form name="match-info-form" class="submit-form">
+						<div class="form-wrapper">
+							<div class="form-actions">
+								<div class="left-div">
+									<button type="button" data-toggle="modal" data-target="#exampleModal">join the match</button>
+								</div>
+								<div class="right-div">
+									<button th:action="@{delete(id=${match.id})}" type="button">delete</button>
+								</div>
+							</div>
+						</div>
+
+					</form>
 				</div>
 			</div>
 		</div>
-	
-		<head th:insert="template.html :: footer-js"></head>
-	</body>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"></span>
+					</button>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<head th:insert="template.html :: footer-js"></head>
+</body>
 </html>

@@ -31,6 +31,10 @@ public class FootballMatch {
 	private Date startDate;
 	@Column(name = "location")
 	private String location;
+	@Column
 	private String title;
+	@Column
 	private String description;
+	@Column
+	private int numberOfPlayers;
 }

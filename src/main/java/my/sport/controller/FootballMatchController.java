@@ -44,6 +44,12 @@ public class FootballMatchController {
 	public String joinTheMatch( @RequestParam String id) {
 		return "dashboard";
 	}
+
+	@PostMapping("/delete")
+	public ModelAndView deleteMatch(@RequestParam String id) {
+		matchService.deleteMatch(Long.valueOf(id));
+		return new ModelAndView("dashboard");
+	}
 	
 	@PostMapping
 	public ModelAndView creatingMatch(@ModelAttribute("match") @Valid FootballMatchDto matchDto, BindingResult resutl, 

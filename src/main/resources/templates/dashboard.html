@@ -17,7 +17,13 @@
 										<div  class="title-box">
 											<span th:text="${match.title}" class="title"></span>
 										</div>
-										<div>31/12</div>
+										<div>
+											<span>Slot: </span>
+											<span th:text="${match.numberOfPlayers}"></span>
+										</div>
+										<div>
+											<span th:text="${match.startDate}"></span>
+										</div>
 										<div th:text="${match.description}"></div>
 										
 									</td>

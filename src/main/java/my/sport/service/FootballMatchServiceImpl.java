@@ -33,8 +33,14 @@ public class FootballMatchServiceImpl implements FootballMatchService{
 		footballMatch.setLocation(matchDto.getLocation());
 		footballMatch.setStartDate(matchDto.getStartDate());
 		footballMatch.setDescription(matchDto.getDescription());
+		footballMatch.setNumberOfPlayers(matchDto.getNumberOfPlayers());
 		Player currentPlayer = playerService.getSessionPlayer();
 		footballMatch.setOwner(currentPlayer);
 		return footballMatchRepository.save(footballMatch);
+	}
+	
+	@Override
+	public void deleteMatch(Long id) {
+		footballMatchRepository.deleteById(id);
 	}
 }

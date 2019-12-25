@@ -1,6 +1,7 @@
 package my.sport.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -37,4 +40,8 @@ public class FootballMatch {
 	private String description;
 	@Column
 	private int numberOfPlayers;
+	
+	@ManyToMany
+	@JoinTable(name="match_players")
+	private List<Player> paticipants;
 }

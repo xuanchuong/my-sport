@@ -52,6 +52,9 @@ public class Player {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
 	private List<FootballMatch> ownFootballMatches;
+	
+	@ManyToMany(mappedBy = "paticipants")
+	private List<FootballMatch> joinedMatchs;
 
 	public String getFullName() {
 		return firstName + " " + lastName;

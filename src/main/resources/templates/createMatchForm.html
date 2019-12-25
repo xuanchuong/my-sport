@@ -7,15 +7,28 @@
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 					<div class="container layout-content">
-						<form name="create-match-form" method="post" class="create-match-form submit-form">
+						<form name="create-match-form" method="post" 
+							class="create-match-form submit-form" th:object="${match}">
 							<div class="form-wrapper">
-								<div class="player-number input-field">
-									<label for="number-players">số lượng cầu thủ</label> 
-									<input type="number" id="number-players" name="number-players" />
+								<div class="title input-field"> 
+									<label for="title">Tiêu đề</label>
+									<input type="text" id="title" name="title" th:field="*{title}"/>
 								</div>
 								<div class="start-time input-field"> 
 									<label for="start-time">Thời gian</label>
-									<input type="date" id="start-time" name="start-time" />
+									<input type="date" id="start-time" name="start-time" th:field="*{startDate}"/>
+								</div>
+								<div class="location input-field"> 
+									<label for="location">Địa điểm</label>
+									<input type="text" id="location" name="location" th:field="*{location}"/>
+								</div>
+								<div class="player-number input-field">
+									<label for="number-players">số lượng cầu thủ</label> 
+									<input type="number" id="number-players" th:field="*{numberOfPlayers}" name="number-players" />
+								</div>
+								<div class="description input-field"> 
+									<label for="description">Mô tả</label>
+									<input type="text" id="description" name="description" th:field="*{description}"/>
 								</div>
 								<div class="form-actions">
 									<div class="left-div">

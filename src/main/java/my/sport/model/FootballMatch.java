@@ -1,21 +1,40 @@
 package my.sport.model;
 
 import java.util.Date;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class FootballMatch {
-	private Player owner;
-	private List<Player> players;
-	private Date startDate;
-	private String location;
-	private String title;
-	private String description;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name="owner_id", nullable=false)
+	private Player owner;
+	@Column(name = "start_date")
+	private Date startDate;
+	@Column(name = "location")
+	private String location;
+	@Column
+	private String title;
+	@Column
+	private String description;
+	@Column
+	private int numberOfPlayers;
 }

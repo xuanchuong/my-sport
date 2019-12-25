@@ -3,6 +3,7 @@ package my.sport.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import my.sport.dto.FootballMatchDto;
 import my.sport.model.FootballMatch;
 
 public class FootballMatchServiceMock implements FootballMatchService{
@@ -34,5 +35,16 @@ public class FootballMatchServiceMock implements FootballMatchService{
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public FootballMatch createNewMatch(FootballMatchDto matchDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public void deleteMatch(Long id) {
+		// TODO Auto-generated method stub
 	}
 }

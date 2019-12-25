@@ -1,11 +1,8 @@
 .layout-wrapper {
 	.layout-main {
 		.layout-topbar {
-			position: fixed;
-			top: 0;
-			left:0;
+			position: relative;
 			transition: all 0.5s;
-			z-index: 9998;
 			&.scrollUp {
 				transform: translateY(-120px);
 			}
@@ -13,7 +10,6 @@
 			padding: 0;
 			width: 100%;
 			@include box-sizing(border-box);
-			z-index: 999997;
 			.masthead-wrap {
 				display: flex;
 				justify-content: space-between;

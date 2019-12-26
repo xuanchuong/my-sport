@@ -1,6 +1,7 @@
 package my.sport.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,4 +29,6 @@ public class FootballMatchDto {
 	private String description;
 	@NotNull
 	private int numberOfPlayers;
+	@NotNull
+	private List<Player> paticipants;
 }

@@ -1,5 +1,8 @@
 package my.sport.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -17,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import my.sport.dto.FootballMatchDto;
 import my.sport.model.FootballMatch;
+import my.sport.model.Player;
 import my.sport.service.FootballMatchService;
 
 @Controller
@@ -29,6 +33,12 @@ public class FootballMatchController {
 	@GetMapping
 	public String createMatch(Model model) {
 		FootballMatchDto footballMatchDto = new FootballMatchDto();
+		Player firstPlayer = new Player();
+		Player secondPlayer = new Player();
+		firstPlayer.setFirstName("chuong");
+		secondPlayer.setFirstName("Huy");
+		List<Player> paticipants = Arrays.asList(firstPlayer, secondPlayer);
+		footballMatchDto.setPaticipants(paticipants );
 		model.addAttribute("match", footballMatchDto);
 		return "createMatchForm";
 	}

@@ -29,6 +29,8 @@ public class FootballMatchController {
 
 	@Autowired
 	private FootballMatchService matchService;
+	private static final String AJAX_HEADER_NAME = "X-Requested-With";
+	private static final String AJAX_HEADER_VALUE = "XMLHttpRequest";
 
 	@GetMapping
 	public String createMatch(Model model) {
@@ -38,20 +40,21 @@ public class FootballMatchController {
 		firstPlayer.setFirstName("chuong");
 		secondPlayer.setFirstName("Huy");
 		List<Player> paticipants = Arrays.asList(firstPlayer, secondPlayer);
-		footballMatchDto.setPaticipants(paticipants );
+		footballMatchDto.setPaticipants(paticipants);
 		model.addAttribute("match", footballMatchDto);
 		return "createMatchForm";
 	}
-	
+
 	@GetMapping("/detail")
 	public String getMatchDetail(@RequestParam String id, Model model) {
-		FootballMatch footballMatch = matchService.getMatchById(Long.valueOf(id));
+		FootballMatch footballMatch = matchService
+				.getMatchById(Long.valueOf(id));
 		model.addAttribute("match", footballMatch);
 		return "matchDetail";
 	}
-	
+
 	@PostMapping("/join")
-	public String joinTheMatch( @RequestParam String id) {
+	public String joinTheMatch(@RequestParam String id) {
 		return "dashboard";
 	}
 
@@ -60,14 +63,31 @@ public class FootballMatchController {
 		matchService.deleteMatch(Long.valueOf(id));
 		return new ModelAndView("dashboard");
 	}
-	
+
 	@PostMapping
-	public ModelAndView creatingMatch(@ModelAttribute("match") @Valid FootballMatchDto matchDto, BindingResult resutl, 
-			Errors errors, HttpServletRequest request) {
+	public ModelAndView creatingMatch(
+			@ModelAttribute("match") @Valid FootballMatchDto matchDto,
+			BindingResult resutl, Errors errors, HttpServletRequest request) {
 		if (resutl.hasErrors()) {
 			return new ModelAndView("createMatchForm", "match", matchDto);
 		}
 		matchService.createNewMatch(matchDto);
 		return new ModelAndView("dashboard");
 	}
+
+	@PostMapping("/addItem")
+	public String addOrder(@ModelAttribute("match") FootballMatchDto matchDto, HttpServletRequest request, Model model) {
+		Player newPlayer = new Player();
+		newPlayer.setFirstName("random name");
+		matchDto.getPaticipants().add(newPlayer);
+		model.addAttribute("match", matchDto);
+		if (AJAX_HEADER_VALUE.equals(request.getHeader(AJAX_HEADER_NAME))) {
+			// It is an Ajax request, render only #items fragment of the page.
+			return "createMatchForm:: #paticipants";
+		} else {
+			// It is a standard HTTP request, render whole page.
+			return "createMatchForm";
+		}
+	}
+	
 }

@@ -5,49 +5,51 @@
 	<body>
 		<div class="layout-wrapper">
 			<div class="layout-main">
-				<div th:insert="template.html :: header"></div>
-					<div class="container layout-content">
-						<form name="create-match-form" method="post" 
-							class="create-match-form submit-form" th:object="${match}">
-							<div class="form-wrapper">
-								<div class="title input-field"> 
-									<label for="title">Tiêu đề</label>
-									<input type="text" id="title" name="title" th:field="*{title}"/>
-								</div>
-								<div class="start-time input-field"> 
-									<label for="start-time">Thời gian</label>
-									<input type="date" id="start-time" name="start-time" th:field="*{startDate}"/>
-								</div>
-								<div class="location input-field"> 
-									<label for="location">Địa điểm</label>
-									<input type="text" id="location" name="location" th:field="*{location}"/>
-								</div>
-								<div class="paticipants" id="paticipants input-field">
+<!-- 				<div th:insert="template.html :: header"></div> -->
+				<div class="container layout-content">
+					<form name="create-match-form" method="post" class="create-match-form submit-form" th:object="${match}" id="create-match-form">
+						<div class="form-wrapper">
+							<div class="title input-field"> 
+								<label for="title">Tiêu đề</label>
+								<input type="text" id="title" name="title" th:field="*{title}"/>
+							</div>
+							<div class="start-time input-field"> 
+								<label for="start-time">Thời gian</label>
+								<input type="date" id="start-time" name="start-time" th:field="*{startDate}"/>
+							</div>
+							<div class="location input-field"> 
+								<label for="location">Địa điểm</label>
+								<input type="text" id="location" name="location" th:field="*{location}"/>
+							</div>
+							<fieldset id="paticipants">
+								<div class="paticipants input-field">
 									<label>Người tham gia: </label>
-									<div th:each="player, stat : *{paticipants}" class="input-field">
-										<label for="|match.paticipants[${stat.index}]"></label>
-										<input th:field="*{paticipants[__${stat.index}__].firstName}">
-										<button type="button" name="removeItem" th:value="${stat.index}">xóa người này</button>
+									<div th:each="player, stat : ${match.paticipants}" class="input-field">
+										<input th:readonly="true" th:field="${match.paticipants[__${stat.index}__].firstName}">
 									</div>
 								</div>
-								<div class="player-number input-field">
-									<label for="number-players">số lượng cầu thủ</label> 
-									<input type="number" id="number-players" th:field="*{numberOfPlayers}" name="number-players" />
-								</div>
-								<div class="description input-field"> 
-									<label for="description">Mô tả</label>
-									<input type="text" id="description" name="description" th:field="*{description}"/>
-								</div>
-								<div class="form-actions">
-									<div class="left-div">
-										<button type="submit" class="btn">Tạo</button>
-									</div>
+							</fieldset>
+							<button type="button" name="addItem" th:href="@{/match/addItem}">thêm cầu thủ</button>
+							<div class="player-number input-field">
+								<label for="number-players">số lượng cầu thủ</label> 
+								<input type="number" id="number-players" th:field="*{numberOfPlayers}" name="number-players" />
+							</div>
+							<div class="description input-field"> 
+								<label for="description">Mô tả</label>
+								<input type="text" id="description" name="description" th:field="*{description}"/>
+							</div>
+							<div class="form-actions">
+								<div class="left-div">
+									<button type="submit" class="btn">Tạo</button>
 								</div>
 							</div>
-						</form>
-					</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
-		<head th:insert="template.html :: footer-js"></head>
+		<head th:insert="template.html :: footer-js">
+		</head>
+		<script th:src="@{/js/create-match-form.js}"></script>
 	</body>
 </html>

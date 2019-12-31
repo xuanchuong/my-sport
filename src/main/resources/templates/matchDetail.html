@@ -10,11 +10,25 @@
 				<div class="match-info" th:if="${match != null}">
 					<div class="title-box">
 						<label class="title" th:text="${match.title}"></label>
-					</div> 
-					<label th:text="${match.startDate}"></label> 
-					<label th:text="${match.location}"></label>
-					<a href="#">join the match</a>
-					<a href="#">delete</a>
+					</div>
+					<div class="summary-detail">
+						<div>
+							<h2>
+							<i class="fal fa-info-circle"></i>
+							Detail
+							</h2>
+						</div>
+						<div>
+							<label th:text="${match.startDate}"></label>
+						</div>
+						 <div>
+							<label th:text="${match.location}"></label>
+						</div>
+					</div>
+					<div>
+						<a href="#">join the match</a>
+						<a href="#">delete</a>
+					</div>
 				</div>
 			</div>
 		</div>

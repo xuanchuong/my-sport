@@ -10,6 +10,12 @@
 			padding: 17px 17px 24px 17px;
 			&.layout-content {
 				margin-top: 40px;
+				.title-box {
+					.title {
+						font-size: 1.5em;
+						font-weight: 700;	
+					}
+				}
 			}
 			section {
 				.navigator-bar {

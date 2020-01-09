@@ -1,7 +1,11 @@
 .match-info {
     .summary-detail {
-        .summary-details-container{
-            
+        .summary-details-container {
+            .qs-details-label-cell {
+                > span {
+                    font-weight: bolder;
+                }
+            }
         }
     }
 }

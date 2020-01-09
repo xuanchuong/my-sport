@@ -14,19 +14,23 @@
 					<div class="summary-detail">
 						<div>
 							<h2>
-							<i class="fal fa-info"></i>
-							Detail
+								<i class="fal fa-info"></i>
+								Detail
 							</h2>
 						</div>
-						<div>
-							<label th:text="${match.startDate}"></label>
-						</div>
-						 <div>
-							<label th:text="${match.location}"></label>
+						<div class="summary-details-container">
+							<div class="qs-details-label-cell">
+								<span>thời gian: </span>
+								<label th:text="${match.startDate}"></label>
+							</div>
+							 <div class="qs-details-label-cell">
+							 	<span>địa điểm: </span>
+								<label th:text="${match.location}"></label>
+							</div>
 						</div>
 					</div>
 					<div>
-						<a href="#">join the match</a>
+						<button type="button" value="join the match">join the match</button>
 						<a href="#">delete</a>
 					</div>
 				</div>

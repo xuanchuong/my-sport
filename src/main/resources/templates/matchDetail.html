@@ -27,11 +27,25 @@
 							 	<span>địa điểm: </span>
 								<label th:text="${match.location}"></label>
 							</div>
+							<div class="qs-details-label-cell">
+							 	<span>liên hệ: </span>
+								<label th:text="${match.owner.fullName}"></label>
+							</div>
+							<div class="qs-details-label-cell">
+							 	<span>mô tả: </span>
+								<label th:text="${match.description}"></label>
+							</div>
+							<div class="qs-details-label-cell">
+							 	<span>người tham gia: </span>
+							 	<div th:each="player, stat : ${match.paticipants}">
+							 		<label th:text="${player.fullName}"></label>
+							 	</div>
+								
+							</div>
 						</div>
 					</div>
-					<div>
+					<div class="action-buttons">
 						<button type="button" value="join the match">join the match</button>
-						<a href="#">delete</a>
 					</div>
 				</div>
 			</div>

@@ -43,4 +43,9 @@ public class FootballMatchServiceImpl implements FootballMatchService{
 	public void deleteMatch(Long id) {
 		footballMatchRepository.deleteById(id);
 	}
+	
+	@Override
+	public void updateMatch(FootballMatch match) {
+		footballMatchRepository.save(match);
+	}
 }

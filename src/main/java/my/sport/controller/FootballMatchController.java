@@ -22,6 +22,7 @@ import my.sport.dto.FootballMatchDto;
 import my.sport.model.FootballMatch;
 import my.sport.model.Player;
 import my.sport.service.FootballMatchService;
+import my.sport.service.PlayerService;
 
 @Controller
 @RequestMapping("/match")
@@ -29,6 +30,8 @@ public class FootballMatchController {
 
 	@Autowired
 	private FootballMatchService matchService;
+	@Autowired
+	private PlayerService playerService;
 	private static final String AJAX_HEADER_NAME = "X-Requested-With";
 	private static final String AJAX_HEADER_VALUE = "XMLHttpRequest";
 
@@ -55,6 +58,11 @@ public class FootballMatchController {
 
 	@PostMapping("/join")
 	public String joinTheMatch(@RequestParam String id) {
+		FootballMatch footballMatch = matchService
+				.getMatchById(Long.valueOf(id));
+		Player currentPlayer = playerService.getSessionPlayer();
+		footballMatch.getPaticipants().add(currentPlayer);
+		matchService.updateMatch(footballMatch);
 		return "dashboard";
 	}
 

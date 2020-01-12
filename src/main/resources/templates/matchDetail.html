@@ -45,7 +45,9 @@
 						</div>
 					</div>
 					<div class="action-buttons">
-						<button type="button" value="join the match">join the match</button>
+						<form action="#" th:action="@{'/match/join?id={id}'(id=${match.id})}" th:method="post">
+							<button type="submit" id="submitButton" >join the match</button>
+						</form>
 					</div>
 				</div>
 			</div>

@@ -47,13 +47,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
 			throws Exception {
-		auth.authenticationProvider(authProvider()).parentAuthenticationManager(authenticationManagerBean());
+		auth.authenticationProvider(authProvider());
 	}
 
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers("/player/detail/**", "/match/**").authenticated()
+				.antMatchers("/player/detail/**", "/match/**")
+				.authenticated()
 				.and().formLogin().loginPage("/login").permitAll().and()
 				.logout().permitAll();
 	}

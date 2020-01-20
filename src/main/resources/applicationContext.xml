@@ -14,7 +14,8 @@
 <!-- 		class="my.sport.service.PlayerServiceMock"></bean> -->
 	
 	<bean id="realPlayerService"
-		class="my.sport.service.PlayerServiceImpl"></bean>
+		class="my.sport.service.PlayerServiceImpl" scope="prototype">
+	</bean>
 
 	<bean id="playerRestController"
 		class="my.sport.controller.rest.PlayerRestController">

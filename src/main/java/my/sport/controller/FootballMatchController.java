@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,7 +76,7 @@ public class FootballMatchController {
 	@PostMapping
 	public ModelAndView creatingMatch(
 			@ModelAttribute("match") @Valid FootballMatchDto matchDto,
-			BindingResult resutl, Errors errors, HttpServletRequest request) {
+			BindingResult resutl, Errors errors) {
 		if (resutl.hasErrors()) {
 			return new ModelAndView("createMatchForm", "match", matchDto);
 		}
@@ -84,11 +85,12 @@ public class FootballMatchController {
 	}
 
 	@PostMapping("/addItem")
-	public String addOrder(@ModelAttribute("match") FootballMatchDto matchDto, HttpServletRequest request, Model model) {
+	public String addOrder(@ModelAttribute("match") FootballMatchDto matchDto, Model model) {
 		Player newPlayer = new Player();
 		newPlayer.setFirstName("random name");
 		matchDto.getPaticipants().add(newPlayer);
 		model.addAttribute("match", matchDto);
+		HttpServletRequest request = ServletActionContext.getRequest();
 		if (AJAX_HEADER_VALUE.equals(request.getHeader(AJAX_HEADER_NAME))) {
 			// It is an Ajax request, render only #items fragment of the page.
 			return "createMatchForm:: #paticipants";

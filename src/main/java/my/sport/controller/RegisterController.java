@@ -3,6 +3,7 @@ package my.sport.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,37 +31,40 @@ public class RegisterController {
 	@Autowired
 	private PlayerService playerService;
 	@Autowired
-    protected AuthenticationManager authenticationManager;
-	
+	protected AuthenticationManager authenticationManager;
+
 	@GetMapping()
 	public String showRegistrationForm(WebRequest request, Model model) {
 		UserDto userDto = new UserDto();
 		model.addAttribute("user", userDto);
 		return "register";
 	}
-	
+
 	@PostMapping
-	public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDto userDto, BindingResult resutl, 
-			Errors errors, HttpServletRequest request) {
+	public ModelAndView registerUserAccount(
+			@ModelAttribute("user") @Valid UserDto userDto,
+			BindingResult resutl, Errors errors) {
 		if (resutl.hasErrors()) {
 			return new ModelAndView("register", "user", userDto);
 		}
 		playerService.registerNewPlayerAccount(userDto);
-		authenticateUserAndSetSession(userDto, request);
+		authenticateUserAndSetSession(userDto);
 		return new ModelAndView("successRegister", "user", userDto);
 	}
-	
-	private void authenticateUserAndSetSession(UserDto user, HttpServletRequest request) {
-        String username = user.getEmail();
-        String password = user.getPassword();
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
 
-        // generate session if one doesn't exist
-        request.getSession();
+	private void authenticateUserAndSetSession(UserDto user) {
+		String username = user.getEmail();
+		String password = user.getPassword();
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+				username, password);
 
-        token.setDetails(new WebAuthenticationDetails(request));
-        Authentication authenticatedUser = authenticationManager.authenticate(token);
+		HttpServletRequest request = ServletActionContext.getRequest();
+		request.getSession();
 
-        SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
-    }
+		token.setDetails(new WebAuthenticationDetails(request));
+		Authentication authenticatedUser = authenticationManager
+				.authenticate(token);
+
+		SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
+	}
 }

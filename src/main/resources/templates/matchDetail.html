@@ -38,7 +38,9 @@
 							<div class="qs-details-label-cell">
 							 	<span>người tham gia: </span>
 							 	<div th:each="player, stat : ${match.paticipants}">
-							 		<label th:text="${player.fullName}"></label>
+							 		<a href="#" th:text="${player.fullName}" data-toggle="modal" 
+							 			data-target="#playerInfoDialog"
+							 			data-id="123456" class="paticipant-link"></a>
 							 	</div>
 								
 							</div>
@@ -54,19 +56,21 @@
 		</div>
 	</div>
 
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal" id="playerInfoDialog" tabindex="-1" role="dialog"
+		aria-labelledby="playerInfoDialogLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<h5 class="modal-title" id="playerInfoDialogLabel">Modal title</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true"></span>
 					</button>
 				</div>
-				<div class="modal-body">...</div>
+				<div class="modal-body">
+					<p>Some content</p>
+					<input type="text" id="playerId" name="playerId" value=""/>
+				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
@@ -76,5 +80,6 @@
 		</div>
 	</div>
 	<head th:insert="template.html :: footer-js"></head>
+	<script th:src="@{/js/match-detail.js}"></script>
 </body>
 </html>

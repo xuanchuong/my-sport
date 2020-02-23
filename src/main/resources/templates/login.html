@@ -12,10 +12,12 @@
 								<div class="user-name input-field">
 									<label for="username">Email or mobile no.</label>
 									<input type="text" id="username" name="username" />
+									<p th:if="${loginError}" class="ui-message-error">Validation error</p>
 								</div>
 								<div class="password input-field">
 									<label for="password">Password</label>
 									<input type="password" id="password" name="password" />
+									<p th:if="${loginError}" class="ui-message-error">Validation error</p>
 								</div>
 								<div class="form-actions">
 									<div class="left-div">

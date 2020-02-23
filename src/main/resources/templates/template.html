@@ -20,9 +20,15 @@
 				</div>
 				<div class="navigator-bar left-side-navigator-bar">
 					<ul>
-						<li th:each="item: ${headerAttribute}"
-							th:class="${item == selectedItemAttr}? 'selected' : ''"><a
-							th:href="${item.url}" th:text="${item.value}"></a></li>
+						<li>
+							<a href="/dashboard">home</a>
+						</li>
+						<li>
+							<a href="/match">tạo trận đấu</a>
+						</li>
+						<li>
+							<a href="/contact">contact</a>
+						</li>
 						<li sec:authorize="isAuthenticated()"><a href="/logout">logout</a>
 						</li>
 						<li sec:authorize="!isAuthenticated()"><a href="/logout">login</a>

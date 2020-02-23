@@ -47,8 +47,19 @@
 						</div>
 					</div>
 					<div class="action-buttons">
-						<form action="#" th:action="@{'/match/join?id={id}'(id=${match.id})}" th:method="post">
-							<button type="submit" id="submitButton" >join the match</button>
+						<form action="#" th:unless="${isMatchOwner}"
+						 	th:action="@{'/match/join?id={id}'(id=${match.id})}" th:method="post">
+					 		<div th:if="${isJoined}">
+								<button disabled type="submit" name="submitButton" >tham gia</button>
+					 		</div>
+					 		<div th:unless="${isJoined}">
+								<button type="submit" name="submitButton" >tham gia</button>
+					 		</div>
+							
+						</form>
+						<form id="delete-match" action="#" th:if="${isMatchOwner}"  
+							th:action="@{'/match/delete?id={id}'(id=${match.id})}" th:method="post">
+							<button type="submit" id="submitButton" >xóa trận đấu</button>
 						</form>
 					</div>
 				</div>

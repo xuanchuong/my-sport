@@ -53,7 +53,12 @@ public class FootballMatchController {
 	public String getMatchDetail(@RequestParam String id, Model model) {
 		FootballMatch footballMatch = matchService
 				.getMatchById(Long.valueOf(id));
+		Player currentPlayer = playerService.getSessionPlayer();
+		boolean isMatchOwner = currentPlayer.getId().equals(footballMatch.getOwner().getId());
+		boolean isJoined = footballMatch.getPaticipants().contains(currentPlayer);
 		model.addAttribute("match", footballMatch);
+		model.addAttribute("isMatchOwner", isMatchOwner);
+		model.addAttribute("isJoined", isJoined);
 		return "matchDetail";
 	}
 
@@ -68,8 +73,8 @@ public class FootballMatchController {
 	}
 
 	@PostMapping("/delete")
-	public ModelAndView deleteMatch(@RequestParam String id) {
-		matchService.deleteMatch(Long.valueOf(id));
+	public ModelAndView deleteMatch(@RequestParam String id, Model model) {
+			matchService.deleteMatch(Long.valueOf(id));
 		return new ModelAndView("dashboard");
 	}
 

@@ -26,7 +26,7 @@
 						<li>
 							<a href="/match">tạo trận đấu</a>
 						</li>
-						<li>
+						<li sec:authorize="isAuthenticated()">
 							<a href="/contact">contact</a>
 						</li>
 						<li sec:authorize="isAuthenticated()"><a href="/logout">logout</a>

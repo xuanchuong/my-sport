@@ -1,6 +1,8 @@
 package my.sport.controller;
 
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +41,7 @@ public class FootballMatchController {
 	@GetMapping
 	public String createMatch(Model model) {
 		FootballMatchDto footballMatchDto = new FootballMatchDto();
+		footballMatchDto.setStartDate(Calendar.getInstance().getTime());
 		Player firstPlayer = new Player();
 		Player secondPlayer = new Player();
 		firstPlayer.setFirstName("chuong");

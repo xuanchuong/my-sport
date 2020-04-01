@@ -9,10 +9,7 @@
         
 	<!-- Football Match Beans -->
 	<bean id="footballMatchServiceImpl" class="my.sport.service.FootballMatchServiceImpl"></bean>
-        
-<!-- 	<bean id="playerServiceMock" -->
-<!-- 		class="my.sport.service.PlayerServiceMock"></bean> -->
-	
+
 	<bean id="realPlayerService"
 		class="my.sport.service.PlayerServiceImpl" scope="prototype">
 	</bean>

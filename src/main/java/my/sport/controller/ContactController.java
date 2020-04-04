@@ -6,8 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import my.sport.model.Player;
-import my.sport.service.FootballMatchService;
+import my.sport.domain.entity.Player;
 import my.sport.service.PlayerService;
 
 @Controller

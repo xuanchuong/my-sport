@@ -1,7 +1,7 @@
 package my.sport.service;
 
-import my.sport.model.Player;
-import my.sport.model.Role;
+import my.sport.domain.entity.Player;
+import my.sport.domain.entity.Role;
 import my.sport.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

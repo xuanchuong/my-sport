@@ -1,7 +1,7 @@
 package my.sport.rest.endpoint;
 
 import lombok.AllArgsConstructor;
-import my.sport.model.Player;
+import my.sport.domain.entity.Player;
 import my.sport.rest.dto.UserOutDTO;
 import my.sport.rest.mapper.UserMapper;
 import my.sport.service.PlayerService;

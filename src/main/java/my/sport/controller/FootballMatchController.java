@@ -1,6 +1,5 @@
 package my.sport.controller;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -20,8 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import my.sport.dto.FootballMatchDto;
-import my.sport.model.FootballMatch;
-import my.sport.model.Player;
+import my.sport.domain.entity.FootballMatch;
+import my.sport.domain.entity.Player;
 import my.sport.service.FootballMatchService;
 import my.sport.service.PlayerService;
 

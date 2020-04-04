@@ -1,6 +1,6 @@
 package my.sport.repository;
 
-import my.sport.model.Player;
+import my.sport.domain.entity.Player;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

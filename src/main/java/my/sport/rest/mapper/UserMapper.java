@@ -1,6 +1,6 @@
 package my.sport.rest.mapper;
 
-import my.sport.model.Player;
+import my.sport.domain.entity.Player;
 import my.sport.rest.dto.UserOutDTO;
 
 public class UserMapper {

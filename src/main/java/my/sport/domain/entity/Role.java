@@ -1,4 +1,4 @@
-package my.sport.model;
+package my.sport.domain.entity;
 
 import java.util.Collection;
 

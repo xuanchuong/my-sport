@@ -5,7 +5,7 @@ import java.util.List;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import my.sport.model.Player;
+import my.sport.domain.entity.Player;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 

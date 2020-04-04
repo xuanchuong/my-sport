@@ -12,8 +12,8 @@ import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import my.sport.dto.FootballMatchDto;
-import my.sport.model.FootballMatch;
-import my.sport.model.Player;
+import my.sport.domain.entity.FootballMatch;
+import my.sport.domain.entity.Player;
 import my.sport.repository.FootballMatchRepository;
 
 public class FootballMatchServiceImpl implements FootballMatchService{

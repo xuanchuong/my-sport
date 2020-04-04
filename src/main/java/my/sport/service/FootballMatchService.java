@@ -3,7 +3,7 @@ package my.sport.service;
 import java.util.List;
 
 import my.sport.dto.FootballMatchDto;
-import my.sport.model.FootballMatch;
+import my.sport.domain.entity.FootballMatch;
 
 public interface FootballMatchService {
 

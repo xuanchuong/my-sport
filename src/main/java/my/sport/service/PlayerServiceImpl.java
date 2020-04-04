@@ -1,22 +1,22 @@
 package my.sport.service;
 
-import java.util.Arrays;
-import java.util.List;
-
+import my.sport.dto.UserDto;
+import my.sport.model.Player;
+import my.sport.repository.PlayerRepository;
+import my.sport.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
-import my.sport.dto.UserDto;
-import my.sport.model.Player;
-import my.sport.repository.PlayerRepository;
-import my.sport.repository.RoleRepository;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class PlayerServiceImpl implements PlayerService {
 	@Autowired
-	private PlayerRepository<Player> playerRepository;
+	private PlayerRepository playerRepository;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -43,6 +43,12 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Override
 	@Transactional
+	public Player getPlayerByEmail(String email) {
+		return playerRepository.findUserByEmail(email);
+	}
+
+	@Override
+	@Transactional
 	public boolean add(Player player) {
 		return playerRepository.save(player) != null;
 	}
@@ -56,7 +62,7 @@ public class PlayerServiceImpl implements PlayerService {
 		player.setLastName(userDto.getLastName());
 		player.setPassword(passwordEncoder.encode(userDto.getPassword()));
 		player.setRoles(Arrays.asList(roleRepository.findByName("PLAYER")));
-		return playerRepository.save(player);
+		return (Player) playerRepository.save(player);
 	}
 
 	@Override

@@ -11,6 +11,8 @@ public interface PlayerService {
 
 	public Player getPlayerById(Long id);
 
+	public Player getPlayerByEmail(String email);
+
 	public boolean add(Player player);
 
 	public void deletePlayer(Long id);

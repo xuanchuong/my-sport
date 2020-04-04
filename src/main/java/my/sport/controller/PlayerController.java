@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,6 +37,16 @@ public class PlayerController {
 	public ResponseEntity<UserOutDTO> readUser(@PathVariable("id") String id) {
 		Long playerId = Long.valueOf(id);
 		Player player = playerService.getPlayerById(playerId);
+		if (player == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		UserOutDTO userOutDTO = userMapper.map(player);
+		return ResponseEntity.ok(userOutDTO);
+	}
+
+	@GetMapping
+	public ResponseEntity<UserOutDTO> readUserByEmail(@RequestHeader("email") String email) {
+		Player player = playerService.getPlayerByEmail(email);
 		if (player == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}

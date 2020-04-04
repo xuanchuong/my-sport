@@ -1,14 +1,20 @@
 package my.sport.repository;
 
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+import my.sport.model.Player;
 import org.springframework.stereotype.Repository;
 
-import my.sport.model.Player;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface PlayerRepository<P> extends JpaRepository<Player, Long>{
+public interface PlayerRepository {
 	List<Player> findByFirstName(String firstName);
 	Player findUserByEmail(String email);
+	List<Player> findAll();
+
+	Optional<Player> findById(Long id);
+
+	Object save(Player player);
+
+	void deleteById(Long id);
 }

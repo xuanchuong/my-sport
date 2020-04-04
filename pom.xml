@@ -9,7 +9,7 @@
 		<version>2.2.0.RELEASE</version>
 		<relativePath />
 	</parent>
-	<groupId>sia</groupId>
+	<groupId>xuanchuongdp</groupId>
 	<artifactId>my-sport</artifactId>
 	<version>1.0.4-SNAPSHOT</version>
 	<packaging>war</packaging>

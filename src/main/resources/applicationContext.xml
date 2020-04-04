@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
         
 	<!-- Football Match Beans -->
-	<bean id="footballMatchServiceImpl" class="my.sport.service.FootballMatchServiceImpl"></bean>
+	<bean id="footballMatchServiceImpl" class="my.sport.service.FootballMatchServiceImpl"/>
 
 	<bean id="realPlayerService"
 		class="my.sport.service.PlayerServiceImpl" scope="prototype">
-	</bean>
-
-	<bean id="playerRestController"
-		class="my.sport.controller.rest.PlayerRestController">
-		<property name="playerService" ref="realPlayerService"></property>
 	</bean>
 </beans>

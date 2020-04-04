@@ -7,16 +7,15 @@ import my.sport.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping({"/player", "/rest/api/v1/user"})
+@RestController
+@RequestMapping("/rest/api/v1/user")
 public class PlayerController {
 
 	@Autowired
@@ -24,14 +23,6 @@ public class PlayerController {
 
 	@Autowired
 	private UserMapper userMapper;
-	
-	@GetMapping("/detail")
-	public String detailPlayer(@RequestParam(value = "id", required = true) String id, Model model) {
-		Long playerId = Long.valueOf(id);
-		Player player = playerService.getPlayerById(playerId);
-		model.addAttribute("player", player);
-		return "playerInfo";
-	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<UserOutDTO> readUser(@PathVariable("id") String id) {
@@ -52,5 +43,11 @@ public class PlayerController {
 		}
 		UserOutDTO userOutDTO = userMapper.map(player);
 		return ResponseEntity.ok(userOutDTO);
+	}
+
+	@DeleteMapping(value = "/{id}")
+	public HttpStatus deletePlayer(@PathVariable Long id) {
+		playerService.deletePlayer(id);
+		return HttpStatus.NO_CONTENT;
 	}
 }

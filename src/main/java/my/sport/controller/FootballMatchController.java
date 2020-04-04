@@ -26,7 +26,7 @@ import my.sport.service.FootballMatchService;
 import my.sport.service.PlayerService;
 
 @Controller
-@RequestMapping("/rest/api/v1/match")
+@RequestMapping({"/rest/api/v1/match", "/match"})
 public class FootballMatchController {
 
 	@Autowired

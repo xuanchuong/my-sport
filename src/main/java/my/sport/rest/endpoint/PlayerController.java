@@ -1,10 +1,10 @@
-package my.sport.controller;
+package my.sport.rest.endpoint;
 
+import lombok.AllArgsConstructor;
 import my.sport.model.Player;
 import my.sport.rest.dto.UserOutDTO;
 import my.sport.rest.mapper.UserMapper;
 import my.sport.service.PlayerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,12 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/rest/api/v1/user")
+@AllArgsConstructor
 public class PlayerController {
 
-	@Autowired
 	private PlayerService playerService;
-
-	@Autowired
 	private UserMapper userMapper;
 
 	@GetMapping("/{id}")

@@ -2,8 +2,8 @@ package my.sport.service;
 
 import my.sport.dto.UserDto;
 import my.sport.domain.entity.Player;
-import my.sport.repository.PlayerRepository;
-import my.sport.repository.RoleRepository;
+import my.sport.domain.repository.PlayerRepository;
+import my.sport.domain.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

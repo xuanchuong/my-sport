@@ -2,7 +2,7 @@ package my.sport.data.jpa.repository;
 
 import lombok.AllArgsConstructor;
 import my.sport.domain.entity.Player;
-import my.sport.repository.PlayerRepository;
+import my.sport.domain.repository.PlayerRepository;
 
 import java.util.List;
 import java.util.Optional;

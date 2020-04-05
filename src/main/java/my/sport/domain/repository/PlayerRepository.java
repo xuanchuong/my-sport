@@ -1,4 +1,4 @@
-package my.sport.repository;
+package my.sport.domain.repository;
 
 import my.sport.domain.entity.Player;
 import org.springframework.stereotype.Repository;

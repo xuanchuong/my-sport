@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
-import my.sport.validator.PasswordMatches;
+import my.sport.domain.validator.PasswordMatches;
 
 @Data
 @PasswordMatches

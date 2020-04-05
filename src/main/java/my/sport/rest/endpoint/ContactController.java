@@ -1,5 +1,6 @@
-package my.sport.controller;
+package my.sport.rest.endpoint;
 
+import my.sport.application.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import my.sport.domain.entity.Player;
-import my.sport.service.PlayerService;
 
 @Controller
 @RequestMapping(value = {"/contact"})

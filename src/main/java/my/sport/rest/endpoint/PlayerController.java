@@ -1,10 +1,10 @@
 package my.sport.rest.endpoint;
 
 import lombok.AllArgsConstructor;
+import my.sport.application.service.PlayerService;
 import my.sport.domain.entity.Player;
 import my.sport.rest.dto.UserOutDTO;
 import my.sport.rest.mapper.UserMapper;
-import my.sport.service.PlayerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

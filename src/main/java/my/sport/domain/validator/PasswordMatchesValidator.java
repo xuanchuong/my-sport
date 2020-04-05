@@ -1,4 +1,4 @@
-package my.sport.validator;
+package my.sport.domain.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

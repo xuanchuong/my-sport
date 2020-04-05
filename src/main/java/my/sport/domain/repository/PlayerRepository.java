@@ -11,7 +11,7 @@ public interface PlayerRepository {
 	List<Player> findByFirstName(String firstName);
 	Player findUserByEmail(String email);
 	List<Player> findAll();
-
+	
 	Optional<Player> findById(Long id);
 
 	Object save(Player player);

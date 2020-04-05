@@ -1,4 +1,4 @@
-package my.sport.controller;
+package my.sport.rest.endpoint;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

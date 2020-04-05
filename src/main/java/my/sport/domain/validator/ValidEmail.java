@@ -1,4 +1,4 @@
-package my.sport.validator;
+package my.sport.domain.validator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

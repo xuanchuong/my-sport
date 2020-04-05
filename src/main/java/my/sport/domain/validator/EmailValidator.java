@@ -1,4 +1,4 @@
-package my.sport.validator;
+package my.sport.domain.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

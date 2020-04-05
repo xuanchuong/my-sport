@@ -1,40 +1,33 @@
-package my.sport.service;
+package my.sport.application.service;
 
+import lombok.AllArgsConstructor;
 import my.sport.domain.entity.Player;
 import my.sport.domain.entity.Role;
 import my.sport.domain.repository.PlayerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService{
 	
-	@Autowired
-	private PlayerRepository playerRepository;
+	PlayerRepository playerRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String email)
-			throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) {
 		Player player = playerRepository.findUserByEmail(email);
 		if (player == null) {
 			throw new UsernameNotFoundException(
 					"No user found with username: " + email);
 		}
-		boolean enabled = true;
-		boolean accountNonExpired = true;
-		boolean credentialsNonExpired = true;
-		boolean accountNonLocked = true;
 		return new org.springframework.security.core.userdetails.User(
-				player.getEmail(), player.getPassword(), enabled,
-				accountNonExpired, credentialsNonExpired, accountNonLocked,
+				player.getEmail(), player.getPassword(), true,
+				true, true, true,
 				getAuthorities(player.getRoles()));
 	}
 

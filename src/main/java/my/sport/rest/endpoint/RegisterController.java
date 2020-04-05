@@ -1,8 +1,9 @@
-package my.sport.controller;
+package my.sport.rest.endpoint;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import my.sport.application.service.PlayerService;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +23,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import my.sport.dto.UserDto;
-import my.sport.service.PlayerService;
 
 @Controller
 @RequestMapping("/register")

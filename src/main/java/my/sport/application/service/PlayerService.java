@@ -1,9 +1,10 @@
-package my.sport.service;
+package my.sport.application.service;
 
-import my.sport.dto.UserDto;
+import lombok.AllArgsConstructor;
 import my.sport.domain.entity.Player;
 import my.sport.domain.repository.PlayerRepository;
 import my.sport.domain.repository.RoleRepository;
+import my.sport.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,14 +15,11 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class PlayerServiceImpl implements PlayerService {
-	@Autowired
+@AllArgsConstructor
+public class PlayerService {
+
 	private PlayerRepository playerRepository;
-
-	@Autowired
 	private PasswordEncoder passwordEncoder;
-
-	@Autowired
 	private RoleRepository roleRepository;
 
 	@Transactional
@@ -29,31 +27,31 @@ public class PlayerServiceImpl implements PlayerService {
 		return playerRepository.findByFirstName(firstName);
 	}
 
-	@Override
+	
 	@Transactional
 	public List<Player> getAllPlayers() {
 		return (List<Player>) playerRepository.findAll();
 	}
 
-	@Override
+	
 	@Transactional
 	public Player getPlayerById(Long id) {
 		return playerRepository.findById(id).orElse(null);
 	}
 
-	@Override
+	
 	@Transactional
 	public Player getPlayerByEmail(String email) {
 		return playerRepository.findUserByEmail(email);
 	}
 
-	@Override
+	
 	@Transactional
 	public boolean add(Player player) {
 		return playerRepository.save(player) != null;
 	}
 
-	@Override
+	
 	@Transactional
 	public Player registerNewPlayerAccount(UserDto userDto) {
 		Player player = new Player();
@@ -65,13 +63,13 @@ public class PlayerServiceImpl implements PlayerService {
 		return (Player) playerRepository.save(player);
 	}
 
-	@Override
+	
 	@Transactional
 	public void deletePlayer(Long id) {
 		playerRepository.deleteById(id);
 	}
 
-	@Override
+	
 	public Player getSessionPlayer() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String email = auth.getName();

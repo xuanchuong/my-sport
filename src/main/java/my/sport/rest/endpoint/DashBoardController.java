@@ -1,6 +1,6 @@
-package my.sport.controller;
+package my.sport.rest.endpoint;
 
-import my.sport.service.FootballMatchService;
+import my.sport.application.service.FootballMatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

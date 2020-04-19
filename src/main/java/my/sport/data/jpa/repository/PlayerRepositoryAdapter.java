@@ -13,18 +13,8 @@ public class PlayerRepositoryAdapter implements PlayerRepository {
     private PlayerJpaRepository playerJpaRepository;
 
     @Override
-    public List<Player> findByFirstName(String firstName) {
-        return null;
-    }
-
-    @Override
     public Player findUserByEmail(String email) {
         return playerJpaRepository.findUserByEmail(email);
-    }
-
-    @Override
-    public List<Player> findAll() {
-        return playerJpaRepository.findAll();
     }
 
     @Override
@@ -38,7 +28,7 @@ public class PlayerRepositoryAdapter implements PlayerRepository {
     }
 
     @Override
-    public void deleteById(Long id) {
-        playerJpaRepository.deleteById(id);
+    public void deleteByEmail(String email) {
+        playerJpaRepository.deleteByEmail(email);
     }
 }

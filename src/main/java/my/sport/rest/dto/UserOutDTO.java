@@ -10,6 +10,7 @@ import static lombok.AccessLevel.PRIVATE;
 @Getter
 @FieldDefaults(level = PRIVATE)
 public class UserOutDTO {
+    Long id;
     String firstName;
     String lastName;
     String email;

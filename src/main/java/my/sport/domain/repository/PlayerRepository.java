@@ -8,13 +8,12 @@ import java.util.Optional;
 
 @Repository
 public interface PlayerRepository {
-	List<Player> findByFirstName(String firstName);
+
 	Player findUserByEmail(String email);
-	List<Player> findAll();
-	
+
 	Optional<Player> findById(Long id);
 
 	Object save(Player player);
 
-	void deleteById(Long id);
+	void deleteByEmail(String email);
 }

@@ -1,11 +1,17 @@
 package my.sport.domain.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import my.sport.domain.entity.FootballMatch;
 
-@Repository
-public interface FootballMatchRepository extends JpaRepository<FootballMatch, Long>{
+import java.util.List;
+import java.util.Optional;
 
+public interface FootballMatchRepository{
+
+    FootballMatch save(FootballMatch footballMatch);
+
+    void deleteById(Long id);
+
+    Optional<FootballMatch> findById(Long id);
+
+    List<FootballMatch> findAll();
 }

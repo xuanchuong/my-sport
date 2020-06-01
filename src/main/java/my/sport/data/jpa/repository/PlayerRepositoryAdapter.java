@@ -1,30 +1,33 @@
 package my.sport.data.jpa.repository;
 
 import lombok.AllArgsConstructor;
+import my.sport.data.jpa.entity.JpaPlayer;
+import my.sport.data.jpa.mapper.PlayerMapper;
 import my.sport.domain.entity.Player;
 import my.sport.domain.repository.PlayerRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
 public class PlayerRepositoryAdapter implements PlayerRepository {
 
-    private PlayerJpaRepository playerJpaRepository;
+    private final PlayerJpaRepository playerJpaRepository;
+    private final PlayerMapper playerMapper;
 
     @Override
     public Player findUserByEmail(String email) {
-        return playerJpaRepository.findUserByEmail(email);
+        JpaPlayer jpaPlayer = playerJpaRepository.findUserByEmail(email);
+        return jpaPlayer == null ? null : playerMapper.map(jpaPlayer);
     }
 
     @Override
     public Optional<Player> findById(Long id) {
-        return playerJpaRepository.findById(id);
+        return playerJpaRepository.findById(id).map(playerMapper::map);
     }
 
     @Override
-    public Object save(Player player) {
-        return playerJpaRepository.save(player);
+    public Player save(Player player) {
+        return playerMapper.map(playerJpaRepository.save(playerMapper.map(player)));
     }
 
     @Override

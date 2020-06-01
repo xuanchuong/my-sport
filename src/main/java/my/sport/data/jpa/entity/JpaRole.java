@@ -1,13 +1,25 @@
-package my.sport.domain.entity;
+package my.sport.data.jpa.entity;
 
 import lombok.Data;
 
-@Data
-public class Role {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+@Data
+public class JpaRole {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String name;
+
+	public JpaRole() {
+		super();
+	}
 
 	@Override
 	public int hashCode() {
@@ -28,8 +40,8 @@ public class Role {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final Role role = (Role) obj;
-		if (!name.equals(role.name)) {
+		final JpaRole jpaRole = (JpaRole) obj;
+		if (!name.equals(jpaRole.name)) {
 			return false;
 		}
 		return true;

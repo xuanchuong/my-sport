@@ -1,46 +1,20 @@
 package my.sport.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 import java.util.List;
 
-@Data
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Builder
+@Getter
 public class FootballMatch {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private Long id;
-	
-	@ManyToOne
-	@JoinColumn(name="owner_id", nullable=false)
-	private Player owner;
-	@Column(name = "start_date")
-	private Date startDate;
-	@Column(name = "location")
-	private String location;
-	@Column
-	private String title;
-	@Column
-	private String description;
-	@Column
-	private int numberOfPlayers;
-	
-	@ManyToMany
-	@JoinTable(name="match_players")
-	private List<Player> paticipants;
+	private final Long id;
+	private final Player owner;
+	private final Date startDate;
+	private final String location;
+	private final String title;
+	private final String description;
+	private final int numberOfPlayers;
+	private final List<Player> paticipants;
 }

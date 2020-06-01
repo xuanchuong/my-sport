@@ -1,5 +1,6 @@
 package my.sport.rest.config;
 
+import my.sport.rest.mapper.FootballMatchMapper;
 import my.sport.rest.mapper.UserMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,5 +17,10 @@ public class RestConfiguration {
     @Bean
     UserMapper userMapper() {
         return new UserMapper();
+    }
+
+    @Bean
+    FootballMatchMapper footballMatchMapper() {
+        return new FootballMatchMapper();
     }
 }

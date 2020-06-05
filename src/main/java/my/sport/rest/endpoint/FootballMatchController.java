@@ -49,7 +49,7 @@ public class FootballMatchController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity create(@RequestBody CreateFootballMatchCommandDTO createFootballMatchCommandDTO) {
+    public ResponseEntity<FootballMatchDto> create(@RequestBody CreateFootballMatchCommandDTO createFootballMatchCommandDTO) {
         FootballMatch footballMatch = matchService.createNewMatch(createFootballMatchCommandDTO);
         FootballMatchDto footballMatchDto = footballMatchMapper.map(footballMatch);
         return ResponseEntity.status(HttpStatus.CREATED).body(footballMatchDto);

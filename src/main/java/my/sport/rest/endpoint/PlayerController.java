@@ -38,7 +38,7 @@ public class PlayerController {
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity createUser(@RequestBody CreateUserCommandDTO createUserCommandDTO) {
+	public ResponseEntity<UserOutDTO> createUser(@RequestBody CreateUserCommandDTO createUserCommandDTO) {
 		if (playerService.getPlayerByEmail(createUserCommandDTO.getEmail()) != null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
@@ -48,7 +48,7 @@ public class PlayerController {
 	}
 
 	@DeleteMapping
-	public ResponseEntity deletePlayer(@RequestParam String email) {
+	public ResponseEntity<HttpStatus> deletePlayer(@RequestParam String email) {
 		if (playerService.getPlayerByEmail(email) == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}

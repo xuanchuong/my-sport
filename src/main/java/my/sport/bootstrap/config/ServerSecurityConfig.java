@@ -11,12 +11,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 @AllArgsConstructor
-public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
+public class ServerSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     UserDetailsService userDetailsService;
 
@@ -37,5 +39,11 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/rest/api/v1/match/**");
+        registry.addMapping("/oauth/token/**");
     }
 }

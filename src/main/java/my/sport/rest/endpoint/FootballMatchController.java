@@ -1,6 +1,8 @@
 package my.sport.rest.endpoint;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import my.sport.application.service.FootballMatchService;
 import my.sport.application.service.PlayerService;
 import my.sport.domain.entity.FootballMatch;
@@ -12,26 +14,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping({"/rest/api/v1/match", "/match"})
+@RequestMapping({"/rest/api/v1/match"})
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class FootballMatchController {
 
-    private static final String DASH_BOARD = "dashboard";
-    private static final String MATCH = "match";
-    private FootballMatchService matchService;
-    private PlayerService playerService;
-    private FootballMatchMapper footballMatchMapper;
+    static final String DASH_BOARD = "dashboard";
+    static final String MATCH = "match";
+    FootballMatchService matchService;
+    PlayerService playerService;
+    FootballMatchMapper footballMatchMapper;
 
     @GetMapping("/all")
     public ResponseEntity<FootballMatchDto[]> getAllMatch() {

@@ -111,6 +111,13 @@
 			<version>2.0.0.RELEASE</version>
 		</dependency>
 
+		<dependency>
+			<groupId>au.com.dius</groupId>
+			<artifactId>pact-jvm-provider-junit5</artifactId>
+			<version>4.0.9</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- End Spring security -->
 
 		<!-- Database -->

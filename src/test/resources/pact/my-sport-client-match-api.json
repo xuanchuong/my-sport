@@ -10,16 +10,25 @@
       "description": "get all available matches",
       "request": {
         "method": "GET",
-        "path": "/rest/api/v1/match"
+        "path": "/rest/api/v1/match/all"
       },
       "response": {
         "status": 200,
         "headers": {
           "Content-Type": "application/json; charset=UTF-8"
         },
-        "body": {
-          "name": "user name for CDC"
-        },
+        "body": [
+          {
+            "id": 1,
+            "ownerId": 1,
+            "startDate": null,
+            "location": "location",
+            "title": "title",
+            "description": "description",
+            "numberOfPlayers": 10,
+            "paticipantIds": []
+          }
+        ],
         "matchingRules": {
           "body": {
             "$.name": {
@@ -46,7 +55,7 @@
       },
       "providerStates": [
         {
-          "name": "get all available matches"
+          "name": "exist football have id \u003d 123"
         }
       ]
     }
@@ -56,7 +65,7 @@
       "version": "3.0.0"
     },
     "pact-jvm": {
-      "version": "3.5.24"
+      "version": "4.0.5"
     }
   }
 }

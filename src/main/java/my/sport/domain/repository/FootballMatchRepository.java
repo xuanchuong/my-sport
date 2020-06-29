@@ -14,4 +14,6 @@ public interface FootballMatchRepository{
     Optional<FootballMatch> findById(Long id);
 
     List<FootballMatch> findAll();
+
+    void deleteAll();
 }

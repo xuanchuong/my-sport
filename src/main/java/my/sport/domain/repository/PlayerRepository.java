@@ -13,4 +13,6 @@ public interface PlayerRepository {
 	Player save(Player player);
 
 	void deleteByEmail(String email);
+
+	void deleteAll();
 }

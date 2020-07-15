@@ -34,4 +34,9 @@ public class PlayerRepositoryAdapter implements PlayerRepository {
     public void deleteByEmail(String email) {
         playerJpaRepository.deleteByEmail(email);
     }
+
+    @Override
+    public void deleteAll() {
+        playerJpaRepository.deleteAll();
+    }
 }

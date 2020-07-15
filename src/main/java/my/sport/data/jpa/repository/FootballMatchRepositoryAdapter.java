@@ -38,4 +38,9 @@ public class FootballMatchRepositoryAdapter implements FootballMatchRepository {
         footballMatchJpaRepository.findAll().forEach(jpaFootballMatch -> result.add(footballMatchMapper.map(jpaFootballMatch)));
         return result;
     }
+
+    @Override
+    public void deleteAll() {
+        footballMatchJpaRepository.deleteAll();
+    }
 }

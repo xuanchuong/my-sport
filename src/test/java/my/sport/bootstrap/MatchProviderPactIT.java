@@ -12,7 +12,6 @@ import my.sport.domain.entity.Player;
 import my.sport.domain.entity.Role;
 import my.sport.domain.repository.FootballMatchRepository;
 import my.sport.domain.repository.PlayerRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;

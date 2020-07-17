@@ -78,10 +78,10 @@ public class FootballMatchController {
         return DASH_BOARD;
     }
 
-    @PostMapping("/delete")
-    public ModelAndView deleteMatch(@RequestParam String id) {
+    @DeleteMapping
+    public ResponseEntity<Boolean> deleteMatch(@RequestParam String id) {
         matchService.deleteMatch(Long.valueOf(id));
-        return new ModelAndView(DASH_BOARD);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(Boolean.TRUE);
     }
 
 }

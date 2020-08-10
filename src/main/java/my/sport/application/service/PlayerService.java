@@ -34,8 +34,7 @@ public class PlayerService {
         player.setLastName(createUserCommandDTO.getLastName());
         player.setPassword(passwordEncoder.encode(createUserCommandDTO.getPassword()));
         player.setRoles(Collections.singletonList(roleRepository.findByName("PLAYER")));
-        playerRepository.save(player);
-        return player;
+        return playerRepository.save(player);
     }
 
     @Transactional

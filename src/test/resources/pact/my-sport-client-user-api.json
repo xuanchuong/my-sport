@@ -1,0 +1,75 @@
+{
+  "consumer": {
+    "name": "my-sport-client"
+  },
+  "provider": {
+    "name": "user-api"
+  },
+  "interactions": [
+    {
+      "description": "create a new user",
+      "request": {
+        "method": "POST",
+        "path": "/rest/api/v1/user/create",
+        "headers": {
+          "Content-Type": "application/json;charset\u003dUTF-8"
+        },
+        "body": {
+          "firstName": "xuan chuong",
+          "lastName": "nguyen",
+          "password": "123456",
+          "matchingPassword": "123456",
+          "email": "xuanchuongdp@gmail.com"
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "body":
+          {
+            "firstName": "xuan chuong",
+            "lastName": "nguyen",
+            "email": "xuanchuongdp@gmail.com"
+          },
+        "matchingRules": {
+          "body": {
+            "$.name": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          },
+          "header": {
+            "Content-Type": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "application/json;\\s?charset=(utf|UTF)-8"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "create new user"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.5"
+    }
+  }
+}

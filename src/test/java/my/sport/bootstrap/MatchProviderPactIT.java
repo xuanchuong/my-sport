@@ -81,4 +81,9 @@ public class MatchProviderPactIT {
                         owner(owner).paticipants(Collections.emptyList())
                         .build();
     }
+
+    @State("user request to join an existing match have id = 123")
+    public void joinAnExistingMatch() {
+        footballMatchRepository.save(createFootballMatch());
+    }
 }

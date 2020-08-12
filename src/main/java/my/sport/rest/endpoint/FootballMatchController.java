@@ -68,14 +68,17 @@ public class FootballMatchController {
         return "matchDetail";
     }
 
-    @PostMapping("/join")
-    public String joinTheMatch(@RequestParam String id) {
+    @PutMapping("/join")
+    public ResponseEntity<HttpStatus> joinTheMatch(@RequestParam String id) {
         FootballMatch footballMatch = matchService
                 .getMatchById(Long.valueOf(id));
         Player currentPlayer = playerService.getSessionPlayer();
+        if (footballMatch.getOwner().getEmail().equals(currentPlayer.getEmail())) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
         footballMatch.getPaticipants().add(currentPlayer);
         matchService.updateMatch(footballMatch);
-        return DASH_BOARD;
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
     @DeleteMapping

@@ -20,7 +20,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = MySportSpringApplication.class)
 @PactFolder("pact")
 @ActiveProfiles("pact")
-@Provider("user-api")
+@Provider("my-sport-api")
 public class UserProviderPactIT {
 
     @LocalServerPort

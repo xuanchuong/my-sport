@@ -1,0 +1,58 @@
+{
+  "consumer": {
+    "name": "my-sport-client"
+  },
+  "provider": {
+    "name": "my-sport-api"
+  },
+  "interactions": [
+    {
+      "description": "create a new user successfully",
+      "providerState": "create new user",
+      "request": {
+        "method": "POST",
+        "path": "/rest/api/v1/user/create",
+        "body": {
+          "firstName": "xuan chuong",
+          "lastName": "nguyen",
+          "password": "123456",
+          "matchingPassword": "123456",
+          "email": "xuanchuongdp@gmail.com"
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "id": "123",
+          "firstName": "xuan chuong",
+          "lastName": "nguyen",
+          "email": "xuanchuongdp@gmail.com"
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "regex",
+            "regex": "\\d+"
+          },
+          "$.body.firstName": {
+            "match": "type"
+          },
+          "$.body.lastName": {
+            "match": "type"
+          },
+          "$.body.email": {
+            "match": "regex",
+            "regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  }
+}

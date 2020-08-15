@@ -69,9 +69,9 @@ public class FootballMatchController {
     }
 
     @PutMapping("/join")
-    public ResponseEntity<HttpStatus> joinTheMatch(@RequestParam String id) {
+    public ResponseEntity<HttpStatus> joinTheMatch(@RequestParam String matchId) {
         FootballMatch footballMatch = matchService
-                .getMatchById(Long.valueOf(id));
+                .getMatchById(Long.valueOf(matchId));
         Player currentPlayer = playerService.getSessionPlayer();
         if (footballMatch.getOwner().getEmail().equals(currentPlayer.getEmail())) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();

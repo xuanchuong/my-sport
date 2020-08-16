@@ -78,7 +78,7 @@ public class MatchProviderPactIT {
         owner = playerRepository.save(owner);
         return FootballMatch.builder().title("title").description("description")
                 .location("location").numberOfPlayers(10).
-                        owner(owner).paticipants(Collections.emptyList())
+                        owner(owner).participants(Collections.emptyList())
                         .build();
     }
 

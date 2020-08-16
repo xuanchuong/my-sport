@@ -59,7 +59,7 @@ public class FootballMatchController {
         if (footballMatch.getOwner().getEmail().equals(currentPlayer.getEmail())) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
-        footballMatch.getPaticipants().add(currentPlayer);
+        footballMatch.getParticipants().add(currentPlayer);
         matchService.updateMatch(footballMatch);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }

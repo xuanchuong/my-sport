@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
+import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -25,6 +26,11 @@ public class PlayerService {
         return playerRepository.findUserByEmail(email);
     }
 
+    @Transactional
+    public Optional<Player> getPlayerById(long id) {
+        Optional<Player> playerOptional = playerRepository.findById(Long.valueOf(id));
+        return playerOptional;
+    }
 
     @Transactional
     public Player add(CreateUserCommandDTO createUserCommandDTO) {

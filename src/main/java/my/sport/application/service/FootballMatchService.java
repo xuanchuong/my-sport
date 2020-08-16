@@ -52,7 +52,7 @@ public class FootballMatchService {
                 .startDate(matchDto.getStartDate())
                 .description(matchDto.getDescription())
                 .numberOfPlayers(matchDto.getNumberOfPlayers())
-                .paticipants(new ArrayList<>())
+                .participants(new ArrayList<>())
                 .owner(currentPlayer)
                 .build();
         return footballMatchRepository.save(footballMatch);

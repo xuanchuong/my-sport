@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/rest/api/v1/user")
 @AllArgsConstructor
@@ -28,6 +30,16 @@ public class PlayerController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		UserOutDTO userOutDTO = userMapper.map(player);
+		return ResponseEntity.ok(userOutDTO);
+	}
+
+	@GetMapping("/get")
+	public ResponseEntity<UserOutDTO> getUserById(@RequestParam Long id) {
+		Optional<Player> playerOptional = playerService.getPlayerById(id);
+		if (!playerOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		UserOutDTO userOutDTO = userMapper.map(playerOptional.get());
 		return ResponseEntity.ok(userOutDTO);
 	}
 

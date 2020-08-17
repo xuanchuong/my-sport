@@ -26,7 +26,7 @@
             "title": "title",
             "description": "description",
             "numberOfPlayers": 10,
-            "paticipantIds": []
+            "participantIds": []
           }
         ],
         "matchingRules": {

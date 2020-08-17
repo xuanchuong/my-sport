@@ -27,7 +27,7 @@ import java.util.Collections;
 @PactFolder("pact")
 @ActiveProfiles("pact")
 @Provider("match-api")
-public class MatchProviderPactIT {
+class MatchProviderPactIT {
 
     @LocalServerPort
     private int serverPort;
@@ -45,6 +45,7 @@ public class MatchProviderPactIT {
         player.setLastName("lastName");
         player.setPassword("password");
         player.setDescription("description");
+        player.setPhoneNumber("0986381782");
         player.setRoles(Collections.singletonList(new Role()));
         return player;
     }

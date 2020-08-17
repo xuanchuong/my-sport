@@ -37,7 +37,7 @@ public class JpaPlayer {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column
+	@Column(unique = true)
 	private String email;
 
 	@Column

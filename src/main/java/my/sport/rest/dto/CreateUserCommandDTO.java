@@ -18,9 +18,6 @@ public class CreateUserCommandDTO {
     private String password;
 
     @NotBlank
-    private String matchingPassword;
-
-    @NotBlank
     @Email
     private String email;
 

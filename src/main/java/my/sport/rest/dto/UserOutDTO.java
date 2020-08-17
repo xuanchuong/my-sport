@@ -14,4 +14,5 @@ public class UserOutDTO {
     String firstName;
     String lastName;
     String email;
+    String phoneNumber;
 }

@@ -28,8 +28,7 @@ public class PlayerService {
 
     @Transactional
     public Optional<Player> getPlayerById(long id) {
-        Optional<Player> playerOptional = playerRepository.findById(Long.valueOf(id));
-        return playerOptional;
+        return playerRepository.findById(id);
     }
 
     @Transactional
@@ -40,6 +39,7 @@ public class PlayerService {
         player.setLastName(createUserCommandDTO.getLastName());
         player.setPassword(passwordEncoder.encode(createUserCommandDTO.getPassword()));
         player.setRoles(Collections.singletonList(roleRepository.findByName("PLAYER")));
+        player.setPhoneNumber(createUserCommandDTO.getPhoneNumber());
         return playerRepository.save(player);
     }
 

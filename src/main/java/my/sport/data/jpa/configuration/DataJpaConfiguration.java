@@ -23,11 +23,6 @@ public class DataJpaConfiguration {
     }
 
     @Bean
-    public PlayerMapper playerMapper() {
-        return new PlayerMapper();
-    }
-
-    @Bean
     public RoleRepository roleRepository(RoleJpaRepository roleJpaRepository, RoleMapper jpaRoleMapper) {
         return new RoleRepositoryAdapter(roleJpaRepository, jpaRoleMapper);
     }

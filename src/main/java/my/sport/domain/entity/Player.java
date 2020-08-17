@@ -19,13 +19,11 @@ public class Player {
 
 	private String email;
 
+	private String phoneNumber;
+
 	private String description;
 
 	private String password;
 
 	private List<Role> roles;
-
-	public String getFullName() {
-		return firstName + " " + lastName;
-	}
 }

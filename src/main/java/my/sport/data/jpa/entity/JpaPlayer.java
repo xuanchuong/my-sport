@@ -28,6 +28,9 @@ public class JpaPlayer {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
+	@Column(name = "phone_number", unique = true)
+	private String phoneNumber;
+
 	@Column(name = "first_name")
 	private String firstName;
 
@@ -44,6 +47,7 @@ public class JpaPlayer {
 	private String password;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private List<JpaRole> roles;
 }

@@ -25,7 +25,7 @@ public class FootballMatchMapper {
         target.setStartDate(source.getStartDate());
         target.setTitle(source.getTitle());
         List<JpaPlayer> participants = new ArrayList<>();
-        source.getPaticipants().forEach(player -> {
+        source.getParticipants().forEach(player -> {
             participants.add(playerMapper.map(player));
         });
         target.setPaticipants(participants);
@@ -47,7 +47,7 @@ public class FootballMatchMapper {
                 .startDate(source.getStartDate())
                 .title(source.getTitle())
 
-                .paticipants(participants).build();
+                .participants(participants).build();
 
     }
 }

@@ -26,9 +26,9 @@ public class FootballMatchMapper {
         target.setTitle(source.getTitle());
         target.setDescription(source.getDescription());
         target.setNumberOfPlayers(source.getNumberOfPlayers());
-        target.setPaticipantIds(new ArrayList<>());
-        source.getPaticipants().forEach(participant -> {
-            target.getPaticipantIds().add(participant.getId());
+        target.setParticipantIds(new ArrayList<>());
+        source.getParticipants().forEach(participant -> {
+            target.getParticipantIds().add(participant.getId());
         });
 
         return target;

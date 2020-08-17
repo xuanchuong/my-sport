@@ -13,9 +13,7 @@ import my.sport.rest.mapper.FootballMatchMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping({"/rest/api/v1/match"})
@@ -23,8 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class FootballMatchController {
 
-    static final String DASH_BOARD = "dashboard";
-    static final String MATCH = "match";
     FootballMatchService matchService;
     PlayerService playerService;
     FootballMatchMapper footballMatchMapper;
@@ -55,27 +51,17 @@ public class FootballMatchController {
         return ResponseEntity.status(HttpStatus.CREATED).body(footballMatchDto);
     }
 
-    @GetMapping("/detail")
-    public String getMatchDetail(@RequestParam String id, Model model) {
+    @PutMapping("/join")
+    public ResponseEntity<HttpStatus> joinTheMatch(@RequestParam String matchId) {
         FootballMatch footballMatch = matchService
-                .getMatchById(Long.valueOf(id));
+                .getMatchById(Long.valueOf(matchId));
         Player currentPlayer = playerService.getSessionPlayer();
-        boolean isMatchOwner = currentPlayer.getId().equals(footballMatch.getOwner().getId());
-        boolean isJoined = footballMatch.getPaticipants().contains(currentPlayer);
-        model.addAttribute(MATCH, footballMatch);
-        model.addAttribute("isMatchOwner", isMatchOwner);
-        model.addAttribute("isJoined", isJoined);
-        return "matchDetail";
-    }
-
-    @PostMapping("/join")
-    public String joinTheMatch(@RequestParam String id) {
-        FootballMatch footballMatch = matchService
-                .getMatchById(Long.valueOf(id));
-        Player currentPlayer = playerService.getSessionPlayer();
-        footballMatch.getPaticipants().add(currentPlayer);
+        if (footballMatch.getOwner().getEmail().equals(currentPlayer.getEmail())) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+        footballMatch.getParticipants().add(currentPlayer);
         matchService.updateMatch(footballMatch);
-        return DASH_BOARD;
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
     @DeleteMapping

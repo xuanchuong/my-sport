@@ -16,5 +16,5 @@ public class FootballMatch {
 	private final String title;
 	private final String description;
 	private final int numberOfPlayers;
-	private final List<Player> paticipants;
+	private final List<Player> participants;
 }

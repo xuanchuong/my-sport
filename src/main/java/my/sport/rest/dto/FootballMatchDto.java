@@ -18,5 +18,5 @@ public class FootballMatchDto {
 	private String title;
 	private String description;
 	private int numberOfPlayers;
-	private List<Long> paticipantIds;
+	private List<Long> participantIds;
 }

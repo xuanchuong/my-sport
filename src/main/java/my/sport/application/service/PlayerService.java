@@ -1,9 +1,9 @@
 package my.sport.application.service;
 
 import lombok.AllArgsConstructor;
+import my.sport.domain.entity.PasswordResetToken;
 import my.sport.domain.entity.Player;
-import my.sport.domain.repository.PlayerRepository;
-import my.sport.domain.repository.RoleRepository;
+import my.sport.domain.repository.*;
 import my.sport.rest.dto.CreateUserCommandDTO;
 import my.sport.rest.dto.UpdateUserCommandDTO;
 import org.apache.commons.lang3.StringUtils;
@@ -22,6 +22,8 @@ public class PlayerService {
     private final PlayerRepository playerRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final EmailRepository emailRepository;
+    private final PasswordTokenRepository passwordTokenRepository;
 
     @Transactional
     public Player getPlayerByEmail(String email) {
@@ -73,6 +75,16 @@ public class PlayerService {
             currentUser.setPassword(passwordEncoder.encode(updateUserCommandDTO.getPassword()));
         }
         return playerRepository.save(currentUser);
+
+    }
+
+    public void sendEmailResetPass(Player player, String token) {
+        emailRepository.sendResetPasswordMessage(player.getEmail(), token);
+    }
+
+    public void createPasswordResetTokenForUser(Player player, String token) {
+        PasswordResetToken passwordResetToken = new PasswordResetToken(token, player);
+        passwordTokenRepository.save(passwordResetToken);
 
     }
 }

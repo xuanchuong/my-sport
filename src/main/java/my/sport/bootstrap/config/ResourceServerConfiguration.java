@@ -20,7 +20,9 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/rest/api/v1/user/create",
+                .antMatchers(
+                        "/rest/api/v1/user/create",
+                        "/rest/api/v1/user/resetPass",
                         "/rest/api/v1/user/get",
                         "/rest/api/v1/match/all")
                 .permitAll()

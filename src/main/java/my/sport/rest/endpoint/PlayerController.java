@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/rest/api/v1/user")
@@ -68,5 +69,17 @@ public class PlayerController {
 		Player acceptedPlayer = playerService.updatePlayer(updateUserCommandDTO);
 		UserOutDTO userOutDTO = userMapper.map(acceptedPlayer);
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(userOutDTO);
+	}
+
+	@PostMapping("/resetPass")
+	public ResponseEntity<HttpStatus> resetPassword(@RequestParam String email) {
+		Player currentPlayer = playerService.getPlayerByEmail(email);
+		if (currentPlayer == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		String token = UUID.randomUUID().toString();
+		playerService.createPasswordResetTokenForUser(currentPlayer, token);
+		playerService.sendEmailResetPass(currentPlayer, token);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 	}
 }

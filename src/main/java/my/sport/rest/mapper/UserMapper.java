@@ -2,16 +2,18 @@ package my.sport.rest.mapper;
 
 import my.sport.domain.entity.Player;
 import my.sport.rest.dto.UserOutDTO;
+import org.mapstruct.Mapper;
 
-public class UserMapper {
+import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
+import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 
-    public UserOutDTO map(Player source) {
-        UserOutDTO userOutDTO = new UserOutDTO();
-        userOutDTO.setId(source.getId());
-        userOutDTO.setFirstName(source.getFirstName());
-        userOutDTO.setLastName(source.getLastName());
-        userOutDTO.setEmail(source.getEmail());
-        userOutDTO.setPhoneNumber(source.getPhoneNumber());
-        return userOutDTO;
-    }
+@Mapper(
+        componentModel = "spring",
+        nullValuePropertyMappingStrategy = SET_TO_NULL,
+        nullValueCheckStrategy = ALWAYS
+)
+public interface UserMapper {
+
+    UserOutDTO map(Player source);
+
 }

@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import my.sport.application.service.PlayerService;
 import my.sport.domain.entity.Player;
 import my.sport.rest.dto.CreateUserCommandDTO;
+import my.sport.rest.dto.UpdateUserCommandDTO;
 import my.sport.rest.dto.UserOutDTO;
 import my.sport.rest.mapper.UserMapper;
 import org.springframework.http.HttpStatus;
@@ -60,5 +61,12 @@ public class PlayerController {
 		}
 		playerService.deletePlayer(email);
 		return ResponseEntity.status(HttpStatus.OK).build();
+	}
+
+	@PutMapping("/update")
+	public ResponseEntity<UserOutDTO> update(@RequestBody UpdateUserCommandDTO updateUserCommandDTO) {
+		Player acceptedPlayer = playerService.updatePlayer(updateUserCommandDTO);
+		UserOutDTO userOutDTO = userMapper.map(acceptedPlayer);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(userOutDTO);
 	}
 }

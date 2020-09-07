@@ -66,6 +66,21 @@ public class FootballMatchController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
+    @PutMapping("/leave")
+    public ResponseEntity<HttpStatus> leaveTheMatch(@RequestParam String matchId) {
+        FootballMatch footballMatch = matchService
+                .getMatchById(Long.valueOf(matchId));
+        if (footballMatch == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        Player currentPlayer = playerService.getSessionPlayer();
+        if(!matchService.hasUserJoinedTheMatch(footballMatch, currentPlayer)) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+        }
+        matchService.leaveTheMatch(footballMatch, currentPlayer);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
     @DeleteMapping
     public ResponseEntity<Boolean> deleteMatch(@RequestParam String id) {
         matchService.deleteMatch(Long.valueOf(id));

@@ -49,6 +49,13 @@ public class FootballMatchService {
         footballMatchRepository.save(match);
     }
 
+    public void leaveTheMatch(FootballMatch footballMatch, Player player) {
+        footballMatch.getParticipants().stream()
+                .filter(participant -> participant.getId().equals(player.getId()))
+                .findFirst().ifPresent(participant -> footballMatch.getParticipants().remove(participant));
+        updateMatch(footballMatch);
+    }
+
     public boolean hasUserJoinedTheMatch(FootballMatch footballMatch, Player player) {
         return footballMatch.getParticipants().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
     }

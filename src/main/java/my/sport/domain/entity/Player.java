@@ -1,29 +1,28 @@
 package my.sport.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Builder(toBuilder = true)
+@Getter
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class Player {
 
-	private Long id;
+	Long id;
 
-	private String firstName;
+	String firstName;
 
-	private String lastName;
+	String lastName;
 
-	private String email;
+	String email;
 
-	private String phoneNumber;
+	String phoneNumber;
 
-	private String description;
+	String description;
 
-	private String password;
+	String password;
 
-	private List<Role> roles;
+	List<Role> roles;
 }

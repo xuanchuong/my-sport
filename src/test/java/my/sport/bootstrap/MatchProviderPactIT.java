@@ -39,15 +39,15 @@ class MatchProviderPactIT {
     private PlayerRepository playerRepository;
 
     Player createPlayer() {
-        Player player = new Player();
-        player.setEmail("email@gmail.com");
-        player.setFirstName("firstName");
-        player.setLastName("lastName");
-        player.setPassword("password");
-        player.setDescription("description");
-        player.setPhoneNumber("0986381782");
-        player.setRoles(Collections.singletonList(new Role()));
-        return player;
+        return Player.builder()
+                .email("email@gmail.com")
+                .firstName("firstName")
+                .lastName("lastName")
+                .password("password")
+                .description("description")
+                .roles(Collections.singletonList(new Role()))
+                .phoneNumber("0986381782")
+                .build();
     }
 
     @BeforeEach

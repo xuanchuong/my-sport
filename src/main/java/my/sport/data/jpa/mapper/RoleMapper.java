@@ -15,9 +15,9 @@ public class RoleMapper {
     }
 
     public Role map(JpaRole source) {
-        Role target = new Role();
-        target.setId(source.getId());
-        target.setName(source.getName());
-        return target;
+        return Role.builder()
+                .id(source.getId())
+                .name(source.getName())
+                .build();
     }
 }

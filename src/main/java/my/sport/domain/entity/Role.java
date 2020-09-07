@@ -1,13 +1,15 @@
 package my.sport.domain.entity;
 
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
-@Data
+@Builder
+@Getter
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class Role {
 
-	private Long id;
-
-	private String name;
+	Long id;
+	String name;
 
 	@Override
 	public int hashCode() {
@@ -29,17 +31,11 @@ public class Role {
 			return false;
 		}
 		final Role role = (Role) obj;
-		if (!name.equals(role.name)) {
-			return false;
-		}
-		return true;
+		return name.equals(role.name);
 	}
 
 	@Override
 	public String toString() {
-		final StringBuilder builder = new StringBuilder();
-		builder.append("Role [name=").append(name).append("]").append("[id=")
-				.append(id).append("]");
-		return builder.toString();
+		return "Role [name=" + name + "]" + "[id=" + id + "]";
 	}
 }

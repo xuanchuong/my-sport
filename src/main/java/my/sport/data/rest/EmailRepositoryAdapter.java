@@ -11,17 +11,6 @@ public class EmailRepositoryAdapter implements EmailRepository {
     private final JavaMailSender emailSender;
 
     @Override
-    public void sendSimpleMessage(String to, String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("noreply@mysport.com");
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(text);
-        emailSender.send(message);
-
-    }
-
-    @Override
     public void sendResetPasswordMessage(String to, String token) {
         final SimpleMailMessage email = constructResetTokenEmail("http://localhost:4200/", token, to);
         emailSender.send(email);

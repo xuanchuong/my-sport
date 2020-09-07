@@ -45,7 +45,7 @@ class MatchProviderPactIT {
                 .lastName("lastName")
                 .password("password")
                 .description("description")
-                .roles(Collections.singletonList(new Role()))
+                .roles(Collections.singletonList(Role.builder().build()))
                 .phoneNumber("0986381782")
                 .build();
     }

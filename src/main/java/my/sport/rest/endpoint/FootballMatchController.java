@@ -8,7 +8,7 @@ import my.sport.application.service.PlayerService;
 import my.sport.domain.entity.FootballMatch;
 import my.sport.domain.entity.Player;
 import my.sport.rest.dto.CreateFootballMatchCommandDTO;
-import my.sport.rest.dto.FootballMatchDto;
+import my.sport.rest.dto.FootballMatchOut;
 import my.sport.rest.mapper.FootballMatchMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,29 +26,28 @@ public class FootballMatchController {
     FootballMatchMapper footballMatchMapper;
 
     @GetMapping("/all")
-    public ResponseEntity<FootballMatchDto[]> getAllMatch() {
-        my.sport.rest.dto.FootballMatchDto[] allAvailableFootballMatch = matchService.getAllMatch()
+    public ResponseEntity<FootballMatchOut[]> getAllMatch() {
+        FootballMatchOut[] allAvailableFootballMatch = matchService.getAllMatch()
                 .stream().map(footballMatchMapper::map)
-                .toArray(FootballMatchDto[]::new);
+                .toArray(FootballMatchOut[]::new);
         return ResponseEntity.status(HttpStatus.OK).body(allAvailableFootballMatch);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<FootballMatchDto> getMatch(@PathVariable String id) {
-        FootballMatch footballMatch = matchService
-                .getMatchById(Long.valueOf(id));
+    public ResponseEntity<FootballMatchOut> getMatch(@PathVariable String id) {
+        FootballMatch footballMatch = matchService.getMatchById(Long.valueOf(id));
         if (footballMatch == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        FootballMatchDto footballMatchDto = footballMatchMapper.map(footballMatch);
-        return ResponseEntity.status(HttpStatus.OK).body(footballMatchDto);
+        FootballMatchOut footballMatchOut = footballMatchMapper.map(footballMatch);
+        return ResponseEntity.status(HttpStatus.OK).body(footballMatchOut);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<FootballMatchDto> create(@RequestBody CreateFootballMatchCommandDTO createFootballMatchCommandDTO) {
+    public ResponseEntity<FootballMatchOut> create(@RequestBody CreateFootballMatchCommandDTO createFootballMatchCommandDTO) {
         FootballMatch footballMatch = matchService.createNewMatch(createFootballMatchCommandDTO);
-        FootballMatchDto footballMatchDto = footballMatchMapper.map(footballMatch);
-        return ResponseEntity.status(HttpStatus.CREATED).body(footballMatchDto);
+        FootballMatchOut footballMatchOut = footballMatchMapper.map(footballMatch);
+        return ResponseEntity.status(HttpStatus.CREATED).body(footballMatchOut);
     }
 
     @PutMapping("/join")

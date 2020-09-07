@@ -5,35 +5,18 @@ import my.sport.domain.entity.Player;
 import my.sport.domain.repository.FootballMatchRepository;
 import my.sport.rest.dto.CreateFootballMatchCommandDTO;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FootballMatchService {
+
     FootballMatchRepository footballMatchRepository;
-    @PersistenceContext
-    EntityManager entityManager;
 
     PlayerService playerService;
 
     public FootballMatchService(FootballMatchRepository footballMatchRepository, PlayerService playerService) {
         this.footballMatchRepository = footballMatchRepository;
         this.playerService = playerService;
-    }
-
-    public List<FootballMatch> getAllAvailableFootballMatch() {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<FootballMatch> query = criteriaBuilder.createQuery(FootballMatch.class);
-        Root<FootballMatch> scheduledEventRoot = query.from(FootballMatch.class);
-        Predicate matchPredicate = criteriaBuilder.greaterThanOrEqualTo(scheduledEventRoot.get("startDate"), criteriaBuilder.currentDate());
-        query.select(scheduledEventRoot)
-                .where(matchPredicate);
-        return entityManager.createQuery(query).getResultList();
     }
 
     public List<FootballMatch> getAllMatch() {
@@ -64,5 +47,9 @@ public class FootballMatchService {
 
     public void updateMatch(FootballMatch match) {
         footballMatchRepository.save(match);
+    }
+
+    public boolean hasUserJoinedTheMatch(FootballMatch footballMatch, Player player) {
+        return footballMatch.getParticipants().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
     }
 }

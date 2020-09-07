@@ -54,9 +54,12 @@ public class FootballMatchController {
     public ResponseEntity<HttpStatus> joinTheMatch(@RequestParam String matchId) {
         FootballMatch footballMatch = matchService
                 .getMatchById(Long.valueOf(matchId));
+        if (footballMatch == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         Player currentPlayer = playerService.getSessionPlayer();
-        if (footballMatch.getOwner().getEmail().equals(currentPlayer.getEmail())) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        if(matchService.hasUserJoinedTheMatch(footballMatch, currentPlayer)) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
         }
         footballMatch.getParticipants().add(currentPlayer);
         matchService.updateMatch(footballMatch);

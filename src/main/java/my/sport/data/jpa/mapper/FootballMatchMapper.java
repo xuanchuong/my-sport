@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class FootballMatchMapper {
 
-    private PlayerMapper playerMapper;
+    private final PlayerMapper playerMapper;
 
     public JpaFootballMatch map(FootballMatch source) {
         JpaFootballMatch target = new JpaFootballMatch();
@@ -24,25 +24,22 @@ public class FootballMatchMapper {
         target.setOwner(playerMapper.map(source.getOwner()));
         target.setStartDate(source.getStartDate());
         target.setTitle(source.getTitle());
+        target.setMatchStatus(source.getMatchStatus());
         List<JpaPlayer> participants = new ArrayList<>();
-        source.getParticipants().forEach(player -> {
-            participants.add(playerMapper.map(player));
-        });
+        source.getParticipants().forEach(player -> participants.add(playerMapper.map(player)));
         target.setPaticipants(participants);
         return target;
     }
 
     public FootballMatch map(JpaFootballMatch source) {
         List<Player> participants = new ArrayList<>();
-        source.getPaticipants().forEach(player -> {
-            participants.add(playerMapper.map(player));
-        });
+        source.getPaticipants().forEach(player -> participants.add(playerMapper.map(player)));
         return FootballMatch.builder()
                 .id(source.getId())
                 .description(source.getDescription())
                 .location(source.getLocation())
                 .numberOfPlayers(source.getNumberOfPlayers())
-
+                .matchStatus(source.getMatchStatus())
                 .owner(playerMapper.map(source.getOwner()))
                 .startDate(source.getStartDate())
                 .title(source.getTitle())

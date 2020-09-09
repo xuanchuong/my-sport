@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import my.sport.domain.vo.MatchStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -21,5 +22,6 @@ public class FootballMatchOut {
 	String title;
 	String description;
 	int numberOfPlayers;
+	MatchStatus matchStatus;
 	List<UserOutDTO> participants;
 }

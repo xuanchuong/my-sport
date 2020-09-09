@@ -3,6 +3,7 @@ package my.sport.application.service;
 import my.sport.domain.entity.FootballMatch;
 import my.sport.domain.entity.Player;
 import my.sport.domain.repository.FootballMatchRepository;
+import my.sport.domain.vo.MatchStatus;
 import my.sport.rest.dto.CreateFootballMatchCommandDTO;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class FootballMatchService {
                 .numberOfPlayers(matchDto.getNumberOfPlayers())
                 .participants(new ArrayList<>())
                 .owner(currentPlayer)
+                .matchStatus(MatchStatus.READY)
                 .build();
         return footballMatchRepository.save(footballMatch);
     }
@@ -58,5 +60,18 @@ public class FootballMatchService {
 
     public boolean hasUserJoinedTheMatch(FootballMatch footballMatch, Player player) {
         return footballMatch.getParticipants().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
+    }
+
+    public boolean cancel(FootballMatch footballMatch, Player currentPlayer) {
+        if (!isMatchOwner(footballMatch, currentPlayer)) {
+            return false;
+        }
+        FootballMatch updatingMatch = footballMatch.toBuilder().matchStatus(MatchStatus.CANCEL).build();
+        updateMatch(updatingMatch);
+        return true;
+    }
+
+    private boolean isMatchOwner(FootballMatch footballMatch, Player currentPlayer) {
+        return footballMatch.getOwner().getId().equals(currentPlayer.getId());
     }
 }

@@ -27,10 +27,8 @@ public class FootballMatchController {
 
     @GetMapping("/all")
     public ResponseEntity<FootballMatchOut[]> getAllMatch() {
-        FootballMatchOut[] allAvailableFootballMatch = matchService.getAllMatch()
-                .stream().map(footballMatchMapper::map)
-                .toArray(FootballMatchOut[]::new);
-        return ResponseEntity.status(HttpStatus.OK).body(allAvailableFootballMatch);
+        FootballMatchOut[] responseBody = footballMatchMapper.map(matchService.getAllMatch());
+        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 
     @GetMapping(value = "/{id}")
@@ -68,8 +66,7 @@ public class FootballMatchController {
 
     @PutMapping("/leave")
     public ResponseEntity<FootballMatchOut> leaveTheMatch(@RequestParam String matchId) {
-        FootballMatch footballMatch = matchService
-                .getMatchById(Long.valueOf(matchId));
+        FootballMatch footballMatch = matchService.getMatchById(Long.valueOf(matchId));
         if (footballMatch == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -85,6 +82,15 @@ public class FootballMatchController {
     public ResponseEntity<Boolean> deleteMatch(@RequestParam String id) {
         matchService.deleteMatch(Long.valueOf(id));
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(Boolean.TRUE);
+    }
+
+    @PutMapping("/cancel")
+    public ResponseEntity<HttpStatus> cancelTheMatch(@RequestParam String matchId) {
+        FootballMatch footballMatch = matchService.getMatchById(Long.valueOf(matchId));
+        Player currentPlayer = playerService.getSessionPlayer();
+        matchService.cancel(footballMatch, currentPlayer);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+
     }
 
 }

@@ -8,6 +8,7 @@ import my.sport.rest.dto.CreateFootballMatchCommandDTO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FootballMatchService {
 
@@ -21,7 +22,8 @@ public class FootballMatchService {
     }
 
     public List<FootballMatch> getAllMatch() {
-        return footballMatchRepository.findAll();
+        return footballMatchRepository.findAll().stream().filter(match -> match.getMatchStatus() == MatchStatus.READY)
+                .collect(Collectors.toList());
     }
 
     public FootballMatch getMatchById(Long id) {

@@ -12,7 +12,6 @@ public class MySportSpringApplicationLocal{
 
 	public static void main(String[] args) {
 		SpringApplication springApp = new SpringApplication(MySportSpringApplicationLocal.class);
-		springApp.setAdditionalProfiles("pg-to-local");
 		springApp.run(args);
 	}
 }

@@ -1,0 +1,23 @@
+.match-container {
+    .match-table {
+        .match-table-body {
+            display: flex;
+            flex-wrap: wrap;
+            .match-item-wrapper {
+                width: 30%;
+                margin: 20px;
+                max-width: 320px;
+                .match-item {
+                    background-color: #fff;
+                    border: solid 1px #dce0e6;
+                    padding: 1.5em;
+                    &:hover {
+                        cursor: pointer;
+                        border-color: #1ba0e2;
+                    }
+                    
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.layout-wrapper {
+	.layout-main {
+		@include transition(margin-left $transitionDuration);
+		@include box-sizing(border-box); 
+		.layout-footer {
+			padding:16px24px;
+			border: 0 none;
+			border: 1px solid$dividerColor;
+			background-color: $primaryColor; 
+			i {
+				&::before {
+					color: $footerIconColor;
+				}
+			}
+			span {
+				color: $footerTextColor;
+			}
+			.container {
+				display: flex;
+				justify-content: space-between;
+				.footer-links {
+					display: flex;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head th:insert="template.html :: headerfiles"></head>
+	<body>
+		<div class="layout-wrapper">
+			<div class="layout-main">
+				<div th:insert="template.html :: header"></div>
+				<div class="container layout-content">
+					<div th:if="${not #lists.isEmpty(availableMatches)}" class="match-container">
+						<h2>Matches recommended for you</h2>
+						<table class="match-table">
+							<tbody class="match-table-body">
+								<tr th:each="match : ${availableMatches}" class="match-item-wrapper">
+										<td class="match-item" >
+											<div th:text="${match.title}"></div>
+											<div>31/12</div>
+											<div th:text="${match.description}"></div>
+										</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<head th:insert="template.html :: footer-js"></head>
+	</body>
+</html>

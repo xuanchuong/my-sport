@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head th:insert="template.html :: headerfiles"></head>
+	<body>
+		<div class="layout-wrapper">
+			<div class="layout-main">
+				<div th:insert="template.html :: header"></div>
+					<div class="container layout-content">
+						<h1>Create your match</h1>
+						<form name="create-match-form" method="post">
+							<fieldset>
+								<div th:if="${param.error}" class="alert alert-error">Invalid
+									username and password.</div>
+								<div th:if="${param.logout}" class="alert alert-success">You
+									have been logged out.</div>
+								<label for="number-players">số lượng cầu thủ</label> 
+								<input type="number" id="number-players" name="number-players" /> 
+								<label for="start-time">Thời gian</label>
+								<input type="date" id="start-time" name="start-time" />
+							</fieldset>
+							<button type="submit" class="btn">Tạo</button>
+						</form>
+					</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head th:insert="template.html :: headerfiles"></head>
+	<body>
+		<div class="layout-wrapper">
+			<div class="layout-main">
+				<div th:insert="template.html :: header"></div>
+				<div class="container layout-content">
+					
+					<div class="player-info" th:if="${player != null}">
+						<label th:text="${player.firstName}"></label>
+						<label th:text="${player.lastName}"></label>
+						<label th:text="${player.description}"></label>
+					</div>
+					
+					<div class="player-not-found" th:if="${player == null}">
+						<h3>Player not found</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<head th:insert="template.html :: footer-js"></head>
+	</body>
+</html>

@@ -42,7 +42,6 @@ public class PlayerService {
                 .lastName(createUserCommandDTO.getLastName())
                 .password(passwordEncoder.encode(createUserCommandDTO.getPassword()))
                 .roles(Collections.singletonList(roleRepository.findByName("PLAYER")))
-                .phoneNumber(createUserCommandDTO.getPhoneNumber())
                 .build();
         return playerRepository.save(player);
     }

@@ -34,6 +34,6 @@ public class RegisterController {
             return new ModelAndView("register", "user", userDto);
         }
         playerService.add(userDto);
-        return new ModelAndView("login");
+        return new ModelAndView("redirect:/login");
     }
 }

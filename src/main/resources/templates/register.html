@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-	<head th:insert="template.html :: headerfiles"></head>
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head th:insert="template.html :: headerfiles">
+		<title>my football - register</title>
+	</head>
 	<body>
 		<div class="layout-wrapper">
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 				<div class="container layout-content">
 					<form name="f" th:object="${user}" th:action="@{/register}"
-						method="post" class="login-form" enctype="utf8">
+						method="post" class="login-form" enctype="multipart/form-data">
 						<div class="login-wrapper">
 							<div class="first-name login-item">
 								<label for="firstName">First Name</label>
@@ -24,11 +26,6 @@
 								<label for="email">Email</label>
 								<input type="email" id="email" name="email" th:field="*{email}"/>
 								<p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
-							</div>
-							<div class="login-item">
-								<label for="phone">Email</label>
-								<input type="text" id="phone" name="phone" th:field="*{phoneNumber}"/>
-								<p th:each="error: ${#fields.errors('phoneNumber')}" th:text="${error}">Validation error</p>
 							</div>
 							<div class="password login-item">
 								<label for="password">Password</label>
@@ -50,6 +47,6 @@
 				</div>
 			</div>
 		</div>
-		<head th:insert="template.html :: footer-js"></head>
+		<footer th:insert="template.html :: footer-js"></footer>
 	</body>
 </html>

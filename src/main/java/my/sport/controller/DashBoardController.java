@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import my.sport.application.service.FootballMatchService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ public class DashBoardController {
 
 	@GetMapping
 	public String myContact(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println(auth.getName());
 		model.addAttribute("availableMatches", matchService.getAllMatch());
 		return "dashboard";
 	}

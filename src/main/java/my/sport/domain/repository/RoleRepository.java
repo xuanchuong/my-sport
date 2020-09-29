@@ -6,4 +6,6 @@ public interface RoleRepository {
 
 	Role findByName(String name);
 
+	Role saveRole(Role role);
+
 }

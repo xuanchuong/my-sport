@@ -8,11 +8,16 @@ import my.sport.domain.repository.RoleRepository;
 @AllArgsConstructor
 public class RoleRepositoryAdapter implements RoleRepository {
 
-    private RoleJpaRepository roleJpaRepository;
-    private RoleMapper roleMapper;
+    private final RoleJpaRepository roleJpaRepository;
+    private final RoleMapper roleMapper;
 
     @Override
     public Role findByName(String name) {
         return null;
+    }
+
+    @Override
+    public Role saveRole(Role role) {
+        return roleMapper.map(roleJpaRepository.save(roleMapper.map(role)));
     }
 }

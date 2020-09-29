@@ -25,14 +25,15 @@
 								<input type="email" id="email" name="email" th:field="*{email}"/>
 								<p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
 							</div>
+							<div class="login-item">
+								<label for="phone">Email</label>
+								<input type="text" id="phone" name="phone" th:field="*{phoneNumber}"/>
+								<p th:each="error: ${#fields.errors('phoneNumber')}" th:text="${error}">Validation error</p>
+							</div>
 							<div class="password login-item">
 								<label for="password">Password</label>
 								<input type="password" id="password" name="password" th:field="*{password}"/>
 								<p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
-							</div>
-							<div class="confirm-password login-item">
-								<label for="confirmPassword">Confirm Password</label>
-								<input type="password" id="confirmPassword" name="confirmPassword" th:field="*{matchingPassword}"/>
 							</div>
 							<div class="form-actions">
 								<div class="login-bt">

@@ -13,7 +13,8 @@
 			<div th:if="${not #lists.isEmpty(availableMatches)}" class="match-container">
 				<h2>Matches recommended for you</h2>
 				<div class="match-list">
-					<div th:each="match : ${availableMatches}" class="match-item">
+					<div th:each="match : ${availableMatches}" class="match-item"
+						 th:onclick="'window.location.href=\'/match/detail?id=' + ${match.id} + '\''">
 						<div th:text="${match.title}"></div>
 						<div>31/12</div>
 						<div th:text="${match.description}"></div>

@@ -18,6 +18,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<resources.directory.css>${project.basedir}/src/main/resources/static/css</resources.directory.css>
 		<resources.directory.scss>${project.basedir}/src/main/resources/static/scss</resources.directory.scss>
 		<org.mapstruct.version>1.3.0.Final</org.mapstruct.version>

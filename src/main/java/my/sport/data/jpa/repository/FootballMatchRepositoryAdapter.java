@@ -6,15 +6,15 @@ import my.sport.data.jpa.mapper.FootballMatchMapper;
 import my.sport.domain.entity.FootballMatch;
 import my.sport.domain.repository.FootballMatchRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class FootballMatchRepositoryAdapter implements FootballMatchRepository {
 
-    private FootballMatchJpaRepository footballMatchJpaRepository;
-    private FootballMatchMapper footballMatchMapper;
+    private final FootballMatchJpaRepository footballMatchJpaRepository;
+    private final FootballMatchMapper footballMatchMapper;
 
     @Override
     public FootballMatch save(FootballMatch footballMatch) {
@@ -34,9 +34,8 @@ public class FootballMatchRepositoryAdapter implements FootballMatchRepository {
 
     @Override
     public List<FootballMatch> findAll() {
-        List<FootballMatch> result = new ArrayList<>();
-        footballMatchJpaRepository.findAll().forEach(jpaFootballMatch -> result.add(footballMatchMapper.map(jpaFootballMatch)));
-        return result;
+        return footballMatchJpaRepository.findAll().stream().map(footballMatchMapper::map)
+                .collect(Collectors.toList());
     }
 
     @Override

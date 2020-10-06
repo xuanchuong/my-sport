@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import my.sport.application.service.PlayerService;
 import my.sport.domain.entity.Player;
-import my.sport.rest.dto.CreateUserCommandDTO;
 import my.sport.rest.dto.UpdateUserCommandDTO;
 import my.sport.rest.dto.UserOutDTO;
 import my.sport.rest.mapper.UserMapper;
@@ -43,16 +42,6 @@ public class PlayerController {
 		}
 		UserOutDTO userOutDTO = userMapper.map(playerOptional.get());
 		return ResponseEntity.ok(userOutDTO);
-	}
-
-	@PostMapping("/create")
-	public ResponseEntity<UserOutDTO> createUser(@RequestBody CreateUserCommandDTO createUserCommandDTO) {
-		if (playerService.getPlayerByEmail(createUserCommandDTO.getEmail()) != null) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).build();
-		}
-		Player player = playerService.add(createUserCommandDTO);
-		UserOutDTO userOutDTO = userMapper.map(player);
-		return ResponseEntity.status(HttpStatus.CREATED).body(userOutDTO);
 	}
 
 	@DeleteMapping

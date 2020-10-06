@@ -2,6 +2,7 @@ package my.sport.controller;
 
 import lombok.AllArgsConstructor;
 import my.sport.application.service.PlayerService;
+import my.sport.controller.mapper.PlayerControllerMapper;
 import my.sport.rest.dto.CreateUserCommandDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 public class RegisterController {
 
     private final PlayerService playerService;
+    private final PlayerControllerMapper playerMapper;
 
     @GetMapping()
     public String showRegistrationForm(Model model) {
@@ -29,11 +31,11 @@ public class RegisterController {
     }
 
     @PostMapping
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid CreateUserCommandDTO userDto, BindingResult resutl) {
-        if (resutl.hasErrors()) {
+    public ModelAndView registerUserAccount(@Valid @ModelAttribute("user") CreateUserCommandDTO userDto, BindingResult result) {
+        if (result.hasErrors()) {
             return new ModelAndView("register", "user", userDto);
         }
-        playerService.add(userDto);
+        playerService.add(playerMapper.map(userDto));
         return new ModelAndView("redirect:/login");
     }
 }

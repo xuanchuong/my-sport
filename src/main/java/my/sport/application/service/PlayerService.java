@@ -5,7 +5,7 @@ import my.sport.domain.entity.PasswordResetToken;
 import my.sport.domain.entity.Player;
 import my.sport.domain.entity.Role;
 import my.sport.domain.repository.*;
-import my.sport.rest.dto.CreateUserCommandDTO;
+import my.sport.domain.vo.CreateUserCommand;
 import my.sport.rest.dto.UpdateUserCommandDTO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,16 +36,19 @@ public class PlayerService {
     }
 
     @Transactional
-    public Player add(CreateUserCommandDTO createUserCommandDTO) {
+    public Player add(CreateUserCommand createUserCommand) {
+        if (!createUserCommand.isValid()) {
+            throw new IllegalArgumentException("createUserCommand's fields are missing");
+        }
         Role role = roleRepository.findByName("PLAYER");
         if (role == null) {
             role = roleRepository.saveRole(Role.builder().name("PLAYER").build());
         }
         Player player = Player.builder()
-                .email(createUserCommandDTO.getEmail())
-                .firstName(createUserCommandDTO.getFirstName())
-                .lastName(createUserCommandDTO.getLastName())
-                .password(passwordEncoder.encode(createUserCommandDTO.getPassword()))
+                .email(createUserCommand.getEmail())
+                .firstName(createUserCommand.getFirstName())
+                .lastName(createUserCommand.getLastName())
+                .password(passwordEncoder.encode(createUserCommand.getPassword()))
                 .roles(Collections.singletonList(role))
                 .build();
         return playerRepository.save(player);

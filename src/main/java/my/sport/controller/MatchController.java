@@ -37,8 +37,8 @@ public class MatchController {
 	}
 	
 	@PostMapping("/create")
-	public ModelAndView creatingMatch(@ModelAttribute("match") @Valid CreateFootballMatchCommandDTO footballMatchDTO, BindingResult resutl) {
-		if (resutl.hasErrors()) {
+	public ModelAndView creatingMatch(@Valid CreateFootballMatchCommandDTO footballMatchDTO, BindingResult result) {
+		if (result.hasErrors()) {
 			return new ModelAndView("createMatchForm", MATCH_ATTR, footballMatchDTO);
 		}
 		matchService.createNewMatch(matchMapper.map(footballMatchDTO));

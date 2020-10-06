@@ -2,20 +2,33 @@ package my.sport.application.service;
 
 import my.sport.domain.entity.FootballMatch;
 import my.sport.domain.entity.Player;
+import my.sport.domain.repository.FootballMatchRepository;
+import my.sport.domain.vo.CreateFootballMatchCommand;
+import my.sport.domain.vo.MatchStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Collections;
+import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.util.DateUtil.now;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FootballMatchServiceTest {
 
     @InjectMocks
     private FootballMatchService footballMatchService;
+    @Mock
+    private PlayerService playerService;
+    @Mock
+    private FootballMatchRepository footballMatchRepository;
 
     @Test
     public void hasUserJoinedTheMatch_there_is_empty_participants_should_return_false() {
@@ -48,5 +61,46 @@ public class FootballMatchServiceTest {
                 .build();
         // Then
         assertThat(footballMatchService.hasUserJoinedTheMatch(footballMatch, player)).isFalse();
+    }
+
+    @Test
+    public void createNewMatch_should_not_allow_to_create_invalid_match() {
+        // Given
+        CreateFootballMatchCommand createFootballMatchCommand = mock(CreateFootballMatchCommand.class);
+        when(createFootballMatchCommand.isValid()).thenReturn(false);
+        // When
+        Throwable throwable = catchThrowable(() -> footballMatchService.createNewMatch(createFootballMatchCommand));
+        // Then
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable.getMessage()).isEqualTo("matchDto's fields are missing");
+    }
+
+    @Test
+    public void createNewMatch_should_create_successfully() {
+        // Given
+        Date startDate = now();
+        CreateFootballMatchCommand createFootballMatchCommand = CreateFootballMatchCommand.builder()
+                .description("description")
+                .location("location")
+                .numberOfPlayers(10)
+                .startDate(startDate)
+                .title("title")
+                .build();
+        Player sessionPlayer = mock(Player.class);
+        when(playerService.getSessionPlayer()).thenReturn(sessionPlayer);
+        ArgumentCaptor<FootballMatch> argumentCaptor = ArgumentCaptor.forClass(FootballMatch.class);
+        // When
+        footballMatchService.createNewMatch(createFootballMatchCommand);
+        // Then
+        verify(footballMatchRepository).save(argumentCaptor.capture());
+        FootballMatch result = argumentCaptor.getValue();
+        assertThat(result.getDescription()).isEqualTo("description");
+        assertThat(result.getLocation()).isEqualTo("location");
+        assertThat(result.getTitle()).isEqualTo("title");
+        assertThat(result.getNumberOfPlayers()).isEqualTo(10);
+        assertThat(result.getMatchStatus()).isEqualTo(MatchStatus.READY);
+        assertThat(result.getOwner()).isEqualTo(sessionPlayer);
+        assertThat(result.getParticipants()).isEmpty();
+        assertThat(result.getStartDate()).isEqualTo(startDate);
     }
 }

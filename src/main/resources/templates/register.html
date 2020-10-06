@@ -9,7 +9,7 @@
 			<div class="layout-main">
 				<div th:insert="template.html :: header"></div>
 				<div class="container layout-content">
-					<form name="f" th:object="${user}" th:action="@{/match}"
+					<form name="f" th:object="${user}" th:action="@{/register}"
 						method="post" class="login-form" enctype="multipart/form-data">
 						<div class="login-wrapper">
 							<div class="first-name login-item">

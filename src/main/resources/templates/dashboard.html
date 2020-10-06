@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
+<head th:insert="template.html :: headerfiles">
+	<title>my football - dashboard</title>
+</head>
+<body>
+<div class="layout-wrapper">
+	<div class="layout-main">
+		<div th:insert="template.html :: header"></div>
+		<div class="container layout-content">
+			<div th:if="${not #lists.isEmpty(availableMatches)}" class="match-container">
+				<h2>Matches recommended for you</h2>
+				<div class="match-list">
+					<div th:each="match : ${availableMatches}" class="match-item"
+						 th:onclick="'window.location.href=\'/match/detail?id=' + ${match.id} + '\''">
+						<div th:text="${match.title}"></div>
+						<div>31/12</div>
+						<div th:text="${match.description}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer th:insert="template.html :: footer-js"></footer>
+</body>
+</html>

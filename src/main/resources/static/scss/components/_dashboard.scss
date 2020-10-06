@@ -1,0 +1,21 @@
+.match-container {
+  .match-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .match-item {
+      width: 30%;
+      margin: 20px;
+      max-width: 320px;
+      background-color: #fff;
+      border: solid 1px #dce0e6;
+      padding: 1.5em;
+
+      &:hover {
+        cursor: pointer;
+        border-color: #1ba0e2;
+      }
+
+    }
+  }
+}

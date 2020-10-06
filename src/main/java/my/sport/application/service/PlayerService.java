@@ -3,6 +3,7 @@ package my.sport.application.service;
 import lombok.AllArgsConstructor;
 import my.sport.domain.entity.PasswordResetToken;
 import my.sport.domain.entity.Player;
+import my.sport.domain.entity.Role;
 import my.sport.domain.repository.*;
 import my.sport.rest.dto.CreateUserCommandDTO;
 import my.sport.rest.dto.UpdateUserCommandDTO;
@@ -36,13 +37,16 @@ public class PlayerService {
 
     @Transactional
     public Player add(CreateUserCommandDTO createUserCommandDTO) {
+        Role role = roleRepository.findByName("PLAYER");
+        if (role == null) {
+            role = roleRepository.saveRole(Role.builder().name("PLAYER").build());
+        }
         Player player = Player.builder()
                 .email(createUserCommandDTO.getEmail())
                 .firstName(createUserCommandDTO.getFirstName())
                 .lastName(createUserCommandDTO.getLastName())
                 .password(passwordEncoder.encode(createUserCommandDTO.getPassword()))
-                .roles(Collections.singletonList(roleRepository.findByName("PLAYER")))
-                .phoneNumber(createUserCommandDTO.getPhoneNumber())
+                .roles(Collections.singletonList(role))
                 .build();
         return playerRepository.save(player);
     }

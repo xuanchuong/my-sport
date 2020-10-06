@@ -9,6 +9,7 @@ import java.util.Date;
 @Entity
 @Setter
 @Getter
+@Table(name = "password_reset_token")
 public class PasswordResetTokenJpa {
 
     @Id
@@ -21,5 +22,6 @@ public class PasswordResetTokenJpa {
     @JoinColumn(nullable = false, name = "user_id")
     private JpaPlayer player;
 
+    @Column(name = "expiry_date")
     private Date expiryDate;
 }

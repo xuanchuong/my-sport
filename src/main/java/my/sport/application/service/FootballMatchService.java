@@ -3,8 +3,8 @@ package my.sport.application.service;
 import my.sport.domain.entity.FootballMatch;
 import my.sport.domain.entity.Player;
 import my.sport.domain.repository.FootballMatchRepository;
+import my.sport.domain.vo.CreateFootballMatchCommand;
 import my.sport.domain.vo.MatchStatus;
-import my.sport.rest.dto.CreateFootballMatchCommandDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 public class FootballMatchService {
 
     FootballMatchRepository footballMatchRepository;
-
     PlayerService playerService;
 
     public FootballMatchService(FootballMatchRepository footballMatchRepository, PlayerService playerService) {
@@ -30,7 +29,10 @@ public class FootballMatchService {
         return footballMatchRepository.findById(id).orElse(null);
     }
 
-    public FootballMatch createNewMatch(CreateFootballMatchCommandDTO matchDto) {
+    public FootballMatch createNewMatch(CreateFootballMatchCommand matchDto) {
+        if (!matchDto.isValid()) {
+            throw new IllegalArgumentException("matchDto's fields are missing");
+        }
         Player currentPlayer = playerService.getSessionPlayer();
         FootballMatch footballMatch = FootballMatch.builder()
                 .title(matchDto.getTitle())
@@ -64,13 +66,12 @@ public class FootballMatchService {
         return footballMatch.getParticipants().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
     }
 
-    public boolean cancel(FootballMatch footballMatch, Player currentPlayer) {
+    public void cancel(FootballMatch footballMatch, Player currentPlayer) {
         if (!isMatchOwner(footballMatch, currentPlayer)) {
-            return false;
+            return;
         }
         FootballMatch updatingMatch = footballMatch.toBuilder().matchStatus(MatchStatus.CANCEL).build();
         updateMatch(updatingMatch);
-        return true;
     }
 
     private boolean isMatchOwner(FootballMatch footballMatch, Player currentPlayer) {

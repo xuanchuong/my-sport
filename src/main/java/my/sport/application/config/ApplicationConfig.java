@@ -25,8 +25,4 @@ public class ApplicationConfig {
                 passwordTokenRepository);
     }
 
-    @Bean
-    public UserDetailsService userDetailsService(PlayerRepository playerRepository) {
-        return new UserDetailsServiceImpl(playerRepository);
-    }
 }

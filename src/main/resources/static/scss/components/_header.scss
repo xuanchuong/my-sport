@@ -1,0 +1,45 @@
+.layout-wrapper {
+	.layout-main {
+		.layout-topbar {
+			position: fixed;
+			top: 0;
+			left:0;
+			transition: all 0.5s;
+			z-index: 9998;
+			&.scrollUp {
+				transform: translateY(-120px);
+			}
+			background-color: $topbarBgColor;
+			padding: 0;
+			width: 100%;
+			@include box-sizing(border-box);
+			z-index: 999997;
+			.masthead-wrap {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				list-style-type: none;
+				.my-avatar {
+					img {
+						height: 72px;
+					}
+				}
+				.left-side-navigator-bar {
+					justify-content: center;
+					ul {
+						.selected {
+							border-bottom-style: solid;
+							border-bottom-color: #0052CC;
+						}
+						a {
+							color: #42526E;
+							font-size: 1.5em;
+
+						}
+					}
+					
+				}
+			}
+		}
+	}
+}

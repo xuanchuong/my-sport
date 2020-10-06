@@ -28,7 +28,7 @@ public class JpaPlayer {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "phone_number", unique = true)
+	@Column(name = "phone_number")
 	private String phoneNumber;
 
 	@Column(name = "first_name")

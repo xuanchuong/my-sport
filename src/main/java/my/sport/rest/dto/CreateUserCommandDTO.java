@@ -20,7 +20,4 @@ public class CreateUserCommandDTO {
     @NotBlank
     @Email
     private String email;
-
-    @NotBlank
-    private String phoneNumber;
 }

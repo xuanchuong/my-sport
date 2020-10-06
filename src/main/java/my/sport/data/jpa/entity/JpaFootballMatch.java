@@ -31,7 +31,7 @@ public class JpaFootballMatch {
 	private String title;
 	@Column
 	private String description;
-	@Column
+	@Column(name = "number_of_player")
 	private int numberOfPlayers;
 	@Enumerated
 	@Column (name = "match_status")

@@ -7,11 +7,7 @@ import my.sport.rest.dto.CreateUserCommandDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -31,11 +27,11 @@ public class RegisterController {
     }
 
     @PostMapping
-    public ModelAndView registerUserAccount(@Valid @ModelAttribute("user") CreateUserCommandDTO userDto, BindingResult result) {
+    public String registerUserAccount(@Valid @ModelAttribute("user") CreateUserCommandDTO userDto, BindingResult result) {
         if (result.hasErrors()) {
-            return new ModelAndView("register", "user", userDto);
+            return "register";
         }
         playerService.add(playerMapper.map(userDto));
-        return new ModelAndView("redirect:/login");
+        return "redirect:/login";
     }
 }

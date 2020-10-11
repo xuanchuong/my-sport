@@ -16,7 +16,9 @@
 					<div th:each="match : ${availableMatches}" class="match-item"
 						 th:onclick="'window.location.href=\'/match/detail?id=' + ${match.id} + '\''">
 						<div th:text="${match.title}"></div>
-						<div>31/12</div>
+						<div>
+							<label th:text="${#temporals.format(match.startDate,'dd/MMM/yyyy HH:mm a')}"></label>
+						</div>
 						<div th:text="${match.description}"></div>
 					</div>
 				</div>

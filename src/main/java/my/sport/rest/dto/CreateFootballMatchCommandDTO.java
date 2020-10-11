@@ -8,6 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -15,8 +17,8 @@ import java.util.Date;
 @Setter
 public class CreateFootballMatchCommandDTO {
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    Date startDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    LocalDateTime startDate;
     @NotEmpty
     String location;
     @NotEmpty

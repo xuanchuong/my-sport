@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import my.sport.domain.vo.MatchStatus;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -24,7 +24,7 @@ public class JpaFootballMatch {
 	@JoinColumn(name="owner_id", nullable=false)
 	private JpaPlayer owner;
 	@Column(name = "start_date")
-	private Date startDate;
+	private LocalDateTime startDate;
 	@Column(name = "location")
 	private String location;
 	@Column

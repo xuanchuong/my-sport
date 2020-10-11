@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import my.sport.domain.vo.MatchStatus;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder(toBuilder = true)
@@ -13,7 +13,7 @@ public class FootballMatch {
 
 	private final Long id;
 	private final Player owner;
-	private final Date startDate;
+	private final LocalDateTime startDate;
 	private final String location;
 	private final String title;
 	private final String description;

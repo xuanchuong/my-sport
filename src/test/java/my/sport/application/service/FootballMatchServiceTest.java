@@ -12,12 +12,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.assertj.core.util.DateUtil.now;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -78,7 +77,7 @@ public class FootballMatchServiceTest {
     @Test
     public void createNewMatch_should_create_successfully() {
         // Given
-        Date startDate = now();
+        LocalDateTime startDate = LocalDateTime.now();
         CreateFootballMatchCommand createFootballMatchCommand = CreateFootballMatchCommand.builder()
                 .description("description")
                 .location("location")

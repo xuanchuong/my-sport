@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.codehaus.plexus.util.StringUtils;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.function.BooleanSupplier;
 import java.util.stream.Stream;
@@ -14,7 +15,7 @@ import java.util.stream.Stream;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Getter
 public class CreateFootballMatchCommand {
-    Date startDate;
+    LocalDateTime startDate;
     String location;
     String title;
     String description;

@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-item">
                             <label for="start-time">Thời gian</label>
-                            <input type="date" id="start-time" name="start-time" th:field="*{startDate}"/>
+                            <input type="datetime-local" data-format="dd/MM/yyyy hh:mm" id="start-time" name="start-time" th:field="*{startDate}"/>
                             <p class="error-message" th:each="error: ${#fields.errors('startDate')}" th:text="${error}"></p>
                         </div>
                     </div>

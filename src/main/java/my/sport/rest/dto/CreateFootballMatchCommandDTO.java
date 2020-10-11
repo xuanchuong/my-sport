@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
@@ -22,6 +23,7 @@ public class CreateFootballMatchCommandDTO {
     String title;
     @NotEmpty
     String description;
+    @Min(10)
     int numberOfPlayers;
 
 }

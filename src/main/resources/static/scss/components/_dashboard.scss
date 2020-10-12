@@ -6,10 +6,12 @@ $breakpoint-desktop: 1024px;
   .match-list {
     display: flex;
     flex-wrap: wrap;
+
     .match-item {
       background-color: #fff;
       border: solid 1px #dce0e6;
       padding: 1.5em;
+
       .match-header {
         display: flex;
         justify-content: space-between;
@@ -35,9 +37,9 @@ $breakpoint-desktop: 1024px;
     }
   }
 }
-
-
-@media (max-width: 400px) {
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
   .match-container {
     .match-list {
       .match-item {
@@ -55,10 +57,12 @@ $breakpoint-desktop: 1024px;
         width: 30%;
         margin: 20px;
         max-width: 320px;
+
         &:hover {
           cursor: pointer;
           border-color: #1ba0e2;
         }
+
         .match-header {
           label {
             font-size: 18px;

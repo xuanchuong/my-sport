@@ -1,21 +1,80 @@
+$breakpoint-phone: 640px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
 .match-container {
   .match-list {
     display: flex;
     flex-wrap: wrap;
-
     .match-item {
-      width: 30%;
-      margin: 20px;
-      max-width: 320px;
       background-color: #fff;
       border: solid 1px #dce0e6;
       padding: 1.5em;
+      .match-header {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: rgba(0, 0, 0, 0.2);
 
-      &:hover {
-        cursor: pointer;
-        border-color: #1ba0e2;
+        label {
+          font-size: 2em;
+        }
       }
 
+      .match-body {
+        .match-body-item {
+          margin-top: 10px;
+
+          label {
+            font-size: 2em;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 400px) {
+  .match-container {
+    .match-list {
+      .match-item {
+        width: 100%;
+        margin-top: 3em;
+      }
+    }
+  }
+}
+
+@media(min-width: $breakpoint-desktop) {
+  .match-container {
+    .match-list {
+      .match-item {
+        width: 30%;
+        margin: 20px;
+        max-width: 320px;
+        &:hover {
+          cursor: pointer;
+          border-color: #1ba0e2;
+        }
+        .match-header {
+          label {
+            font-size: 18px;
+          }
+        }
+
+        .match-body {
+          .match-body-item {
+            margin-top: 10px;
+
+            label {
+              font-size: 18px;
+            }
+          }
+        }
+      }
     }
   }
 }

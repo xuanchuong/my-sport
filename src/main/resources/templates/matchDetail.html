@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	lang="en">
-	<head th:insert="template.html :: headerfiles">
-		<title>my football - match detail</title>
-	</head>
-	<body>
-		<div class="layout-wrapper">
-			<div class="layout-main">
-				<div th:insert="template.html :: header"></div>
-				<div class="container layout-content">
-					<div class="match-info" th:if="${match != null}">
+	  xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
+<head th:insert="template.html :: headerfiles">
+	<title>my football - match detail</title>
+</head>
+<body>
+<div class="layout-wrapper">
+	<div class="layout-main">
+		<div th:insert="template.html :: header"></div>
+		<div class="container layout-content">
+			<div class="match-detail" th:if="${match != null}">
+				<div class="match-detail-item match-info">
+					<div class="item">
 						<label th:text="${match.title}"></label>
+					</div>
+					<div class="item">
 						<label th:text="${#temporals.format(match.startDate,'dd/MMM/yyyy HH:mm a')}"></label>
+					</div>
+					<div class="item">
 						<label th:text="${match.location}"></label>
-						<form name="match-info-form" method="post" th:action="@{join(id=${match.id})}">
-							<button type="submit">join the match</button>
-						</form>
+					</div>
+				</div>
+				<div class="match-detail-item owner">
+					<div class="avatar">
+
+					</div>
+					<div class="contact item">
+						<label th:text="${match.owner.getEmail()}">Email: </label>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-		<footer th:insert="template.html :: footer-js"></footer>
-	</body>
+	</div>
+</div>
+
+<footer th:insert="template.html :: footer-js"></footer>
+</body>
 </html>

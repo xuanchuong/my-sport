@@ -13,18 +13,27 @@
 			<div class="match-detail" th:if="${match != null}">
 				<div class="match-detail-item match-info">
 					<div class="item">
+						<label><strong>Thông tin trận đấu:</strong></label>
+					</div>
+					<div class="item">
 						<label th:text="${match.title}"></label>
 					</div>
 					<div class="item">
+						<label>Thời gian: </label>
 						<label th:text="${#temporals.format(match.startDate,'dd/MMM/yyyy HH:mm a')}"></label>
 					</div>
 					<div class="item">
+						<label>Địa điểm: </label>
 						<label th:text="${match.location}"></label>
+					</div>
+					<div class="item">
+						<label>Mô tả: </label>
+						<label th:text="${match.description}"></label>
 					</div>
 				</div>
 				<div class="match-detail-item owner">
-					<div class="avatar">
-
+					<div class="item">
+						<label><strong>Chủ trận đấu:</strong></label>
 					</div>
 					<div class="contact item">
 						<label th:text="${match.owner.getEmail()}">Email: </label>

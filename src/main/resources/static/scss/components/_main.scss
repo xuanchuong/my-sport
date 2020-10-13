@@ -12,38 +12,6 @@
 			padding: 17px 17px 24px 17px;
 			&.layout-content {
 				margin-top: 120px;
-				.contact {
-					.say-hi {
-						> .c {
-							font-size: 144px;
-							font-weight: 400;
-							line-height: 144px;
-							opacity: 0.2;
-						}
-						> div {
-							font-size: 32px;
-							font-weight: 36px;
-							font-weight: 700;
-						}
-					}
-					.find-me {
-						span {
-							font-size: 18px;
-							line-height: 24px;
-						}
-						.navigator-bar {
-							ul {
-								flex-direction: column;
-								a {
-								display: inline-block;
-								color: #000;
-								opacity: 0.7;
-								text-decoration: none;
-								}
-							}
-						}
-					}
-				}
 			}
 			section {
 				.navigator-bar {
@@ -66,6 +34,18 @@
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+	.layout-wrapper {
+		.layout-main {
+			.container {
+				padding: 45px 45px;
 			}
 		}
 	}

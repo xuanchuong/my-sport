@@ -2,6 +2,14 @@ $breakpoint-phone: 640px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
+.match-detail {
+  .match-detail-item {
+    background-color: #fff;
+    border: solid 1px #dce0e6;
+    padding: 2em;
+  }
+}
+
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 /* Portrait and Landscape */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -10,9 +18,7 @@ $breakpoint-desktop: 1024px;
     .match-detail-item {
       margin-top: 2em;
       .item {
-        label {
-          font-size: 3em;
-        }
+        font-size: 36px;
       }
     }
   }

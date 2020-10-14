@@ -76,4 +76,12 @@ public class FootballMatchService {
     private boolean isMatchOwner(FootballMatch footballMatch, Player currentPlayer) {
         return footballMatch.getOwner().getId().equals(currentPlayer.getId());
     }
+
+    public void joinTheMatch(FootballMatch footballMatch, Player sessionUser) {
+        if (this.hasUserJoinedTheMatch(footballMatch, sessionUser)) {
+            throw new IllegalArgumentException("the user already joined the match");
+        }
+        footballMatch.getParticipants().add(sessionUser);
+        updateMatch(footballMatch);
+    }
 }

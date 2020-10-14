@@ -37,6 +37,13 @@
 					</div>
 				</div>
 				<div class="match-detail-item participant">
+					<form th:action="@{/match/join}" th:object="${match}" method="post">
+						<input type="hidden" th:field="*{id}"/>
+						<div class="item join-bt">
+							<button type="submit">Tham gia</button>
+						</div>
+					</form>
+
 					<div class="item">
 						<label><strong>Người tham gia:</strong></label>
 					</div>

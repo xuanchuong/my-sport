@@ -65,8 +65,9 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/player/detail/**",
-                            "/match/create").authenticated()
+                    .antMatchers("/match/create",
+                            "/match/join")
+                    .authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login").permitAll()

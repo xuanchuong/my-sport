@@ -2,8 +2,11 @@ package my.sport.controller;
 
 import lombok.AllArgsConstructor;
 import my.sport.application.service.FootballMatchService;
+import my.sport.application.service.PlayerService;
+import my.sport.controller.dto.FootballMatchDTO;
 import my.sport.controller.mapper.MatchMapper;
 import my.sport.domain.entity.FootballMatch;
+import my.sport.domain.entity.Player;
 import my.sport.rest.dto.CreateFootballMatchCommandDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,7 @@ import javax.validation.Valid;
 public class MatchController {
 
 	private final FootballMatchService matchService;
+	private final PlayerService playerService;
 	private final MatchMapper matchMapper;
 	private static final String MATCH_ATTR = "match";
 
@@ -44,5 +48,14 @@ public class MatchController {
 
 		matchService.createNewMatch(matchMapper.map(footballMatchDTO));
 		return "redirect:/dashboard";
+	}
+
+	@PostMapping("/join")
+	public String joinTheMatch(@ModelAttribute(MATCH_ATTR) FootballMatchDTO footballMatchDTO, Model model) {
+		Player sessionUser = playerService.getSessionPlayer();
+		FootballMatch footballMatch = matchService.getMatchById(footballMatchDTO.getId());
+		matchService.joinTheMatch(footballMatch, sessionUser);
+		model.addAttribute(MATCH_ATTR, footballMatch);
+		return "matchDetail";
 	}
 }

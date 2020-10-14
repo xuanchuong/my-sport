@@ -1,5 +1,7 @@
 package my.sport.controller.mapper;
 
+import my.sport.controller.dto.PlayerDTO;
+import my.sport.domain.entity.Player;
 import my.sport.domain.vo.CreateUserCommand;
 import my.sport.rest.dto.CreateUserCommandDTO;
 import org.mapstruct.Mapper;
@@ -15,4 +17,6 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 public interface PlayerControllerMapper {
 
     CreateUserCommand map(CreateUserCommandDTO source);
+
+    Player map(PlayerDTO source);
 }

@@ -14,11 +14,11 @@ $breakpoint-desktop: 1024px;
 /* Portrait and Landscape */
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
   .match-detail {
-    margin: 2em;
     .match-detail-item {
       margin-top: 2em;
       .item {
-        font-size: 36px;
+        font-size: 40px;
+        margin-bottom: 14px;
       }
     }
   }

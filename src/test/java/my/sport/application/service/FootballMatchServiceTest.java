@@ -99,7 +99,7 @@ public class FootballMatchServiceTest {
         assertThat(result.getNumberOfPlayers()).isEqualTo(10);
         assertThat(result.getMatchStatus()).isEqualTo(MatchStatus.READY);
         assertThat(result.getOwner()).isEqualTo(sessionPlayer);
-        assertThat(result.getParticipants()).isEmpty();
+        assertThat(result.getParticipants()).containsOnly(sessionPlayer);
         assertThat(result.getStartDate()).isEqualTo(startDate);
     }
 }

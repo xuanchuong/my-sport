@@ -10,11 +10,8 @@
 	<div class="layout-main">
 		<div th:insert="template.html :: header"></div>
 		<div class="container layout-content">
-			<div class="match-detail" th:if="${match != null}">
+			<div class="match-detail">
 				<div class="match-detail-item match-info">
-					<div class="item">
-						<label><strong>Thông tin trận đấu:</strong></label>
-					</div>
 					<div class="item">
 						<label th:text="${match.title}"></label>
 					</div>
@@ -36,7 +33,15 @@
 						<label><strong>Chủ trận đấu:</strong></label>
 					</div>
 					<div class="contact item">
-						<label th:text="${match.owner.getEmail()}">Email: </label>
+						<label th:text="${match.owner.getEmail()}"></label>
+					</div>
+				</div>
+				<div class="match-detail-item participant">
+					<div class="item">
+						<label><strong>Người tham gia:</strong></label>
+					</div>
+					<div class="item" th:each="participant : ${match.getParticipants()}">
+						<label th:text="${participant.email}"></label>
 					</div>
 				</div>
 			</div>

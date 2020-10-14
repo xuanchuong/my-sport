@@ -6,8 +6,7 @@ import my.sport.domain.repository.FootballMatchRepository;
 import my.sport.domain.vo.CreateFootballMatchCommand;
 import my.sport.domain.vo.MatchStatus;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FootballMatchService {
@@ -40,7 +39,7 @@ public class FootballMatchService {
                 .startDate(matchDto.getStartDate())
                 .description(matchDto.getDescription())
                 .numberOfPlayers(matchDto.getNumberOfPlayers())
-                .participants(new ArrayList<>())
+                .participants(Collections.singletonList(currentPlayer))
                 .owner(currentPlayer)
                 .matchStatus(MatchStatus.READY)
                 .build();

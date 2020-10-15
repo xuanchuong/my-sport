@@ -20,6 +20,8 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class MatchController {
 
+	public static final String JOIN_MESSAGE = "join_message";
+	public static final String MATCH_DETAIL = "matchDetail";
 	private final FootballMatchService matchService;
 	private final PlayerService playerService;
 	private final MatchMapper matchMapper;
@@ -29,16 +31,19 @@ public class MatchController {
 	public String createMatch(Model model) {
 		CreateFootballMatchCommandDTO footballMatchCommandDTO = new CreateFootballMatchCommandDTO();
 		model.addAttribute(MATCH_ATTR, footballMatchCommandDTO);
-		return"createMatchForm";
+		return "createMatchForm";
 	}
-	
+
 	@GetMapping("/detail")
 	public String getMatchDetail(@RequestParam String id, Model model) {
 		FootballMatch footballMatch = matchService.getMatchById(Long.valueOf(id));
+		Player sessionUser = playerService.getSessionPlayer();
+		boolean isJoined = sessionUser != null && matchService.hasUserJoinedTheMatch(footballMatch, sessionUser);
+		model.addAttribute("isJoined", isJoined);
 		model.addAttribute(MATCH_ATTR, footballMatch);
-		return "matchDetail";
+		return MATCH_DETAIL;
 	}
-	
+
 	@PostMapping("/create")
 	public String creatingMatch(@Valid @ModelAttribute(MATCH_ATTR) CreateFootballMatchCommandDTO footballMatchDTO,
 								BindingResult result) {
@@ -54,8 +59,27 @@ public class MatchController {
 	public String joinTheMatch(@ModelAttribute(MATCH_ATTR) FootballMatchDTO footballMatchDTO, Model model) {
 		Player sessionUser = playerService.getSessionPlayer();
 		FootballMatch footballMatch = matchService.getMatchById(footballMatchDTO.getId());
-		matchService.joinTheMatch(footballMatch, sessionUser);
+		try {
+			matchService.joinTheMatch(footballMatch, sessionUser);
+			model.addAttribute(JOIN_MESSAGE, "join successfully");
+		} catch (IllegalArgumentException ex) {
+			model.addAttribute(JOIN_MESSAGE, ex.getMessage());
+		}
 		model.addAttribute(MATCH_ATTR, footballMatch);
-		return "matchDetail";
+		return MATCH_DETAIL;
+	}
+
+	@PostMapping("/leave")
+	public String leaveTheMatch(@ModelAttribute(MATCH_ATTR) FootballMatchDTO footballMatchDTO, Model model) {
+		Player sessionUser = playerService.getSessionPlayer();
+		FootballMatch footballMatch = matchService.getMatchById(footballMatchDTO.getId());
+		try {
+			matchService.leaveTheMatch(footballMatch, sessionUser);
+			model.addAttribute(JOIN_MESSAGE, "leave successfully");
+		} catch (IllegalArgumentException ex) {
+			model.addAttribute(JOIN_MESSAGE, ex.getMessage());
+		}
+		model.addAttribute(MATCH_ATTR, footballMatch);
+		return MATCH_DETAIL;
 	}
 }

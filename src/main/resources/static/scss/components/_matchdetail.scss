@@ -16,9 +16,18 @@ $breakpoint-desktop: 1024px;
   .match-detail {
     .match-detail-item {
       margin-top: 2em;
+
       .item {
-        font-size: 40px;
         margin-bottom: 14px;
+        &.action-bt {
+          button {
+            font-size: 40px;
+            line-height: 40px;
+          }
+        }
+        label {
+          font-size: 2.5em;
+        }
       }
     }
   }
@@ -29,7 +38,7 @@ $breakpoint-desktop: 1024px;
     .match-detail-item {
       .item {
         label {
-          font-size: 1.5em;
+          font-size: 2.5em;
         }
       }
     }

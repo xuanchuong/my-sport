@@ -55,6 +55,9 @@ public class FootballMatchService {
     }
 
     public void leaveTheMatch(FootballMatch footballMatch, Player player) {
+        if (!hasUserJoinedTheMatch(footballMatch, player)) {
+            throw new IllegalArgumentException("the user has not joined the match");
+        }
         footballMatch.getParticipants().stream()
                 .filter(participant -> participant.getId().equals(player.getId()))
                 .findFirst().ifPresent(participant -> footballMatch.getParticipants().remove(participant));

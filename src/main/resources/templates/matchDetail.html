@@ -11,7 +11,6 @@
 		<div th:insert="template.html :: header"></div>
 		<div class="container layout-content">
 			<form th:object="${match}" method="post" class="match-detail">
-				<input type="hidden" th:field="*{id}"/>
 				<div class="match-detail-item match-info">
 					<div class="item">
 						<label th:text="${match.title}"></label>
@@ -40,10 +39,12 @@
 				<div class="match-detail-item participant">
 					<div class="item action-bt">
 						<div class="item join-bt" th:if="!${isJoined}">
-							<button type="button" name="joinBt">Tham gia</button>
+							<button type="button" name="joinBt" data-toggle="modal" data-target="#joinModal">Tham gia
+							</button>
 						</div>
 						<div class="item join-bt" th:if="${isJoined}">
-							<button type="button" name="leaveBt">Rời khỏi trận</button>
+							<button type="button" name="leaveBt" data-toggle="modal" data-target="#leaveModal">Rời khỏi trận
+							</button>
 						</div>
 					</div>
 					<div class="item">
@@ -57,7 +58,50 @@
 		</div>
 	</div>
 </div>
-
+<!-- Modal -->
+<form th:object="${match}" method="post">
+	<input type="hidden" th:field="*{id}"/>
+	<div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		 aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Đồng ý tham gia </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Mình đồng ý tham gia
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" name="confirmJoinBt" class="btn btn-primary">Đồng ý</button>
+				</div>
+			</div>Ý
+		</div>
+	</div>
+	<div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		 aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Đồng ý rời</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Mình đồng ý rời
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" name="confirmLeaveBt" class="btn btn-primary">Rời</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 <footer>
 	<div th:insert="template.html :: footer-js"></div>
 	<script th:src="@{/js/matchDetail.js}"></script>

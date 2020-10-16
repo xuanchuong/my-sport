@@ -1,6 +1,7 @@
 package my.sport.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import my.sport.application.service.FootballMatchService;
 import my.sport.application.service.PlayerService;
 import my.sport.controller.dto.FootballMatchDTO;
@@ -18,10 +19,11 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/match")
 @AllArgsConstructor
+@Slf4j
 public class MatchController {
 
-	public static final String JOIN_MESSAGE = "join_message";
 	public static final String MATCH_DETAIL = "matchDetail";
+	public static final String IS_JOINED = "isJoined";
 	private final FootballMatchService matchService;
 	private final PlayerService playerService;
 	private final MatchMapper matchMapper;
@@ -39,7 +41,7 @@ public class MatchController {
 		FootballMatch footballMatch = matchService.getMatchById(Long.valueOf(id));
 		Player sessionUser = playerService.getSessionPlayer();
 		boolean isJoined = sessionUser != null && matchService.hasUserJoinedTheMatch(footballMatch, sessionUser);
-		model.addAttribute("isJoined", isJoined);
+		model.addAttribute(IS_JOINED, isJoined);
 		model.addAttribute(MATCH_ATTR, footballMatch);
 		return MATCH_DETAIL;
 	}
@@ -61,9 +63,9 @@ public class MatchController {
 		FootballMatch footballMatch = matchService.getMatchById(footballMatchDTO.getId());
 		try {
 			matchService.joinTheMatch(footballMatch, sessionUser);
-			model.addAttribute(JOIN_MESSAGE, "join successfully");
+			model.addAttribute(IS_JOINED, true);
 		} catch (IllegalArgumentException ex) {
-			model.addAttribute(JOIN_MESSAGE, ex.getMessage());
+			log.warn(ex.getMessage());
 		}
 		model.addAttribute(MATCH_ATTR, footballMatch);
 		return MATCH_DETAIL;
@@ -75,9 +77,9 @@ public class MatchController {
 		FootballMatch footballMatch = matchService.getMatchById(footballMatchDTO.getId());
 		try {
 			matchService.leaveTheMatch(footballMatch, sessionUser);
-			model.addAttribute(JOIN_MESSAGE, "leave successfully");
+			model.addAttribute(IS_JOINED, false);
 		} catch (IllegalArgumentException ex) {
-			model.addAttribute(JOIN_MESSAGE, ex.getMessage());
+			log.warn(ex.getMessage());
 		}
 		model.addAttribute(MATCH_ATTR, footballMatch);
 		return MATCH_DETAIL;

@@ -36,9 +36,10 @@ $breakpoint-desktop: 1024px;
 @media(min-width: $breakpoint-desktop) {
   .match-detail {
     .match-detail-item {
+      margin-top: 2em;
       .item {
         label {
-          font-size: 2.5em;
+          font-size: 1em;
         }
       }
     }

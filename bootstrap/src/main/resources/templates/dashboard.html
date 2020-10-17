@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
+<head th:insert="template.html :: headerfiles">
+	<title>my football - dashboard</title>
+</head>
+<body>
+<div class="layout-wrapper">
+	<div class="layout-main">
+		<div th:insert="template.html :: header"></div>
+		<div class="container layout-content">
+			<div th:if="${not #lists.isEmpty(availableMatches)}" class="match-container">
+				<div class="match-list">
+					<div th:each="match : ${availableMatches}" class="match-item"
+						 th:onclick="'window.location.href=\'/match/detail?id=' + ${match.id} + '\''">
+						<div class="match-header">
+							<label th:text="${#temporals.format(match.startDate,'dd/MMM/yyyy HH:mm a')}"></label>
+							<label th:text="${match.numberOfPlayers}"></label>
+						</div>
+						<div class="match-body">
+							<div class="match-body-item title">
+								<label>title: </label>
+								<label th:text="${match.title}"></label>
+							</div>
+							<div class="match-body-item location">
+								<label>Địa điểm: </label>
+								<label th:text="${match.location}"></label>
+							</div>
+
+							<div class="match-body-item description">
+								<label>mô tả: </label>
+								<label th:text="${match.description}"></label>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer th:insert="template.html :: footer-js"></footer>
+</body>
+</html>

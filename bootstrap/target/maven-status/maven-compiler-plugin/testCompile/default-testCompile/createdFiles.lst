@@ -1,0 +1,4 @@
+bootstrap/UserProviderPactIT.class
+application/MySportSpringApplicationLocal.class
+bootstrap/MatchProviderPactIT.class
+controller/MySportSpringApplicationTests.class

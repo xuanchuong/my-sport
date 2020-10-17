@@ -1,0 +1,70 @@
+.layout-wrapper {
+	.layout-main {
+		.layout-topbar {
+			position: fixed;
+			top: 0;
+			left:0;
+			transition: all 0.5s;
+
+			&.scrollUp {
+				transform: translateY(-120px);
+			}
+			background-color: $topbarBgColor;
+			padding: 0;
+			width: 100%;
+			@include box-sizing(border-box);
+			z-index: 999997;
+			.masthead-wrap {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				list-style-type: none;
+				.my-avatar {
+					img {
+						height: 72px;
+					}
+				}
+				.left-side-navigator-bar {
+					justify-content: center;
+					ul {
+						.selected {
+							border-bottom-style: solid;
+							border-bottom-color: #0052CC;
+						}
+						a {
+							color: #42526E;
+						}
+					}
+					
+				}
+			}
+		}
+	}
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+	.layout-wrapper {
+		.layout-main {
+			.layout-topbar {
+				a {
+					font-size: 40px;
+				}
+			}
+		}
+	}
+}
+
+$breakpoint-desktop: 1024px;
+@media(min-width: $breakpoint-desktop) {
+	.layout-wrapper {
+		.layout-main {
+			.layout-topbar {
+				a {
+					font-size: 1.5em;
+				}
+			}
+		}
+	}
+}

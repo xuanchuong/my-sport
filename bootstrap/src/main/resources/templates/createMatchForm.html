@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:insert="template.html :: headerfiles">
+    <title>my football - create your match</title>
+</head>
+<body>
+<div class="layout-wrapper">
+    <div class="layout-main">
+        <div th:insert="template.html :: header"></div>
+        <div class="container layout-content">
+            <form name="create-match-form" th:object="${match}" method="post" th:action="@{/match/create}">
+                <div class="form-wrapper">
+                    <div class="form-body">
+                        <div class="form-item">
+                            <label for="title">Tiêu đề</label>
+                            <input type="text" id="title" th:field="*{title}"/>
+                            <p class="error-message" th:each="error: ${#fields.errors('title')}" th:text="${error}">Validation error</p>
+                        </div>
+                        <div class="form-item">
+                            <label for="description">Mô tả</label>
+                            <input type="text" id="description" th:field="*{description}"/>
+                            <p class="error-message" th:each="error: ${#fields.errors('description')}" th:text="${error}"></p>
+                        </div>
+                        <div class="form-item">
+                            <label for="location">Địa điểm</label>
+                            <input type="text" id="location" th:field="*{location}"/>
+                            <p class="error-message" th:each="error: ${#fields.errors('location')}" th:text="${error}"></p>
+                        </div>
+                        <div class="form-item">
+                            <label for="number-players">số lượng cầu thủ</label>
+                            <input type="number" id="number-players" name="number-players" th:field="*{numberOfPlayers}"/>
+                            <p class="error-message" th:each="error: ${#fields.errors('numberOfPlayers')}" th:text="${error}"></p>
+                        </div>
+                        <div class="form-item">
+                            <label for="start-time">Thời gian</label>
+                            <input type="datetime-local" data-format="dd/MM/yyyy hh:mm" id="start-time" name="start-time" th:field="*{startDate}"/>
+                            <p class="error-message" th:each="error: ${#fields.errors('startDate')}" th:text="${error}"></p>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="action-bt">
+                            <button type="submit" class="btn">Tạo</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class JpaRole {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "role_id_seq")
 	private Long id;
 
 	private String name;
@@ -39,17 +39,12 @@ public class JpaRole {
 			return false;
 		}
 		final JpaRole jpaRole = (JpaRole) obj;
-		if (!name.equals(jpaRole.name)) {
-			return false;
-		}
-		return true;
+		return name.equals(jpaRole.name);
 	}
 
 	@Override
 	public String toString() {
-		final StringBuilder builder = new StringBuilder();
-		builder.append("Role [name=").append(name).append("]").append("[id=")
-				.append(id).append("]");
-		return builder.toString();
+		return "Role [name=" + name + "]" + "[id=" +
+				id + "]";
 	}
 }

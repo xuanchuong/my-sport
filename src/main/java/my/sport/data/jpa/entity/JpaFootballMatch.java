@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "football_match")
 public class JpaFootballMatch {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "football_match_id_seq")
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	

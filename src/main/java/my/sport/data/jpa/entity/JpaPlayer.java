@@ -24,7 +24,7 @@ import java.util.List;
 public class JpaPlayer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "player_id_seq")
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 

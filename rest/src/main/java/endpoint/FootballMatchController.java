@@ -1,7 +1,5 @@
 package endpoint;
 
-import application.service.FootballMatchService;
-import application.service.PlayerService;
 import domain.entity.FootballMatch;
 import domain.entity.Player;
 import domain.vo.CreateFootballMatchCommand;
@@ -14,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import service.FootballMatchService;
+import service.PlayerService;
 
 @Controller
 @RequestMapping({"/rest/api/v1/match"})

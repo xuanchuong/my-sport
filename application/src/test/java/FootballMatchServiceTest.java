@@ -1,5 +1,3 @@
-import application.service.FootballMatchService;
-import application.service.PlayerService;
 import domain.entity.FootballMatch;
 import domain.entity.Player;
 import domain.repository.FootballMatchRepository;
@@ -11,6 +9,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import service.FootballMatchService;
+import service.PlayerService;
 
 import java.time.LocalDateTime;
 import java.util.Collections;

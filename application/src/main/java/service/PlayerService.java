@@ -1,4 +1,4 @@
-package application.service;
+package service;
 
 import domain.entity.PasswordResetToken;
 import domain.entity.Player;

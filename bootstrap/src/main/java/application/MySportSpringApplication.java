@@ -1,7 +1,8 @@
 package application;
 
-import application.configuration.ApplicationConfiguration;
+
 import config.ServerSecurityConfig;
+import configuration.ApplicationConfiguration;
 import configuration.ControllerConfiguration;
 import configuration.DataJpaConfiguration;
 import configuration.DataRestConfiguration;

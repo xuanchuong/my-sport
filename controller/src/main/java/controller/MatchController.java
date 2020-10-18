@@ -1,7 +1,5 @@
 package controller;
 
-import application.service.FootballMatchService;
-import application.service.PlayerService;
 import domain.entity.FootballMatch;
 import domain.entity.Player;
 import dto.CreateFootballMatchCommandDTO;
@@ -13,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import service.FootballMatchService;
+import service.PlayerService;
 
 import javax.validation.Valid;
 

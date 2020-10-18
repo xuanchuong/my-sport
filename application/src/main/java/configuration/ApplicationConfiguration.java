@@ -1,11 +1,11 @@
-package application.configuration;
+package configuration;
 
-import application.service.FootballMatchService;
-import application.service.PlayerService;
 import domain.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import service.FootballMatchService;
+import service.PlayerService;
 
 @Configuration
 public class ApplicationConfiguration {

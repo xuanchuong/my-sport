@@ -1,6 +1,5 @@
 package endpoint;
 
-import application.service.PlayerService;
 import domain.entity.Player;
 import dto.UserOutDTO;
 import lombok.AccessLevel;
@@ -10,6 +9,7 @@ import mapper.UserMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import service.PlayerService;
 
 import java.util.Optional;
 import java.util.UUID;

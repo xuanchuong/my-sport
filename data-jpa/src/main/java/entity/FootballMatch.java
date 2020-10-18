@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -39,4 +40,8 @@ public class FootballMatch {
 	@ManyToMany
 	@JoinTable(name="match_players")
 	private List<Player> participants;
+	@ManyToMany
+	@JoinTable(name="match_joining_request")
+	private Set<Player> pendingPlayer;
 }
+

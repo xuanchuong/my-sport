@@ -39,11 +39,6 @@ public class DataJpaConfiguration {
     }
 
     @Bean
-    FootballMatchMapper jpaFootballMatchMapper(PlayerMapper playerMapper) {
-        return new FootballMatchMapper(playerMapper);
-    }
-
-    @Bean
     FootballMatchRepository footballMatchRepository(FootballMatchJpaRepository footballMatchJpaRepository,
                                                     FootballMatchMapper footballMatchMapper) {
         return new FootballMatchRepositoryAdapter(footballMatchJpaRepository, footballMatchMapper);

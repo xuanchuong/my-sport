@@ -42,6 +42,6 @@ public class FootballMatch {
 	private List<Player> participants;
 	@ManyToMany
 	@JoinTable(name="match_joining_request")
-	private Set<Player> pendingPlayer;
+	private List<Player> pendingPlayer;
 }
 

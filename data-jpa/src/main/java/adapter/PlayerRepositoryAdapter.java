@@ -1,9 +1,11 @@
-package repository;
+package adapter;
 
 import domain.repository.PlayerRepository;
 import lombok.AllArgsConstructor;
 import entity.Player;
 import mapper.PlayerMapper;
+import repository.PlayerJpaRepository;
+
 import java.util.Optional;
 
 @AllArgsConstructor

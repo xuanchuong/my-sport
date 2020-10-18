@@ -1,9 +1,10 @@
-package repository;
+package adapter;
 
 import domain.entity.Role;
 import domain.repository.RoleRepository;
 import lombok.AllArgsConstructor;
 import mapper.RoleMapper;
+import repository.RoleJpaRepository;
 
 @AllArgsConstructor
 public class RoleRepositoryAdapter implements RoleRepository {

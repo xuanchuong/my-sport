@@ -1,9 +1,10 @@
-package repository;
+package adapter;
 
 import domain.repository.FootballMatchRepository;
 import lombok.AllArgsConstructor;
 import entity.FootballMatch;
 import mapper.FootballMatchMapper;
+import repository.FootballMatchJpaRepository;
 
 import java.util.List;
 import java.util.Optional;

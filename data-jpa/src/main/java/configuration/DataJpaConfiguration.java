@@ -1,6 +1,9 @@
 package configuration;
 
+import adapter.FootballMatchRepositoryAdapter;
 import adapter.PasswordTokenRepositoryAdapter;
+import adapter.PlayerRepositoryAdapter;
+import adapter.RoleRepositoryAdapter;
 import domain.repository.FootballMatchRepository;
 import domain.repository.PasswordTokenRepository;
 import domain.repository.RoleRepository;

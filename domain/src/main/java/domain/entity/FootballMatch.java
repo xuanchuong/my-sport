@@ -15,8 +15,7 @@ public class FootballMatch {
 
 	private final Long id;
 	private final Player owner;
-	@Builder.Default
-	private final Set<Player> pendingParticipants = new HashSet<>();
+	private final List<Player> pendingPlayer;
 	private final LocalDateTime startDate;
 	private final String location;
 	private final String title;

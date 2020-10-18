@@ -18,9 +18,9 @@ public class PasswordResetTokenJpa {
 
     private String token;
 
-    @OneToOne(targetEntity = JpaPlayer.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = Player.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
-    private JpaPlayer player;
+    private Player player;
 
     @Column(name = "expiry_date")
     private Date expiryDate;

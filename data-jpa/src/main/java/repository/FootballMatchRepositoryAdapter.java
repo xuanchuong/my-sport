@@ -1,9 +1,8 @@
 package repository;
 
-import domain.entity.FootballMatch;
 import domain.repository.FootballMatchRepository;
 import lombok.AllArgsConstructor;
-import entity.JpaFootballMatch;
+import entity.FootballMatch;
 import mapper.FootballMatchMapper;
 
 import java.util.List;
@@ -17,8 +16,8 @@ public class FootballMatchRepositoryAdapter implements FootballMatchRepository {
     private final FootballMatchMapper footballMatchMapper;
 
     @Override
-    public FootballMatch save(FootballMatch footballMatch) {
-        JpaFootballMatch jpaFootballMatch = footballMatchMapper.map(footballMatch);
+    public domain.entity.FootballMatch save(domain.entity.FootballMatch footballMatch) {
+        FootballMatch jpaFootballMatch = footballMatchMapper.map(footballMatch);
         return footballMatchMapper.map(footballMatchJpaRepository.save(jpaFootballMatch));
     }
 
@@ -28,12 +27,12 @@ public class FootballMatchRepositoryAdapter implements FootballMatchRepository {
     }
 
     @Override
-    public Optional<FootballMatch> findById(Long id) {
+    public Optional<domain.entity.FootballMatch> findById(Long id) {
         return footballMatchJpaRepository.findById(id).map(footballMatchMapper::map);
     }
 
     @Override
-    public List<FootballMatch> findAll() {
+    public List<domain.entity.FootballMatch> findAll() {
         return footballMatchJpaRepository.findAll().stream().map(footballMatchMapper::map)
                 .collect(Collectors.toList());
     }

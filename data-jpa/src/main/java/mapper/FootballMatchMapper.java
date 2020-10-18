@@ -1,10 +1,8 @@
 package mapper;
 
-import domain.entity.FootballMatch;
-import domain.entity.Player;
+import entity.Player;
 import lombok.AllArgsConstructor;
-import entity.JpaFootballMatch;
-import entity.JpaPlayer;
+import entity.FootballMatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +12,8 @@ public class FootballMatchMapper {
 
     private final PlayerMapper playerMapper;
 
-    public JpaFootballMatch map(FootballMatch source) {
-        JpaFootballMatch target = new JpaFootballMatch();
+    public FootballMatch map(domain.entity.FootballMatch source) {
+        FootballMatch target = new FootballMatch();
         target.setId(source.getId());
         target.setDescription(source.getDescription());
         target.setLocation(source.getLocation());
@@ -25,16 +23,16 @@ public class FootballMatchMapper {
         target.setStartDate(source.getStartDate());
         target.setTitle(source.getTitle());
         target.setMatchStatus(source.getMatchStatus());
-        List<JpaPlayer> participants = new ArrayList<>();
+        List<Player> participants = new ArrayList<>();
         source.getParticipants().forEach(player -> participants.add(playerMapper.map(player)));
-        target.setPaticipants(participants);
+        target.setParticipants(participants);
         return target;
     }
 
-    public FootballMatch map(JpaFootballMatch source) {
-        List<Player> participants = new ArrayList<>();
-        source.getPaticipants().forEach(player -> participants.add(playerMapper.map(player)));
-        return FootballMatch.builder()
+    public domain.entity.FootballMatch map(FootballMatch source) {
+        List<domain.entity.Player> participants = new ArrayList<>();
+        source.getParticipants().forEach(player -> participants.add(playerMapper.map(player)));
+        return domain.entity.FootballMatch.builder()
                 .id(source.getId())
                 .description(source.getDescription())
                 .location(source.getLocation())

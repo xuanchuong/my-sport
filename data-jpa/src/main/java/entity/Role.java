@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "role")
-public class JpaRole {
+public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "role_id_seq")
@@ -15,7 +15,7 @@ public class JpaRole {
 
 	private String name;
 
-	public JpaRole() {
+	public Role() {
 		super();
 	}
 
@@ -38,8 +38,8 @@ public class JpaRole {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final JpaRole jpaRole = (JpaRole) obj;
-		return name.equals(jpaRole.name);
+		final Role role = (Role) obj;
+		return name.equals(role.name);
 	}
 
 	@Override

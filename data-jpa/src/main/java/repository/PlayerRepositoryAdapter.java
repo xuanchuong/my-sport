@@ -1,9 +1,8 @@
 package repository;
 
-import domain.entity.Player;
 import domain.repository.PlayerRepository;
 import lombok.AllArgsConstructor;
-import entity.JpaPlayer;
+import entity.Player;
 import mapper.PlayerMapper;
 import java.util.Optional;
 
@@ -14,18 +13,18 @@ public class PlayerRepositoryAdapter implements PlayerRepository {
     private final PlayerMapper playerMapper;
 
     @Override
-    public Player findUserByEmail(String email) {
-        JpaPlayer jpaPlayer = playerJpaRepository.findUserByEmail(email);
-        return jpaPlayer == null ? null : playerMapper.map(jpaPlayer);
+    public domain.entity.Player findUserByEmail(String email) {
+        Player player = playerJpaRepository.findUserByEmail(email);
+        return player == null ? null : playerMapper.map(player);
     }
 
     @Override
-    public Optional<Player> findById(Long id) {
+    public Optional<domain.entity.Player> findById(Long id) {
         return playerJpaRepository.findById(id).map(playerMapper::map);
     }
 
     @Override
-    public Player save(Player player) {
+    public domain.entity.Player save(domain.entity.Player player) {
         return playerMapper.map(playerJpaRepository.save(playerMapper.map(player)));
     }
 

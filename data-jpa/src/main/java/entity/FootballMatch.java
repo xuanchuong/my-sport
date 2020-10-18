@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "football_match")
-public class JpaFootballMatch {
+public class FootballMatch {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "football_match_id_seq")
 	@Column(name = "id", unique = true, nullable = false)
@@ -22,7 +22,7 @@ public class JpaFootballMatch {
 	
 	@ManyToOne
 	@JoinColumn(name="owner_id", nullable=false)
-	private JpaPlayer owner;
+	private Player owner;
 	@Column(name = "start_date")
 	private LocalDateTime startDate;
 	@Column(name = "location")
@@ -38,5 +38,5 @@ public class JpaFootballMatch {
 	private MatchStatus matchStatus;
 	@ManyToMany
 	@JoinTable(name="match_players")
-	private List<JpaPlayer> paticipants;
+	private List<Player> participants;
 }

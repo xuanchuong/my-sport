@@ -21,7 +21,7 @@ import java.util.List;
 @Table(name = "player")
 @AllArgsConstructor
 @NoArgsConstructor
-public class JpaPlayer {
+public class Player {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "player_id_seq")
@@ -49,5 +49,5 @@ public class JpaPlayer {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-	private List<JpaRole> roles;
+	private List<Role> roles;
 }

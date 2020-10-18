@@ -1,14 +1,14 @@
 package repository;
 
-import entity.JpaRole;
+import entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleJpaRepository extends JpaRepository<JpaRole, Long> {
+public interface RoleJpaRepository extends JpaRepository<Role, Long> {
 
-	JpaRole findByName(String name);
+	Role findByName(String name);
 
-	void delete(JpaRole role);
+	void delete(Role role);
 
 }

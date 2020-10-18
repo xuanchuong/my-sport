@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: controller.MySportSpringApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.268 s - in controller.MySportSpringApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.043 s - in controller.MySportSpringApplicationTests

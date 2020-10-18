@@ -1,0 +1,10 @@
+mapper/UserMapper.class
+dto/UserOutDTO.class
+dto/CreateFootballMatchCommandDTO.class
+dto/FootballMatchOut.class
+mapper/FootballMatchMapper.class
+dto/UpdateUserCommandDTO.class
+endpoint/PlayerController.class
+config/RestConfiguration.class
+dto/CreateUserCommandDTO.class
+endpoint/FootballMatchController.class

@@ -1,12 +1,13 @@
-controller/MatchController.class
 controller/DashBoardController.class
 mapper/PlayerControllerMapperImpl.class
 dto/FootballMatchDTO.class
 controller/LoginController.class
+configuration/ControllerConfiguration.class
 mapper/MatchMapperImpl.class
-dto/CreateFootballMatchCommandDTO.class
 mapper/MatchMapper.class
 dto/CreateUserCommandDTO.class
 controller/RegisterController.class
 mapper/PlayerControllerMapper.class
+controller/MatchController.class
+dto/CreateFootballMatchCommandDTO.class
 dto/PlayerDTO.class

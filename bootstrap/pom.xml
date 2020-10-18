@@ -13,8 +13,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <resources.directory.css>${project.basedir}/src/main/resources/static/css</resources.directory.css>
-        <resources.directory.scss>${project.basedir}/src/main/resources/static/scss</resources.directory.scss>
     </properties>
     <dependencies>
         <dependency>
@@ -53,41 +51,6 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>6.3.2</version>
-            </plugin>
-            <plugin>
-                <groupId>nl.geodienstencentrum.maven</groupId>
-                <artifactId>sass-maven-plugin</artifactId>
-                <version>2.25</version>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>update-stylesheets</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <sassOptions>
-                        <cache>false</cache>
-                        <always_update>true</always_update>
-                        <style>:compressed</style>
-                        <sourcemap>:none</sourcemap>
-                        <debug_info>false</debug_info>
-                    </sassOptions>
-                    <useCompass>false</useCompass>
-                    <resources>
-                        <resource>
-                            <source>
-                                <directory>${resources.directory.scss}</directory>
-                                <includes>
-                                    <include>*.scss</include>
-                                </includes>
-                                <excludes />
-                            </source>
-                            <destination>${resources.directory.css}</destination>
-                        </resource>
-                    </resources>
-                </configuration>
             </plugin>
         </plugins>
     </build>

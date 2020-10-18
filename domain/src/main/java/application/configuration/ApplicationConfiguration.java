@@ -1,15 +1,14 @@
-package application.config;
+package application.configuration;
 
 import application.service.FootballMatchService;
 import application.service.PlayerService;
 import domain.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class ApplicationConfig {
+public class ApplicationConfiguration {
 
 
     @Bean

@@ -10,7 +10,8 @@
         <module>rest</module>
 		<module>controller</module>
 		<module>data-rest</module>
-	</modules>
+        <module>application</module>
+    </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

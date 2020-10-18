@@ -1,6 +1,6 @@
 package application;
 
-import application.config.ApplicationConfig;
+import application.configuration.ApplicationConfiguration;
 import config.ServerSecurityConfig;
 import configuration.ControllerConfiguration;
 import configuration.DataJpaConfiguration;
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication
 @Import({
         DataJpaConfiguration.class,
-        ApplicationConfig.class,
+        ApplicationConfiguration.class,
         DataRestConfiguration.class,
         ControllerConfiguration.class,
         ServerSecurityConfig.class

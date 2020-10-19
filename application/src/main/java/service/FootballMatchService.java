@@ -6,6 +6,7 @@ import domain.entity.Player;
 import domain.repository.FootballMatchRepository;
 import domain.vo.CreateFootballMatchCommand;
 import domain.vo.MatchStatus;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,6 +31,7 @@ public class FootballMatchService {
         return footballMatchRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public FootballMatch createNewMatch(CreateFootballMatchCommand matchDto) {
         if (!matchDto.isValid()) {
             throw new IllegalArgumentException("matchDto's fields are missing");
@@ -56,6 +58,7 @@ public class FootballMatchService {
         footballMatchRepository.save(match);
     }
 
+    @Transactional
     public void leaveTheMatch(FootballMatch footballMatch, Player player) {
         if (!hasUserJoinedTheMatch(footballMatch, player)) {
             throw new IllegalArgumentException("the user has not joined the match");
@@ -70,6 +73,7 @@ public class FootballMatchService {
         return footballMatch.getParticipants().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
     }
 
+    @Transactional
     public void cancel(FootballMatch footballMatch, Player currentPlayer) {
         if (!isMatchOwner(footballMatch, currentPlayer)) {
             return;
@@ -82,6 +86,7 @@ public class FootballMatchService {
         return footballMatch.getOwner().getId().equals(currentPlayer.getId());
     }
 
+    @Transactional
     public void joinTheMatch(FootballMatch footballMatch, Player sessionUser) {
         if (this.hasUserJoinedTheMatch(footballMatch, sessionUser)) {
             throw new IllegalArgumentException("the user already joined the match");

@@ -4,8 +4,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.function.BooleanSupplier;
 import java.util.stream.Stream;
 
@@ -28,7 +26,7 @@ public class CreateUserCommand {
         ).allMatch(BooleanSupplier::getAsBoolean);
     }
 
-    BooleanSupplier isNotBlack(String input) {
-        return () -> StringUtils.isNotBlank(input);
+    private BooleanSupplier isNotBlack(String input) {
+        return () -> input != null && !input.isEmpty();
     }
 }

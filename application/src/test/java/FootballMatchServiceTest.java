@@ -13,6 +13,7 @@ import service.FootballMatchService;
 import service.PlayerService;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -101,5 +102,50 @@ public class FootballMatchServiceTest {
         assertThat(result.getOwner()).isEqualTo(sessionPlayer);
         assertThat(result.getParticipants()).containsOnly(sessionPlayer);
         assertThat(result.getStartDate()).isEqualTo(startDate);
+    }
+
+    @Test
+    public void joinTheMatch_should_join_successfully() {
+        // Given
+        FootballMatch footballMatch = mock(FootballMatch.class);
+        Player player = mock(Player.class);
+        when(footballMatch.getParticipants()).thenReturn(new ArrayList<>());
+        when(footballMatch.getPendingPlayer()).thenReturn(new ArrayList<>());
+        when(footballMatchRepository.save(footballMatch)).thenReturn(footballMatch);
+        // When
+        footballMatchService.joinTheMatch(footballMatch, player);
+        // Then
+        ArgumentCaptor<FootballMatch> savedFootballMatch = ArgumentCaptor.forClass(FootballMatch.class);
+        verify(footballMatchRepository).save(savedFootballMatch.capture());
+        assertThat(savedFootballMatch.getValue().getPendingPlayer()).containsOnly(player);
+    }
+
+    @Test
+    public void joinTheMatch_should_throw_IllegalArgumentException_if_player_already_joined_the_match() {
+        // Given
+        FootballMatch footballMatch = mock(FootballMatch.class);
+        Player player = mock(Player.class);
+        when(footballMatch.getParticipants()).thenReturn(Collections.singletonList(player));
+        // When
+        Throwable throwable = catchThrowable(() -> footballMatchService.joinTheMatch(footballMatch, player));
+        // Then
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable.getMessage()).isEqualTo("the user already joined the match");
+        verify(footballMatchRepository, never()).save(any(FootballMatch.class));
+    }
+
+    @Test
+    public void joinTheMatch_should_throw_IllegalArgumentException_if_player_already_requested_the_match() {
+        // Given
+        FootballMatch footballMatch = mock(FootballMatch.class);
+        Player player = mock(Player.class);
+        when(footballMatch.getPendingPlayer()).thenReturn(Collections.singletonList(player));
+        when(footballMatch.getParticipants()).thenReturn(new ArrayList<>());
+        // When
+        Throwable throwable = catchThrowable(() -> footballMatchService.joinTheMatch(footballMatch, player));
+        // Then
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable.getMessage()).isEqualTo("the user already requested to join the match");
+        verify(footballMatchRepository, never()).save(any(FootballMatch.class));
     }
 }

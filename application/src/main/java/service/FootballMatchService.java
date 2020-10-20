@@ -70,6 +70,9 @@ public class FootballMatchService {
     }
 
     public boolean hasUserJoinedTheMatch(FootballMatch footballMatch, Player player) {
+        if (player == null) {
+            return false;
+        }
         return footballMatch.getParticipants().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
     }
 
@@ -87,11 +90,21 @@ public class FootballMatchService {
     }
 
     @Transactional
-    public void joinTheMatch(FootballMatch footballMatch, Player sessionUser) {
-        if (this.hasUserJoinedTheMatch(footballMatch, sessionUser)) {
+    public void joinTheMatch(FootballMatch footballMatch, Player player) {
+        if (this.hasUserJoinedTheMatch(footballMatch, player)) {
             throw new IllegalArgumentException("the user already joined the match");
         }
-        footballMatch.getParticipants().add(sessionUser);
+        if (hasPendingRequest(footballMatch, player)) {
+            throw new IllegalArgumentException("the user already requested to join the match");
+        }
+        footballMatch.getPendingPlayer().add(player);
         updateMatch(footballMatch);
+    }
+
+    public boolean hasPendingRequest(FootballMatch footballMatch, Player player) {
+        if (player == null) {
+            return false;
+        }
+        return footballMatch.getPendingPlayer().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
     }
 }

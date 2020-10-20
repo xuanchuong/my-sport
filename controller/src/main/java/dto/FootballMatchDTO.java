@@ -20,4 +20,5 @@ public class FootballMatchDTO {
 	private int numberOfPlayers;
 	private MatchStatus matchStatus;
 	private List<PlayerDTO> participants;
+	private List<PlayerDTO> pendingPlayer;
 }

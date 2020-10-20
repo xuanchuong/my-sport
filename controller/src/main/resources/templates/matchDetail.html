@@ -38,12 +38,16 @@
 				</div>
 				<div class="match-detail-item participant">
 					<div class="item action-bt">
-						<div class="item join-bt" th:if="!${isJoined}">
+						<div class="item join-bt" th:if="${joinable}">
 							<button type="button" name="joinBt" data-toggle="modal" data-target="#joinModal">Tham gia
 							</button>
 						</div>
 						<div class="item join-bt" th:if="${isJoined}">
 							<button type="button" name="leaveBt" data-toggle="modal" data-target="#leaveModal">Rời khỏi trận
+							</button>
+						</div>
+						<div class="item join-bt" th:if="${isPendingJoinRequest}">
+							<button type="button" name="leaveBt" data-toggle="modal" data-target="#leaveModal">Hủy yêu cầu
 							</button>
 						</div>
 					</div>
@@ -52,6 +56,12 @@
 					</div>
 					<div class="item" th:each="participant : ${match.getParticipants()}">
 						<label th:text="${participant.email}"></label>
+					</div>
+					<div class="item">
+						<label><strong>Danh sách yêu cầu:</strong></label>
+						<div class="item" th:each="request : ${match.getPendingPlayer()}">
+							<label th:text="${request.email}"></label>
+						</div>
 					</div>
 				</div>
 			</form>

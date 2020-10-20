@@ -91,4 +91,17 @@ public class MatchController {
 		model.addAttribute(MATCH_ATTR, footballMatch);
 		return MATCH_DETAIL;
 	}
+
+	@PostMapping("/cancel/request")
+	public String cancelJoinRequest(@ModelAttribute(MATCH_ATTR) FootballMatchDTO footballMatchDTO, Model model) {
+		Player sessionUser = playerService.getSessionPlayer();
+		FootballMatch footballMatch = matchService.getMatchById(footballMatchDTO.getId());
+		try {
+			matchService.cancelJoinRequest(footballMatch, sessionUser);
+		} catch (IllegalArgumentException ex) {
+			log.warn(ex.getMessage());
+		}
+		model.addAttribute(MATCH_ATTR, footballMatch);
+		return MATCH_DETAIL;
+	}
 }

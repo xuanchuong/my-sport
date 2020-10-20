@@ -15,3 +15,9 @@ $('button[name="confirmLeaveBt"]').click(function (event) {
 	const data = $('form').serialize();
 	$.post('/match/leave', data, reloadPage);
 });
+
+$('button[name="confirmCancelRequestBt"]').click(function (event) {
+	event.preventDefault();
+	const data = $('form').serialize();
+	$.post('/match/cancel/request', data, reloadPage);
+});

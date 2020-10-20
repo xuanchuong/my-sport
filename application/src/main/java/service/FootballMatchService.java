@@ -69,6 +69,17 @@ public class FootballMatchService {
         updateMatch(footballMatch);
     }
 
+    @Transactional
+    public void cancelJoinRequest(FootballMatch footballMatch, Player player) {
+        if (!hasPendingRequest(footballMatch, player)) {
+            throw new IllegalArgumentException("the user have not requested to join the match");
+        }
+        footballMatch.getPendingPlayer().stream()
+                .filter(pendingPlayer -> pendingPlayer.getId().equals(player.getId()))
+                .findFirst().ifPresent(participant -> footballMatch.getPendingPlayer().remove(participant));
+        updateMatch(footballMatch);
+    }
+
     public boolean hasUserJoinedTheMatch(FootballMatch footballMatch, Player player) {
         if (player == null) {
             return false;

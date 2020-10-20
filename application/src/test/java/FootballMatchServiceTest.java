@@ -13,8 +13,7 @@ import service.FootballMatchService;
 import service.PlayerService;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -146,6 +145,36 @@ public class FootballMatchServiceTest {
         // Then
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
         assertThat(throwable.getMessage()).isEqualTo("the user already requested to join the match");
+        verify(footballMatchRepository, never()).save(any(FootballMatch.class));
+    }
+
+    @Test
+    public void cancelJoinRequest_should_cancel_successfully() {
+        // Given
+        FootballMatch footballMatch = mock(FootballMatch.class);
+        Player player = mock(Player.class);
+        List<Player> pendingPlayer = new ArrayList<>(Collections.singleton(player));
+        when(footballMatch.getPendingPlayer()).thenReturn(pendingPlayer);
+        when(footballMatchRepository.save(footballMatch)).thenReturn(footballMatch);
+        // When
+        footballMatchService.cancelJoinRequest(footballMatch, player);
+        // Then
+        ArgumentCaptor<FootballMatch> savedFootballMatch = ArgumentCaptor.forClass(FootballMatch.class);
+        verify(footballMatchRepository).save(savedFootballMatch.capture());
+        assertThat(savedFootballMatch.getValue().getPendingPlayer()).isEmpty();
+    }
+
+    @Test
+    public void cancelJoinRequest_should_throw_IllegalArgumentException_if_player_have_not_requested_the_match() {
+        // Given
+        FootballMatch footballMatch = mock(FootballMatch.class);
+        Player player = mock(Player.class);
+        when(footballMatch.getPendingPlayer()).thenReturn(Collections.emptyList());
+        // When
+        Throwable throwable = catchThrowable(() -> footballMatchService.cancelJoinRequest(footballMatch, player));
+        // Then
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+        assertThat(throwable.getMessage()).isEqualTo("the user have not requested to join the match");
         verify(footballMatchRepository, never()).save(any(FootballMatch.class));
     }
 }

@@ -72,7 +72,8 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                     .antMatchers("/match/create",
-                            "/match/join")
+                            "/match/join",
+                            "/match/cancel/request")
                     .authenticated()
                 .and()
                     .formLogin()

@@ -47,7 +47,7 @@
 							</button>
 						</div>
 						<div class="item join-bt" th:if="${isPendingJoinRequest}">
-							<button type="button" name="leaveBt" data-toggle="modal" data-target="#leaveModal">Hủy yêu cầu
+							<button type="button" name="cancelJoinRequestBt" data-toggle="modal" data-target="#cancelJoinRequestModal">Hủy yêu cầu
 							</button>
 						</div>
 					</div>
@@ -107,6 +107,26 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" name="confirmLeaveBt" class="btn btn-primary">Rời</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="cancelJoinRequestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		 aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<label class="modal-title">Đồng ý hủy</label>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<label>Mình đồng ý hủy yêu cầu</label>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" name="confirmCancelRequestBt" class="btn btn-primary">Hủy</button>
 				</div>
 			</div>
 		</div>

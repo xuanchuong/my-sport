@@ -23,10 +23,11 @@ import javax.validation.Valid;
 @Slf4j
 public class MatchController {
 
-	public static final String MATCH_DETAIL = "matchDetail";
-	public static final String IS_JOINED = "isJoined";
+	private static final String MATCH_DETAIL = "matchDetail";
+	private static final String IS_JOINED = "isJoined";
 	private static final String IS_PENDING_JOIN_REQUEST = "isPendingJoinRequest";
 	private static final String JOINABLE = "joinable";
+	private static final String IS_MATCH_OWNER = "isMatchOwner";
 
 	private final FootballMatchService matchService;
 	private final PlayerService playerService;
@@ -50,6 +51,7 @@ public class MatchController {
 		model.addAttribute(IS_PENDING_JOIN_REQUEST, isPendingRequest);
 		model.addAttribute(JOINABLE, BooleanUtils.isFalse(isJoined || isPendingRequest));
 		model.addAttribute(MATCH_ATTR, footballMatch);
+		model.addAttribute(IS_MATCH_OWNER, footballMatch.getOwner().equals(sessionUser));
 		return MATCH_DETAIL;
 	}
 

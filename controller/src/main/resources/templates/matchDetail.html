@@ -53,11 +53,11 @@
 					</div>
 					<div class="item">
 						<label><strong>Người tham gia:</strong></label>
+						<div class="item" th:each="participant : ${match.getParticipants()}">
+							<label th:text="${participant.email}"></label>
+						</div>
 					</div>
-					<div class="item" th:each="participant : ${match.getParticipants()}">
-						<label th:text="${participant.email}"></label>
-					</div>
-					<div class="item">
+					<div class="item" th:if="${isMatchOwner}">
 						<label><strong>Danh sách yêu cầu:</strong></label>
 						<div class="item" th:each="request : ${match.getPendingPlayer()}">
 							<label th:text="${request.email}"></label>

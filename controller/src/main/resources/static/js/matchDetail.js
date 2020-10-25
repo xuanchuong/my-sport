@@ -30,11 +30,29 @@ $('button[name="confirmAcceptJoinRequestBt"]').click(function (event) {
 	$.post('/match/participant/accept?email='+email, data, reloadPage);
 });
 
+
 $('#acceptJoinRequestModal').on('show.bs.modal', function (event) {
 	const button = $(event.relatedTarget) // Button that triggered the modal
 	const objectName = button.data('object-name')
-	console.log("acceptJoinRequestModal show-up: " + objectName);
 	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 	const modal = $(this)
 	modal.find('.modal-body #requestUserEmail').val(objectName);
+});
+
+// reject model show-up
+$('#rejectJoinRequestModal').on('show.bs.modal', function (event) {
+	const button = $(event.relatedTarget) // Button that triggered the modal
+	const objectName = button.data('object-name')
+	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	const modal = $(this)
+	modal.find('.modal-body #requestUserEmail').val(objectName);
+});
+
+// reject model confirm
+$('button[name="confirmRejectJoinRequestBt"]').click(function (event) {
+	event.preventDefault();
+	const modal = $('form')
+	const email = modal.find('.modal-body #requestUserEmail').val();
+	let data = modal.serialize();
+	$.post('/match/participant/reject?email='+email, data, reloadPage);
 });

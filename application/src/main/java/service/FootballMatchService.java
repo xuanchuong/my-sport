@@ -94,6 +94,18 @@ public class FootballMatchService {
         return footballMatch;
     }
 
+    public FootballMatch rejectJoinRequest(FootballMatch footballMatch, Player player, Player requestPlayer) {
+        if (isNotMatchOwner(footballMatch, player)) {
+            throw new IllegalArgumentException("the user is not owner of the match");
+        }
+        if (!hasPendingRequest(footballMatch, requestPlayer)) {
+            throw new IllegalArgumentException("the user have not requested the match");
+        }
+        footballMatch.getPendingPlayer().remove(requestPlayer);
+        updateMatch(footballMatch);
+        return footballMatch;
+    }
+
     public boolean hasUserJoinedTheMatch(FootballMatch footballMatch, Player player) {
         if (player == null) {
             return false;
@@ -130,6 +142,6 @@ public class FootballMatchService {
         if (player == null) {
             return false;
         }
-        return footballMatch.getPendingPlayer().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
+        return footballMatch.getPendingPlayer().stream().anyMatch(participant -> participant.equals(player));
     }
 }

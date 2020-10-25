@@ -61,7 +61,8 @@
 						<label><strong>Danh sách yêu cầu:</strong></label>
 						<div class="item" th:each="request : ${match.getPendingPlayer()}">
 							<label th:text="${request.email}"></label>
-							<button type="button" name="rejectJoinRequestBt" data-toggle="modal" data-target="#rejectJoinRequestModal">
+							<button type="button" name="rejectJoinRequestBt" data-toggle="modal" data-target="#rejectJoinRequestModal"
+									th:attr="data-object-name=${request.email}">
 								Từ chối
 							</button>
 							<button type="button" name="acceptJoinRequestBt" data-toggle="modal" data-target="#acceptJoinRequestModal"
@@ -150,10 +151,11 @@
 				</div>
 				<div class="modal-body">
 					<label>Từ chối yêu cầu tham gia trận đấu</label>
+					<input type="hidden" id="requestUserEmail">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" name="confirmJoinBt" class="btn btn-primary">Từ chối</button>
+					<button type="button" name="confirmRejectJoinRequestBt" class="btn btn-primary">Từ chối</button>
 				</div>
 			</div>
 		</div>

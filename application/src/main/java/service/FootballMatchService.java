@@ -80,24 +80,38 @@ public class FootballMatchService {
         updateMatch(footballMatch);
     }
 
+    @Transactional
+    public FootballMatch acceptJoinRequest(FootballMatch footballMatch, Player player, Player requestPlayer) {
+        if (isNotMatchOwner(footballMatch, player)) {
+            throw new IllegalArgumentException("the user is not owner of the match");
+        }
+        if (hasUserJoinedTheMatch(footballMatch, requestPlayer)) {
+            throw new IllegalArgumentException("the user have joined the match");
+        }
+        footballMatch.getParticipants().add(requestPlayer);
+        footballMatch.getPendingPlayer().remove(requestPlayer);
+        updateMatch(footballMatch);
+        return footballMatch;
+    }
+
     public boolean hasUserJoinedTheMatch(FootballMatch footballMatch, Player player) {
         if (player == null) {
             return false;
         }
-        return footballMatch.getParticipants().stream().anyMatch(participant -> participant.getId().equals(player.getId()));
+        return footballMatch.getParticipants().stream().anyMatch(participant -> participant.equals(player));
     }
 
     @Transactional
     public void cancel(FootballMatch footballMatch, Player currentPlayer) {
-        if (!isMatchOwner(footballMatch, currentPlayer)) {
+        if (isNotMatchOwner(footballMatch, currentPlayer)) {
             return;
         }
         FootballMatch updatingMatch = footballMatch.toBuilder().matchStatus(MatchStatus.CANCEL).build();
         updateMatch(updatingMatch);
     }
 
-    private boolean isMatchOwner(FootballMatch footballMatch, Player currentPlayer) {
-        return footballMatch.getOwner().getId().equals(currentPlayer.getId());
+    private boolean isNotMatchOwner(FootballMatch footballMatch, Player currentPlayer) {
+        return !footballMatch.getOwner().equals(currentPlayer);
     }
 
     @Transactional

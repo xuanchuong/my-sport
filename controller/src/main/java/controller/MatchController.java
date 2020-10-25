@@ -106,4 +106,15 @@ public class MatchController {
 		model.addAttribute(MATCH_ATTR, footballMatch);
 		return MATCH_DETAIL;
 	}
+
+	@PostMapping("/participant/accept")
+	public String acceptParticipant(@RequestParam String email, @ModelAttribute(MATCH_ATTR) FootballMatchDTO footballMatchDTO,
+									Model model) {
+		Player sessionUser = playerService.getSessionPlayer();
+		Player requestPlayer = playerService.getPlayerByEmail(email);
+		FootballMatch footballMatch = matchService.getMatchById(footballMatchDTO.getId());
+		footballMatch = matchService.acceptJoinRequest(footballMatch, sessionUser, requestPlayer);
+		model.addAttribute(MATCH_ATTR, footballMatch);
+		return MATCH_DETAIL;
+	}
 }

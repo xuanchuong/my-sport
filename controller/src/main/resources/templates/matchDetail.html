@@ -61,6 +61,13 @@
 						<label><strong>Danh sách yêu cầu:</strong></label>
 						<div class="item" th:each="request : ${match.getPendingPlayer()}">
 							<label th:text="${request.email}"></label>
+							<button type="button" name="rejectJoinRequestBt" data-toggle="modal" data-target="#rejectJoinRequestModal">
+								Từ chối
+							</button>
+							<button type="button" name="acceptJoinRequestBt" data-toggle="modal" data-target="#acceptJoinRequestModal"
+							th:attr="data-object-name=${request.email}">
+								Chấp nhận
+							</button>
 						</div>
 					</div>
 				</div>
@@ -127,6 +134,47 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" name="confirmCancelRequestBt" class="btn btn-primary">Hủy</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="rejectJoinRequestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		 aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Từ chối yêu cầu</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<label>Từ chối yêu cầu tham gia trận đấu</label>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" name="confirmJoinBt" class="btn btn-primary">Từ chối</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="acceptJoinRequestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		 aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">chấp nhận yêu cầu</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<label>Chấp nhận yêu cầu tham gia trận đấu</label>
+					<input type="hidden" id="requestUserEmail">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" name="confirmAcceptJoinRequestBt" class="btn btn-primary">Chấp nhận</button>
 				</div>
 			</div>
 		</div>
